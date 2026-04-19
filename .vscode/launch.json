@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-MysApplication<mys>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.electroghiurai.mys.MysApplication",
+            "projectName": "mys",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
