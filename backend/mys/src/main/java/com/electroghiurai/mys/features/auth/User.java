@@ -14,18 +14,15 @@ import java.util.UUID;
  * Implements UserDetails so Spring Security can load it directly.
  *
  * Schema rules (database-design-principles):
- *  - UUID primary key
- *  - snake_case column names
- *  - created_at / updated_at on every table
+ * - UUID primary key
+ * - snake_case column names
+ * - created_at / updated_at on every table
  */
 @Entity
-@Table(
-    name = "users",
-    uniqueConstraints = {
-        @UniqueConstraint(name = "uq_users_email",    columnNames = "email"),
+@Table(name = "users", uniqueConstraints = {
+        @UniqueConstraint(name = "uq_users_email", columnNames = "email"),
         @UniqueConstraint(name = "uq_users_username", columnNames = "username")
-    }
-)
+})
 public class User implements UserDetails {
 
     @Id
@@ -36,7 +33,7 @@ public class User implements UserDetails {
     @Column(name = "username", nullable = false, length = 30)
     private String username;
 
-    @Column(name = "email",    nullable = false, length = 255)
+    @Column(name = "email", nullable = false, length = 255)
     private String email;
 
     /** BCrypt-hashed password — never store plain text (security-principles). */
@@ -48,6 +45,9 @@ public class User implements UserDetails {
 
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
+
+    @Column(name = "fitness_profile_completed", nullable = false)
+    private boolean fitnessProfileCompleted = false;
 
     @PrePersist
     private void onCreate() {
@@ -78,21 +78,56 @@ public class User implements UserDetails {
     }
 
     @Override
-    public boolean isAccountNonExpired()  { return true; }
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
     @Override
-    public boolean isAccountNonLocked()   { return true; }
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
     @Override
-    public boolean isCredentialsNonExpired() { return true; }
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
     @Override
-    public boolean isEnabled()            { return true; }
+    public boolean isEnabled() {
+        return true;
+    }
 
     // ── Getters / setters ──────────────────────────────────────────────────
 
-    public UUID getId()             { return id; }
-    public String getDisplayUsername() { return username; }
-    public String getEmail()        { return email; }
+    public UUID getId() {
+        return id;
+    }
 
-    public void setUsername(String username)     { this.username = username; }
-    public void setEmail(String email)           { this.email = email; }
-    public void setPasswordHash(String hash)     { this.passwordHash = hash; }
+    public String getDisplayUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public boolean isFitnessProfileCompleted() {
+        return fitnessProfileCompleted;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPasswordHash(String hash) {
+        this.passwordHash = hash;
+    }
+
+    public void setFitnessProfileCompleted(boolean completed) {
+        this.fitnessProfileCompleted = completed;
+    }
 }

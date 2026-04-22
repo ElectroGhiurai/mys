@@ -2,13 +2,15 @@ package com.electroghiurai.mys.features.auth;
 
 /**
  * Typed exceptions for business rule violations in the auth domain.
- * Separate types per error-handling-principles: business ≠ technical ≠ security errors.
+ * Separate types per error-handling-principles: business ≠ technical ≠ security
+ * errors.
  * These are NOT RuntimeException subclasses that leak stack traces — they carry
  * only user-safe messages.
  */
 public final class AuthExceptions {
 
-    private AuthExceptions() {}
+    private AuthExceptions() {
+    }
 
     /** 409 Conflict — email or username already taken. */
     public static class UserAlreadyExistsException extends RuntimeException {
@@ -19,10 +21,15 @@ public final class AuthExceptions {
             this.field = field;
         }
 
-        public String getField() { return field; }
+        public String getField() {
+            return field;
+        }
     }
 
-    /** 401 Unauthorized — bad credentials. Generic message to prevent user enumeration. */
+    /**
+     * 401 Unauthorized — bad credentials. Generic message to prevent user
+     * enumeration.
+     */
     public static class InvalidCredentialsException extends RuntimeException {
         public InvalidCredentialsException() {
             super("Invalid email or password.");
