@@ -20,7 +20,7 @@ export default function RegisterPage() {
 
   const { values, errors, serverError, isLoading, handleChange, handleSubmit } =
     useAuthForm({
-      fields: ['username', 'email', 'password'],
+      fields: ['username', 'email', 'password', 'confirmPassword'],
       onSubmit: handleRegister,
     })
 
@@ -29,7 +29,9 @@ export default function RegisterPage() {
       <div className="auth-card">
         <header className="auth-card__header">
           <h1 className="auth-title">Create account</h1>
-          <p className="auth-subtitle">Join us — it only takes a moment</p>
+          <p className="auth-subtitle">
+            Join us — it only takes a moment
+          </p>
         </header>
 
         <ServerErrorBanner message={serverError} />
@@ -49,6 +51,7 @@ export default function RegisterPage() {
             onChange={handleChange}
             error={errors.username}
           />
+
           <FormField
             id="register-email"
             label="Email address"
@@ -58,6 +61,7 @@ export default function RegisterPage() {
             onChange={handleChange}
             error={errors.email}
           />
+
           <FormField
             id="register-password"
             label="Password"
@@ -67,7 +71,20 @@ export default function RegisterPage() {
             onChange={handleChange}
             error={errors.password}
           />
-          <p className="auth-hint">Must be at least 8 characters.</p>
+
+          <FormField
+            id="register-confirm-password"
+            label="Confirm password"
+            type="password"
+            name="confirmPassword"
+            value={values.confirmPassword}
+            onChange={handleChange}
+            error={errors.confirmPassword}
+          />
+
+          <p className="auth-hint">
+            Must be at least 8 characters.
+          </p>
 
           <button
             type="submit"
@@ -77,7 +94,10 @@ export default function RegisterPage() {
           >
             {isLoading ? (
               <>
-                <span className="auth-btn__spinner" aria-hidden="true" />
+                <span
+                  className="auth-btn__spinner"
+                  aria-hidden="true"
+                />
                 Creating account…
               </>
             ) : (
