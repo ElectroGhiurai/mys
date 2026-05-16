@@ -11,7 +11,7 @@ for now the stages are only for frontend directory
 
 4. build - npm run build - ran on every pull request (and every push to that PR) and push in the main branch
 
-5. deploy - npm run deploy - ran on every push to main branch only
+5. deploy - actions/deploy-pages - ran on every push to main branch only
 
 ------------
 Tools chosen
