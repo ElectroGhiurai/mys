@@ -20,10 +20,18 @@ async function handleResponse(res: Response) {
   return body.data
 }
 
-/**
- * @param {{ email: string, password: string }} credentials
- */
 export async function login(credentials: Record<string, string>) {
+  if (import.meta.env.VITE_USE_MOCK === 'true') {
+    await new Promise(r => setTimeout(r, 800)) // simulate delay
+    if (credentials.email === 'error@test.com') {
+      throw { code: 'UNAUTHORIZED', message: 'Invalid credentials', field: 'email' }
+    }
+    return {
+      user: { id: '1', username: 'demo_user', email: credentials.email },
+      accessToken: 'mock_jwt_token_123'
+    }
+  }
+
   const res = await fetch(`${API_BASE}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -33,10 +41,15 @@ export async function login(credentials: Record<string, string>) {
   return handleResponse(res)
 }
 
-/**
- * @param {{ email: string, password: string, username: string }} data
- */
 export async function register(data: Record<string, string>) {
+  if (import.meta.env.VITE_USE_MOCK === 'true') {
+    await new Promise(r => setTimeout(r, 800))
+    return {
+      user: { id: '2', username: data.username, email: data.email },
+      accessToken: 'mock_jwt_token_456'
+    }
+  }
+
   const res = await fetch(`${API_BASE}/auth/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -46,10 +59,15 @@ export async function register(data: Record<string, string>) {
   return handleResponse(res)
 }
 
-/**
- * Trades the HttpOnly refresh_token cookie for a new access token and user profile.
- */
 export async function refresh() {
+  if (import.meta.env.VITE_USE_MOCK === 'true') {
+    await new Promise(r => setTimeout(r, 400))
+    // To simulate being logged out initially on mock mode, we can just throw.
+    // If we want them to stay logged in across reloads on mock mode, we'd use localStorage.
+    // Let's just simulate being logged out.
+    throw { code: 'UNAUTHORIZED', message: 'No session' }
+  }
+
   const res = await fetch(`${API_BASE}/auth/refresh`, {
     method: 'POST',
     credentials: 'include',

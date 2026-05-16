@@ -102,6 +102,8 @@ jobs:
       
     - name: Build Application
       run: npm run build
+      env:
+        VITE_USE_MOCK: 'true'
       
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3

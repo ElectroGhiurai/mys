@@ -10,7 +10,7 @@ import './index.css'
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           {/* Redirect root to login for now */}
           <Route path="/" element={<Navigate to="/login" replace />} />
