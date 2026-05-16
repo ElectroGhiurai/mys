@@ -4,7 +4,7 @@
 This document describes the Continuous Integration and Continuous Deployment (CI/CD) pipeline established for the frontend application using GitHub Actions. 
 
 ## Pipeline Stages
-The pipeline is defined in `.github/workflows/frontend-ci.yml` and triggers automatically on `push` and `pull_request` events to the `main` and `master` branches. It consists of the following sequential and parallel stages:
+The pipeline is defined in `.github/workflows/frontend-cicd.yml` and triggers automatically on `push` and `pull_request` events to the `main` and `master` branches. It consists of the following sequential and parallel stages:
 
 1. **Lint**: Runs ESLint (`npm run lint`) to enforce coding standards, discover syntax errors, and find problematic patterns in the codebase.
 2. **Test**: Executes unit tests via Vitest (`npm run test`) in a jsdom environment to verify application logic.
