@@ -20,7 +20,7 @@ Tools chosen
 2. TypeScript — type safety before anything ships
 3. npm ci — clean, reproducible installs (not npm install)
 4. GitHub Pages + upload-pages-artifact — zero-cost hosting, native GitHub integration
-5. VITE_USE_MOCK: true — builds work without a real backend - since there's no real backend hosted anywhere yet
+// 5. VITE_USE_MOCK: true — builds work without a real backend - since there's no real backend hosted anywhere yet  ->> removed this in the meanwhile, while trying to setup backend CI/CD pipeline
 
 --------
 Lessons learned
