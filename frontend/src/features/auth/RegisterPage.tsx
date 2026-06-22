@@ -47,7 +47,7 @@ export default function RegisterPage() {
             label="Username"
             type="text"
             name="username"
-            value={values.username}
+            value={values.username ?? ''}
             onChange={handleChange}
             error={errors.username}
           />
@@ -57,7 +57,7 @@ export default function RegisterPage() {
             label="Email address"
             type="email"
             name="email"
-            value={values.email}
+            value={values.email ?? ''}
             onChange={handleChange}
             error={errors.email}
           />
@@ -67,7 +67,7 @@ export default function RegisterPage() {
             label="Password"
             type="password"
             name="password"
-            value={values.password}
+            value={values.password ?? ''}
             onChange={handleChange}
             error={errors.password}
           />
@@ -77,7 +77,7 @@ export default function RegisterPage() {
             label="Confirm password"
             type="password"
             name="confirmPassword"
-            value={values.confirmPassword}
+            value={values.confirmPassword ?? ''}
             onChange={handleChange}
             error={errors.confirmPassword}
           />

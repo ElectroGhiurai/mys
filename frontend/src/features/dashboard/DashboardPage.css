@@ -1,10 +1,179 @@
-.dashboard-placeholder {
+.dashboard-container {
   display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.welcome-title {
+  margin: 0 0 6px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  letter-spacing: -0.5px;
+}
+
+.welcome-subtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboard-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.action-card {
+  justify-content: center;
+  gap: 12px;
+}
+
+.card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--accent-color);
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--heading-color);
+}
+
+.card-description {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-color);
+  line-height: 1.5;
+}
+
+.btn-primary {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 2rem;
-  color: #edf0fa;
-  background: #0f1117;
+  background-color: var(--accent-color);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 10px 20px;
+  border-radius: 8px;
+  align-self: flex-start;
+  transition: var(--transition);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  box-shadow: 0 4px 12px rgba(91, 114, 244, 0.3);
+  transform: translateY(-1px);
+}
+
+.stats-card {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.stats-label {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stats-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.stats-unit {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.progress-bar-container {
+  height: 8px;
+  background-color: var(--surface-color-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--accent-color);
+  border-radius: 4px;
+}
+
+.stats-meta {
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.macros-card {
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.macro-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.macro-col {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+}
+
+.macro-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.macro-name.protein {
+  color: #3b82f6;
+}
+
+.macro-name.carbs {
+  color: #fbbf24;
+}
+
+.macro-name.fats {
+  color: #10b981;
+}
+
+.macro-qty {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-color);
 }

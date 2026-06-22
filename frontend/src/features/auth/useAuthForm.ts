@@ -4,7 +4,7 @@ import { useState, ChangeEvent, FormEvent } from 'react'
  * Validates a single field and returns an error string or null.
  * Allowlist-based: checks for "good" patterns rather than filtering bad ones.
  */
-function validateField(name: string, value: string): string | null {
+function validateField(name: string, value: string, values?: Record<string, string>): string | null {
   switch (name) {
     case 'email': {
       const emailPattern = /^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/
@@ -23,6 +23,11 @@ function validateField(name: string, value: string): string | null {
     case 'password': {
       if (!value) return 'Password is required.'
       if (value.length < 8) return 'Password must be at least 8 characters.'
+      return null
+    }
+    case 'confirmPassword': {
+      if (!value) return 'Please confirm your password.'
+      if (values && value !== values.password) return 'Passwords do not match.'
       return null
     }
     default:
@@ -58,7 +63,7 @@ export function useAuthForm({ fields, onSubmit }: UseAuthFormProps) {
     const newErrors: Record<string, string | null> = {}
     let isValid = true
     for (const field of fields) {
-      const error = validateField(field, values[field])
+      const error = validateField(field, values[field] ?? '', values)
       newErrors[field] = error
       if (error) isValid = false
     }
@@ -75,12 +80,25 @@ export function useAuthForm({ fields, onSubmit }: UseAuthFormProps) {
     setIsLoading(true)
     try {
       await onSubmit(values)
-    } catch (err: any) {
+    } catch (err: unknown) {
+      let field: string | null = null
+      let message = 'An unexpected error occurred.'
+      
+      if (err && typeof err === 'object') {
+        const errorObj = err as Record<string, unknown>
+        if (typeof errorObj.field === 'string') {
+          field = errorObj.field
+        }
+        if (typeof errorObj.message === 'string') {
+          message = errorObj.message
+        }
+      }
+
       // Map server field errors back to the correct field, otherwise show global error
-      if (err?.field && fields.includes(err.field)) {
-        setErrors((prev) => ({ ...prev, [err.field]: err.message }))
+      if (field && fields.includes(field)) {
+        setErrors((prev) => ({ ...prev, [field as string]: message }))
       } else {
-        setServerError(err?.message ?? 'An unexpected error occurred.')
+        setServerError(message)
       }
     } finally {
       setIsLoading(false)

@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginPage, RegisterPage, AuthProvider, ProtectedRoute } from './features/auth'
+import { AppLayout } from './features/layout/AppLayout'
 import DashboardPage from './features/dashboard/DashboardPage'
+import { TrackerPage } from './features/tracker/TrackerPage'
 import './index.css'
 
 /**
@@ -16,14 +18,13 @@ function App() {
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route 
-            path="/dashboard" 
-            element={
-              <ProtectedRoute>
-                <DashboardPage />
-              </ProtectedRoute>
-            } 
-          />
+          
+          <Route element={<ProtectedRoute />}>
+            <Route element={<AppLayout />}>
+              <Route path="/dashboard" element={<DashboardPage />} />
+              <Route path="/tracker" element={<TrackerPage />} />
+            </Route>
+          </Route>
         </Routes>
       </BrowserRouter>
     </AuthProvider>
