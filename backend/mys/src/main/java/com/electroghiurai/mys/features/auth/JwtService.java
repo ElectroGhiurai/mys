@@ -1,11 +1,14 @@
 package com.electroghiurai.mys.features.auth;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import org.springframework.core.env.Environment;
+import jakarta.annotation.PostConstruct;
+import java.util.Arrays;
 
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
@@ -28,10 +31,22 @@ public class JwtService {
     private static final long REFRESH_TOKEN_MS = 7L  * 24 * 60 * 60 * 1000; // 7 days
 
     private final SecretKey key;
+    private final String secretStr;
+    private final Environment environment;
 
-    public JwtService(@Value("${app.jwt.secret}") String secret) {
+    public JwtService(@Value("${app.jwt.secret}") String secret, Environment environment) {
+        this.secretStr = secret;
+        this.environment = environment;
         // Key must be ≥ 256 bits for HS256
         this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+    }
+
+    @PostConstruct
+    public void validateSecret() {
+        if (Arrays.asList(environment.getActiveProfiles()).contains("prod")
+                && "change-this-to-a-long-random-secret-in-production".equals(secretStr)) {
+            throw new IllegalStateException("JWT_SECRET env variable must be set in production.");
+        }
     }
 
     public String generateAccessToken(User user) {

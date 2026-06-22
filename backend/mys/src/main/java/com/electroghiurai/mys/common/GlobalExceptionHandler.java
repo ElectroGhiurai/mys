@@ -59,6 +59,13 @@ public class GlobalExceptionHandler {
         return errorResponse(HttpStatus.UNAUTHORIZED, "INVALID_TOKEN", ex.getMessage(), null);
     }
 
+    /** 403 Forbidden — user is authenticated but not allowed to mutate this resource. */
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<Map<String, Object>> handleAccessDenied(AccessDeniedException ex) {
+        log.warn("Access denied error: {}", ex.getMessage());
+        return errorResponse(HttpStatus.FORBIDDEN, "FORBIDDEN", ex.getMessage(), null);
+    }
+
     /** 404 — Route not found. Let Spring handle it cleanly instead of falling to the 500 catch-all. */
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<Map<String, Object>> handleNotFound(NoResourceFoundException ex) {

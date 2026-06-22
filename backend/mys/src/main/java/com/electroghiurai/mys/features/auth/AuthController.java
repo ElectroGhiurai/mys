@@ -6,6 +6,8 @@ import jakarta.validation.Valid;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 /**
@@ -26,6 +28,7 @@ import java.util.Map;
 @RequestMapping("/api/v1/auth")
 public class AuthController {
 
+    private static final Logger log = LoggerFactory.getLogger(AuthController.class);
     private static final String REFRESH_COOKIE_NAME = "refresh_token";
     private static final int REFRESH_MAX_AGE_SEC = 7 * 24 * 60 * 60; // 7 days
 
@@ -38,14 +41,18 @@ public class AuthController {
     /** Register a new account. */
     @PostMapping("/register")
     public ResponseEntity<Map<String, AuthResponse>> register(@Valid @RequestBody RegisterRequest req) {
+        log.info("Processing user registration for email={}", req.email());
         TokenPair tokens = authService.register(req);
+        log.info("User registered successfully: userId={}", tokens.user().id());
         return buildAuthResponse(tokens, HttpStatus.CREATED);
     }
 
     /** Login with email + password. */
     @PostMapping("/login")
     public ResponseEntity<Map<String, AuthResponse>> login(@Valid @RequestBody LoginRequest req) {
+        log.info("Processing login request for email={}", req.email());
         TokenPair tokens = authService.login(req);
+        log.info("User logged in successfully: userId={}", tokens.user().id());
         return buildAuthResponse(tokens, HttpStatus.OK);
     }
 
@@ -53,7 +60,9 @@ public class AuthController {
     @PostMapping("/refresh")
     public ResponseEntity<Map<String, AuthResponse>> refresh(
             @CookieValue(name = REFRESH_COOKIE_NAME, required = false) String refreshToken) {
+        log.info("Processing session refresh token request");
         TokenPair tokens = authService.refresh(refreshToken);
+        log.info("Session refreshed successfully: userId={}", tokens.user().id());
         return buildAuthResponse(tokens, HttpStatus.OK);
     }
 
