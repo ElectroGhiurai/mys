@@ -49,10 +49,26 @@ public class User implements UserDetails {
     @Column(name = "updated_at", nullable = false)
     private Instant updatedAt;
 
+    @Column(name = "calorie_goal", nullable = false)
+    private Double calorieGoal = 2000.0;
+
+    @Column(name = "protein_goal", nullable = false)
+    private Double proteinGoal = 130.0;
+
+    @Column(name = "carb_goal", nullable = false)
+    private Double carbGoal = 220.0;
+
+    @Column(name = "fat_goal", nullable = false)
+    private Double fatGoal = 70.0;
+
     @PrePersist
     private void onCreate() {
         createdAt = Instant.now();
         updatedAt = Instant.now();
+        if (calorieGoal == null) calorieGoal = 2000.0;
+        if (proteinGoal == null) proteinGoal = 130.0;
+        if (carbGoal == null) carbGoal = 220.0;
+        if (fatGoal == null) fatGoal = 70.0;
     }
 
     @PreUpdate
@@ -89,10 +105,23 @@ public class User implements UserDetails {
     // ── Getters / setters ──────────────────────────────────────────────────
 
     public UUID getId()             { return id; }
+    public void setId(UUID id)      { this.id = id; }
     public String getDisplayUsername() { return username; }
     public String getEmail()        { return email; }
 
     public void setUsername(String username)     { this.username = username; }
     public void setEmail(String email)           { this.email = email; }
     public void setPasswordHash(String hash)     { this.passwordHash = hash; }
+
+    public Double getCalorieGoal() { return calorieGoal; }
+    public void setCalorieGoal(Double calorieGoal) { this.calorieGoal = calorieGoal; }
+
+    public Double getProteinGoal() { return proteinGoal; }
+    public void setProteinGoal(Double proteinGoal) { this.proteinGoal = proteinGoal; }
+
+    public Double getCarbGoal() { return carbGoal; }
+    public void setCarbGoal(Double carbGoal) { this.carbGoal = carbGoal; }
+
+    public Double getFatGoal() { return fatGoal; }
+    public void setFatGoal(Double fatGoal) { this.fatGoal = fatGoal; }
 }

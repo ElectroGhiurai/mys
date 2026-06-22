@@ -27,12 +27,27 @@ import java.util.List;
  * instead)
  * - CORS locked to the frontend origin
  */
+import com.electroghiurai.mys.features.auth.JwtAuthenticationFilter;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
 
+    @Bean
+    public ObjectMapper objectMapper() {
+        return new ObjectMapper();
+    }
+
     @Value("${app.cors.allowed-origins:http://localhost:5173}")
     private String allowedOrigins;
+
+    private final JwtAuthenticationFilter jwtAuthFilter;
+
+    public SecurityConfig(JwtAuthenticationFilter jwtAuthFilter) {
+        this.jwtAuthFilter = jwtAuthFilter;
+    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -45,6 +60,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/v1/auth/**", "/actuator/health", "/h2-console/**").permitAll()
                         // Deny by default (security-mandate: deny-by-default)
                         .anyRequest().authenticated())
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 // H2 console uses iframes — allow same-origin framing in dev
                 .headers(headers -> headers.frameOptions(fo -> fo.sameOrigin()));
 
