@@ -96,23 +96,11 @@ class TrackerControllerIT {
                 "Banana", 120.0, 89.0, 22.8, 1.1, 0.3, date
         );
 
-        String json = """
-                {
-                    "name": "Banana",
-                    "weight": 120.0,
-                    "caloriesPer100g": 89.0,
-                    "proteinPer100g": 22.8,
-                    "carbsPer100g": 1.1,
-                    "fatPer100g": 0.3,
-                    "trackedDate": "%s"
-                }
-                """.formatted(date.toString());
-
         // Add
         mockMvc.perform(post("/api/v1/tracker")
                         .header("Authorization", "Bearer " + tokenUser1)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(json))
+                        .content(objectMapper.writeValueAsString(addReq)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.data.id", notNullValue()))
                 .andExpect(jsonPath("$.data.name", is("Banana")))
