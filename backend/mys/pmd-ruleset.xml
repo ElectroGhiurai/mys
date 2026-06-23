@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Ruleset"
+    xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+
+    <description>Custom PMD ruleset for Spring Boot - Code Quality and Security focus</description>
+
+    <!-- Import best practices but exclude false positives on JPA, logger guards, loose coupling, and stack traces -->
+    <rule ref="category/java/bestpractices.xml">
+        <exclude name="UnusedPrivateMethod"/>
+        <exclude name="GuardLogStatement"/>
+        <exclude name="LooseCoupling"/>
+        <exclude name="PreserveStackTrace"/>
+        <exclude name="InvalidLogMessageFormat"/>
+    </rule>
+
+    <!-- Import error prone bug detectors but exclude duplicate literals, non-instantiatable class, literals in conditions, and log formats -->
+    <rule ref="category/java/errorprone.xml">
+        <exclude name="AvoidDuplicateLiterals"/>
+        <exclude name="MissingStaticMethodInNonInstantiatableClass"/>
+        <exclude name="AvoidLiteralsInIfCondition"/>
+        <exclude name="InvalidLogMessageFormat"/>
+    </rule>
+
+    <!-- Import security rules -->
+    <rule ref="category/java/security.xml"/>
+</ruleset>
