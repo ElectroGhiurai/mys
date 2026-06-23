@@ -45,7 +45,7 @@ export default function LoginPage() {
             label="Email address"
             type="email"
             name="email"
-            value={values.email}
+            value={values.email ?? ''}
             onChange={handleChange}
             error={errors.email}
           />
@@ -54,7 +54,7 @@ export default function LoginPage() {
             label="Password"
             type="password"
             name="password"
-            value={values.password}
+            value={values.password ?? ''}
             onChange={handleChange}
             error={errors.password}
           />

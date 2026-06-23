@@ -42,4 +42,11 @@ public final class AuthExceptions {
             super("Session expired. Please log in again.");
         }
     }
+
+    /** 403 Forbidden — access denied/unauthorized action. */
+    public static class AccessDeniedException extends RuntimeException {
+        public AccessDeniedException(String message) {
+            super(message);
+        }
+    }
 }

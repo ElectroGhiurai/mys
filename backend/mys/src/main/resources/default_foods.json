@@ -1,0 +1,155 @@
+[
+  {
+    "id": "def-chicken-breast",
+    "name": "Chicken Breast",
+    "calories": 165.0,
+    "protein": 31.0,
+    "carbs": 0.0,
+    "fat": 3.6,
+    "category": "protein"
+  },
+  {
+    "id": "def-salmon",
+    "name": "Salmon",
+    "calories": 208.0,
+    "protein": 20.0,
+    "carbs": 0.0,
+    "fat": 13.0,
+    "category": "protein"
+  },
+  {
+    "id": "def-eggs",
+    "name": "Eggs",
+    "calories": 143.0,
+    "protein": 13.0,
+    "carbs": 1.1,
+    "fat": 9.5,
+    "category": "protein"
+  },
+  {
+    "id": "def-whey-protein",
+    "name": "Whey Protein",
+    "calories": 400.0,
+    "protein": 80.0,
+    "carbs": 6.0,
+    "fat": 6.0,
+    "category": "protein"
+  },
+  {
+    "id": "def-greek-yogurt",
+    "name": "Greek Yogurt",
+    "calories": 59.0,
+    "protein": 10.0,
+    "carbs": 3.6,
+    "fat": 0.4,
+    "category": "protein"
+  },
+  {
+    "id": "def-white-rice",
+    "name": "White Rice",
+    "calories": 130.0,
+    "protein": 2.7,
+    "carbs": 28.0,
+    "fat": 0.3,
+    "category": "carb"
+  },
+  {
+    "id": "def-sweet-potato",
+    "name": "Sweet Potato",
+    "calories": 86.0,
+    "protein": 1.6,
+    "carbs": 20.0,
+    "fat": 0.1,
+    "category": "carb"
+  },
+  {
+    "id": "def-oats",
+    "name": "Oats",
+    "calories": 389.0,
+    "protein": 16.9,
+    "carbs": 66.0,
+    "fat": 6.9,
+    "category": "carb"
+  },
+  {
+    "id": "def-avocado",
+    "name": "Avocado",
+    "calories": 160.0,
+    "protein": 2.0,
+    "carbs": 9.0,
+    "fat": 15.0,
+    "category": "fat"
+  },
+  {
+    "id": "def-almonds",
+    "name": "Almonds",
+    "calories": 579.0,
+    "protein": 21.0,
+    "carbs": 22.0,
+    "fat": 49.0,
+    "category": "fat"
+  },
+  {
+    "id": "def-olive-oil",
+    "name": "Olive Oil",
+    "calories": 884.0,
+    "protein": 0.0,
+    "carbs": 0.0,
+    "fat": 100.0,
+    "category": "fat"
+  },
+  {
+    "id": "def-peanut-butter",
+    "name": "Peanut Butter",
+    "calories": 588.0,
+    "protein": 25.0,
+    "carbs": 20.0,
+    "fat": 50.0,
+    "category": "fat"
+  },
+  {
+    "id": "def-broccoli",
+    "name": "Broccoli",
+    "calories": 34.0,
+    "protein": 2.8,
+    "carbs": 7.0,
+    "fat": 0.4,
+    "category": "green"
+  },
+  {
+    "id": "def-banana",
+    "name": "Banana",
+    "calories": 89.0,
+    "protein": 1.1,
+    "carbs": 23.0,
+    "fat": 0.3,
+    "category": "fruit"
+  },
+  {
+    "id": "def-apple",
+    "name": "Apple",
+    "calories": 52.0,
+    "protein": 0.3,
+    "carbs": 14.0,
+    "fat": 0.2,
+    "category": "fruit"
+  },
+  {
+    "id": "def-milk",
+    "name": "Milk",
+    "calories": 61.0,
+    "protein": 3.2,
+    "carbs": 4.8,
+    "fat": 3.3,
+    "category": "dairy"
+  },
+  {
+    "id": "def-honey",
+    "name": "Honey",
+    "calories": 304.0,
+    "protein": 0.3,
+    "carbs": 82.0,
+    "fat": 0.0,
+    "category": "sweetener"
+  }
+]

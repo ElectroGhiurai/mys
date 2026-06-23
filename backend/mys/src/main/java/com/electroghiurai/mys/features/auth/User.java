@@ -48,11 +48,27 @@ public class User implements UserDetails {
 
     @Column(name = "fitness_profile_completed", nullable = false)
     private boolean fitnessProfileCompleted = false;
+  
+    @Column(name = "calorie_goal", nullable = false)
+    private Double calorieGoal = 2000.0;
+
+    @Column(name = "protein_goal", nullable = false)
+    private Double proteinGoal = 130.0;
+
+    @Column(name = "carb_goal", nullable = false)
+    private Double carbGoal = 220.0;
+
+    @Column(name = "fat_goal", nullable = false)
+    private Double fatGoal = 70.0;
 
     @PrePersist
     private void onCreate() {
         createdAt = Instant.now();
         updatedAt = Instant.now();
+        if (calorieGoal == null) calorieGoal = 2000.0;
+        if (proteinGoal == null) proteinGoal = 130.0;
+        if (carbGoal == null) carbGoal = 220.0;
+        if (fatGoal == null) fatGoal = 70.0;
     }
 
     @PreUpdate
@@ -103,6 +119,10 @@ public class User implements UserDetails {
         return id;
     }
 
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
     public String getDisplayUsername() {
         return username;
     }
@@ -130,4 +150,37 @@ public class User implements UserDetails {
     public void setFitnessProfileCompleted(boolean completed) {
         this.fitnessProfileCompleted = completed;
     }
+
+    public Double getCalorieGoal() {
+        return calorieGoal;
+    }
+
+    public void setCalorieGoal(Double calorieGoal) {
+        this.calorieGoal = calorieGoal;
+    }
+
+    public Double getProteinGoal() {
+        return proteinGoal;
+    }
+
+    public void setProteinGoal(Double proteinGoal) {
+        this.proteinGoal = proteinGoal;
+    }
+
+    public Double getCarbGoal() {
+        return carbGoal;
+    }
+
+    public void setCarbGoal(Double carbGoal) {
+        this.carbGoal = carbGoal;
+    }
+
+    public Double getFatGoal() {
+        return fatGoal;
+    }
+
+    public void setFatGoal(Double fatGoal) {
+        this.fatGoal = fatGoal;
+    }
+  
 }

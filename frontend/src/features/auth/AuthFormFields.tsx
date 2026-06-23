@@ -8,7 +8,7 @@ interface FormFieldProps {
   name: string;
   value: string;
   onChange: ChangeEventHandler<HTMLInputElement>;
-  error?: string | null;
+  error?: string | null | undefined;
   required?: boolean;
 }
 
