@@ -149,6 +149,22 @@ public class TrackerService {
             .collect(Collectors.toList());
     }
 
+    public List<TrackedIngredientDto> getTrackedIngredientsRange(User user, LocalDate start, LocalDate end) {
+        List<TrackedIngredient> list = trackedIngredientRepository.findByUserAndTrackedDateBetween(user, start, end);
+        return list.stream()
+            .map(ti -> new TrackedIngredientDto(
+                ti.getId(),
+                ti.getName(),
+                ti.getWeight(),
+                ti.getCaloriesPer100g(),
+                ti.getProteinPer100g(),
+                ti.getCarbsPer100g(),
+                ti.getFatPer100g(),
+                ti.getTrackedDate()
+            ))
+            .collect(Collectors.toList());
+    }
+
     @Transactional(readOnly = true)
     public List<DailySummaryDto> getDailySummaries(User user, LocalDate startDate, LocalDate endDate) {
         List<TrackedIngredient> list = trackedIngredientRepository.findByUserAndTrackedDateBetween(user, startDate, endDate);
