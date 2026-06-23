@@ -1,56 +1,42 @@
-import { useState, useEffect } from 'react'
-import { trackerApi, DailySummaryDto } from '../tracker.api'
+import { DailySummaryDto, TrackedIngredient } from '../tracker.api'
 
 interface CalorieHistoryChartProps {
   selectedDate: string;
   onDateSelect: (dateStr: string) => void;
   calorieGoal: number;
-  request: <T>(path: string, options?: RequestInit) => Promise<T>;
-  trackedIngredientsTrigger: unknown;
+  rangeIngredients: TrackedIngredient[];
 }
 
 export function CalorieHistoryChart({
   selectedDate,
   onDateSelect,
   calorieGoal,
-  request,
-  trackedIngredientsTrigger,
+  rangeIngredients,
 }: CalorieHistoryChartProps) {
-  const [data, setData] = useState<DailySummaryDto[]>([])
-  const [loading, setLoading] = useState(false)
-
-  // Fetch 7 days centered around selectedDate (from selectedDate - 3 to selectedDate + 3)
-  useEffect(() => {
-    let active = true
-
-    async function fetchRange() {
-      setLoading(true)
-      try {
-        const [year, month, day] = selectedDate.split('-').map(Number)
-        if (!year || !month || !day) return
-        const start = new Date(Date.UTC(year, month - 1, day - 3))
-        const end = new Date(Date.UTC(year, month - 1, day + 3))
-
-        const startStr = start.toISOString().split('T')[0] ?? ''
-        const endStr = end.toISOString().split('T')[0] ?? ''
-
-        const summaries = await trackerApi.getTrackedRange(request, startStr, endStr)
-        if (active) {
-          setData(summaries)
-        }
-      } catch (err) {
-        console.error('Failed to fetch calorie range data', err)
-      } finally {
-        if (active) setLoading(false)
-      }
+  // Compute 7 days centered around selectedDate in-memory (from selectedDate - 3 to selectedDate + 3)
+  const data: DailySummaryDto[] = []
+  const [year, month, day] = selectedDate.split('-').map(Number)
+  
+  if (year && month && day) {
+    for (let i = -3; i <= 3; i++) {
+      const d = new Date(Date.UTC(year, month - 1, day + i))
+      const dateStr = d.toISOString().split('T')[0] ?? ''
+      
+      const dayIngredients = rangeIngredients.filter(item => item.trackedDate === dateStr)
+      const calories = dayIngredients.reduce((sum, item) => sum + item.caloriesPer100g * (item.weight / 100), 0)
+      const protein = dayIngredients.reduce((sum, item) => sum + item.proteinPer100g * (item.weight / 100), 0)
+      const carbs = dayIngredients.reduce((sum, item) => sum + item.carbsPer100g * (item.weight / 100), 0)
+      const fat = dayIngredients.reduce((sum, item) => sum + item.fatPer100g * (item.weight / 100), 0)
+      
+      data.push({
+        date: dateStr,
+        calories,
+        protein,
+        carbs,
+        fat,
+      })
     }
-
-    fetchRange()
-
-    return () => {
-      active = false
-    }
-  }, [selectedDate, request, trackedIngredientsTrigger])
+  }
 
   const handlePrevDay = () => {
     const [year, month, day] = selectedDate.split('-').map(Number)
@@ -129,7 +115,7 @@ export function CalorieHistoryChart({
         </div>
       </div>
       
-      <div className={`chart-wrapper ${loading ? 'chart-loading' : ''}`}>
+      <div className="chart-wrapper">
         {data.length === 0 ? (
           <div className="chart-empty">Loading history...</div>
         ) : (

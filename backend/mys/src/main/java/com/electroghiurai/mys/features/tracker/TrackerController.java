@@ -61,12 +61,25 @@ public class TrackerController {
     @GetMapping("/tracker")
     public ResponseEntity<Map<String, List<TrackedIngredientDto>>> getTracked(
             @AuthenticationPrincipal User user,
-            @RequestParam(name = "date") String dateStr) {
-        LocalDate date = LocalDate.parse(dateStr);
-        log.info("Fetching tracked ingredients for userId={} date={}", user.getId(), date);
-        List<TrackedIngredientDto> data = trackerService.getTrackedIngredients(user, date);
-        log.info("Found {} tracked items for userId={} date={}", data.size(), user.getId(), date);
-        return ResponseEntity.ok(Map.of("data", data));
+            @RequestParam(name = "date", required = false) String dateStr,
+            @RequestParam(name = "start", required = false) String startStr,
+            @RequestParam(name = "end", required = false) String endStr) {
+        if (startStr != null && endStr != null) {
+            LocalDate start = LocalDate.parse(startStr);
+            LocalDate end = LocalDate.parse(endStr);
+            log.info("Fetching tracked ingredients range for userId={} start={} end={}", user.getId(), start, end);
+            List<TrackedIngredientDto> data = trackerService.getTrackedIngredientsRange(user, start, end);
+            log.info("Found {} tracked range items for userId={} start={} end={}", data.size(), user.getId(), start, end);
+            return ResponseEntity.ok(Map.of("data", data));
+        } else if (dateStr != null) {
+            LocalDate date = LocalDate.parse(dateStr);
+            log.info("Fetching tracked ingredients for userId={} date={}", user.getId(), date);
+            List<TrackedIngredientDto> data = trackerService.getTrackedIngredients(user, date);
+            log.info("Found {} tracked items for userId={} date={}", data.size(), user.getId(), date);
+            return ResponseEntity.ok(Map.of("data", data));
+        } else {
+            throw new IllegalArgumentException("Either 'date' or both 'start' and 'end' parameters must be provided");
+        }
     }
 
     @GetMapping("/tracker/range")

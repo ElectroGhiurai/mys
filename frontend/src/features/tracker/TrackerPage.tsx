@@ -10,6 +10,19 @@ import { GoalsTab } from './components/GoalsTab'
 import { CalorieHistoryChart } from './components/CalorieHistoryChart'
 import './TrackerPage.css'
 
+const getRangeDates = (centerDateStr: string) => {
+  const [year, month, day] = centerDateStr.split('-').map(Number)
+  if (!year || !month || !day) return { start: centerDateStr, end: centerDateStr }
+  
+  const start = new Date(Date.UTC(year, month - 1, day - 5))
+  const end = new Date(Date.UTC(year, month - 1, day + 5))
+  
+  return {
+    start: start.toISOString().split('T')[0] ?? '',
+    end: end.toISOString().split('T')[0] ?? ''
+  }
+}
+
 /**
  * High-fidelity, premium Calorie and Macronutrient Tracker Page.
  * Connects directly to Spring Boot backend API with user-specific logs and custom foods.
@@ -25,7 +38,8 @@ export function TrackerPage() {
     const day = String(d.getDate()).padStart(2, '0')
     return `${year}-${month}-${day}`
   })
-  const [trackedIngredients, setTrackedIngredients] = useState<TrackedIngredient[]>([])
+  const [rangeIngredients, setRangeIngredients] = useState<TrackedIngredient[]>([])
+  const [fetchedRange, setFetchedRange] = useState<{ start: string; end: string } | null>(null)
   const [customFoods, setCustomFoods] = useState<FoodItem[]>([])
   const [goals, setGoals] = useState<GoalTargets>({ ...TARGETS })
 
@@ -73,21 +87,16 @@ export function TrackerPage() {
     }
   }, [])
 
-  // Load tracked ingredients, custom foods, and goals
+  // 1. Load custom foods and goals once on mount / request change
   useEffect(() => {
     let active = true
-
-    async function loadData() {
-      setIsLoading(true)
-      setTrackedIngredients([]) // clear immediately to avoid stale-day flash
+    async function loadInitial() {
       try {
-        const [trackedData, customData, goalsData] = await Promise.all([
-          trackerApi.getTracked(request, selectedDate),
+        const [customData, goalsData] = await Promise.all([
           trackerApi.getCustomFoods(request),
           trackerApi.getGoals(request),
         ])
         if (active) {
-          setTrackedIngredients(trackedData)
           setCustomFoods(customData)
           if (goalsData) {
             setGoals({
@@ -99,18 +108,49 @@ export function TrackerPage() {
           }
         }
       } catch (err) {
-        console.error('Failed to load tracker data', err)
+        console.error('Failed to load initial custom foods/goals', err)
+      }
+    }
+    void loadInitial()
+    return () => {
+      active = false
+    }
+  }, [request])
+
+  // 2. Manage Range Fetching
+  useEffect(() => {
+    let active = true
+
+    // If selectedDate is already within the fetched range, do not query the network.
+    if (fetchedRange && selectedDate >= fetchedRange.start && selectedDate <= fetchedRange.end) {
+      return
+    }
+
+    async function loadRange() {
+      setIsLoading(true)
+      const targetRange = getRangeDates(selectedDate)
+      try {
+        const rangeData = await trackerApi.getTracked(request, targetRange)
+        if (active) {
+          setRangeIngredients(rangeData)
+          setFetchedRange(targetRange)
+        }
+      } catch (err) {
+        console.error('Failed to load tracked ingredients range', err)
       } finally {
         if (active) setIsLoading(false)
       }
     }
 
-    void loadData()
+    void loadRange()
 
     return () => {
       active = false
     }
-  }, [selectedDate, request])
+  }, [selectedDate, fetchedRange, request])
+
+  // Derive daily tracked ingredients from pre-loaded range data
+  const trackedIngredients = rangeIngredients.filter(item => item.trackedDate === selectedDate)
 
   // Sync goals form state when goals state updates
   useEffect(() => {
@@ -204,7 +244,7 @@ export function TrackerPage() {
         fatPer100g: selectedFood.fat,
         trackedDate: selectedDate,
       })
-      setTrackedIngredients(prev => {
+      setRangeIngredients(prev => {
         const exists = prev.some(item => item.id === response.id)
         if (exists) {
           return prev.map(item => item.id === response.id ? response : item)
@@ -230,7 +270,7 @@ export function TrackerPage() {
         fatPer100g: sug.fatPer100g,
         trackedDate: selectedDate,
       })
-      setTrackedIngredients(prev => {
+      setRangeIngredients(prev => {
         const exists = prev.some(item => item.id === response.id)
         if (exists) {
           return prev.map(item => item.id === response.id ? response : item)
@@ -245,7 +285,7 @@ export function TrackerPage() {
 
   const handleUpdateWeight = (id: string, weight: number) => {
     // 1. Instantly update local state optimistically for snappy UI rendering
-    setTrackedIngredients(prev =>
+    setRangeIngredients(prev =>
       prev.map(item => (item.id === id ? { ...item, weight } : item))
     )
 
@@ -262,7 +302,7 @@ export function TrackerPage() {
       try {
         const updated = await trackerApi.updateTracked(request, id, weight)
         // Refresh with server's confirmed values
-        setTrackedIngredients(prev =>
+        setRangeIngredients(prev =>
           prev.map(item => (item.id === id ? updated : item))
         )
         delete pendingUpdatesRef.current[id]
@@ -279,11 +319,17 @@ export function TrackerPage() {
       delete pendingUpdatesRef.current[id]
     }
 
+    const previousIngredients = [...rangeIngredients]
+
+    // Optimistically update UI
+    setRangeIngredients(prev => prev.filter(item => item.id !== id))
+
     try {
       await trackerApi.deleteTracked(request, id)
-      setTrackedIngredients(prev => prev.filter(item => item.id !== id))
     } catch (err) {
       console.error('Failed to delete tracked item', err)
+      // Rollback to previous state
+      setRangeIngredients(previousIngredients)
     }
   }
 
@@ -539,8 +585,7 @@ export function TrackerPage() {
             selectedDate={selectedDate}
             onDateSelect={setSelectedDate}
             calorieGoal={goals.calories}
-            request={request}
-            trackedIngredientsTrigger={trackedIngredients}
+            rangeIngredients={rangeIngredients}
           />
         </div>
       </div>

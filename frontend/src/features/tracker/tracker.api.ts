@@ -93,8 +93,14 @@ export const trackerApi = {
     return z.array(FoodItemSchema).parse(raw)
   },
 
-  getTracked: async (request: ApiRequestFn, dateStr: string): Promise<TrackedIngredient[]> => {
-    const raw = await request<unknown>(`/tracker?date=${dateStr}`)
+  getTracked: async (
+    request: ApiRequestFn,
+    params: string | { start: string; end: string }
+  ): Promise<TrackedIngredient[]> => {
+    const query = typeof params === 'string'
+      ? `date=${params}`
+      : `start=${params.start}&end=${params.end}`
+    const raw = await request<unknown>(`/tracker?${query}`)
     return z.array(TrackedIngredientSchema).parse(raw)
   },
 

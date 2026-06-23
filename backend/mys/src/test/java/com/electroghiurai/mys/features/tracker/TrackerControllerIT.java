@@ -187,4 +187,52 @@ class TrackerControllerIT {
                 .andExpect(jsonPath("$.status", is("error")))
                 .andExpect(jsonPath("$.error.code", is("FORBIDDEN")));
     }
+
+    @Test
+    void getTrackedRange_withAuth_succeeds() throws Exception {
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);
+        LocalDate tomorrow = today.plusDays(1);
+
+        // Save three tracked ingredients on different days
+        TrackedIngredient tiYesterday = new TrackedIngredient();
+        tiYesterday.setUser(testUser1);
+        tiYesterday.setName("Apple");
+        tiYesterday.setWeight(100.0);
+        tiYesterday.setCaloriesPer100g(52.0);
+        tiYesterday.setProteinPer100g(0.3);
+        tiYesterday.setCarbsPer100g(14.0);
+        tiYesterday.setFatPer100g(0.2);
+        tiYesterday.setTrackedDate(yesterday);
+        trackedIngredientRepository.save(tiYesterday);
+
+        TrackedIngredient tiToday = new TrackedIngredient();
+        tiToday.setUser(testUser1);
+        tiToday.setName("Banana");
+        tiToday.setWeight(120.0);
+        tiToday.setCaloriesPer100g(89.0);
+        tiToday.setProteinPer100g(1.1);
+        tiToday.setCarbsPer100g(22.8);
+        tiToday.setFatPer100g(0.3);
+        tiToday.setTrackedDate(today);
+        trackedIngredientRepository.save(tiToday);
+
+        TrackedIngredient tiTomorrow = new TrackedIngredient();
+        tiTomorrow.setUser(testUser1);
+        tiTomorrow.setName("Orange");
+        tiTomorrow.setWeight(150.0);
+        tiTomorrow.setCaloriesPer100g(47.0);
+        tiTomorrow.setProteinPer100g(0.9);
+        tiTomorrow.setCarbsPer100g(11.8);
+        tiTomorrow.setFatPer100g(0.1);
+        tiTomorrow.setTrackedDate(tomorrow);
+        trackedIngredientRepository.save(tiTomorrow);
+
+        // Fetch the range from yesterday to tomorrow
+        mockMvc.perform(get("/api/v1/tracker?start=" + yesterday + "&end=" + tomorrow)
+                        .header("Authorization", "Bearer " + tokenUser1))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data", hasSize(3)))
+                .andExpect(jsonPath("$.data[*].name", containsInAnyOrder("Apple", "Banana", "Orange")));
+    }
 }
