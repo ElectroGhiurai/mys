@@ -1,0 +1,15 @@
+name: Keep Backend Alive
+
+on:
+  schedule:
+    - cron: '*/12 5-20 * * *' # Runs every 12 minutes between 5 AM and 8 PM UTC (roughly 8 AM - 10 PM Romania Time)
+  workflow_dispatch: # Allows manual trigger from the Actions tab
+
+jobs:
+  ping:
+    name: Ping Render Web Service
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Render Backend
+        run: |
+          curl -I -s -o /dev/null -w "%{http_code}" https://mys-backend.onrender.com/actuator/health
