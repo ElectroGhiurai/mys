@@ -46,6 +46,7 @@ class TrackerControllerIT {
 
     @BeforeEach
     void setUp() {
+        objectMapper.findAndRegisterModules();
         trackedIngredientRepository.deleteAll();
         userRepository.deleteAll();
 
@@ -70,13 +71,13 @@ class TrackerControllerIT {
     @Test
     void endpoints_withoutAuth_return401() throws Exception {
         mockMvc.perform(get("/api/v1/foods"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
 
         mockMvc.perform(get("/api/v1/tracker?date=2026-06-22"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
 
         mockMvc.perform(get("/api/v1/goals"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
     }
 
     @Test
@@ -95,11 +96,23 @@ class TrackerControllerIT {
                 "Banana", 120.0, 89.0, 22.8, 1.1, 0.3, date
         );
 
+        String json = """
+                {
+                    "name": "Banana",
+                    "weight": 120.0,
+                    "caloriesPer100g": 89.0,
+                    "proteinPer100g": 22.8,
+                    "carbsPer100g": 1.1,
+                    "fatPer100g": 0.3,
+                    "trackedDate": "%s"
+                }
+                """.formatted(date.toString());
+
         // Add
         mockMvc.perform(post("/api/v1/tracker")
                         .header("Authorization", "Bearer " + tokenUser1)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(addReq)))
+                        .content(json))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.data.id", notNullValue()))
                 .andExpect(jsonPath("$.data.name", is("Banana")))

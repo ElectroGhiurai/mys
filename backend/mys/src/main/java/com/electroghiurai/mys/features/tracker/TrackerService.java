@@ -278,7 +278,9 @@ public class TrackerService {
             user.getCalorieGoal(),
             user.getProteinGoal(),
             user.getCarbGoal(),
-            user.getFatGoal()
+            user.getFatGoal(),
+            user.getStartingWeightKg(),
+            user.getTargetWeightKg()
         );
     }
 
@@ -288,6 +290,8 @@ public class TrackerService {
         user.setProteinGoal(req.proteinGoal());
         user.setCarbGoal(req.carbGoal());
         user.setFatGoal(req.fatGoal());
+        user.setStartingWeightKg(req.startingWeightKg());
+        user.setTargetWeightKg(req.targetWeightKg());
 
         userRepository.save(user);
 
@@ -295,7 +299,9 @@ public class TrackerService {
             user.getCalorieGoal(),
             user.getProteinGoal(),
             user.getCarbGoal(),
-            user.getFatGoal()
+            user.getFatGoal(),
+            user.getStartingWeightKg(),
+            user.getTargetWeightKg()
         );
     }
 

@@ -92,7 +92,9 @@ public final class TrackerDtos {
         Double calorieGoal,
         Double proteinGoal,
         Double carbGoal,
-        Double fatGoal
+        Double fatGoal,
+        Double startingWeightKg,
+        Double targetWeightKg
     ) {}
 
     public record UpdateGoalRequest(
@@ -110,7 +112,15 @@ public final class TrackerDtos {
 
         @NotNull(message = "Fat goal is required")
         @DecimalMin(value = "5.0", message = "Fat goal must be at least 5g")
-        Double fatGoal
+        Double fatGoal,
+
+        @DecimalMin(value = "20.0", message = "Starting weight must be at least 20 kg")
+        @DecimalMax(value = "300.0", message = "Starting weight must be at most 300 kg")
+        Double startingWeightKg,
+
+        @DecimalMin(value = "20.0", message = "Target weight must be at least 20 kg")
+        @DecimalMax(value = "300.0", message = "Target weight must be at most 300 kg")
+        Double targetWeightKg
     ) {}
 
     public record DailySummaryDto(

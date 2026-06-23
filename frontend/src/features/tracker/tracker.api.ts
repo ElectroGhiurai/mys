@@ -27,7 +27,10 @@ export const GoalDtoSchema = z.object({
   proteinGoal: z.number(),
   carbGoal: z.number(),
   fatGoal: z.number(),
+  startingWeightKg: z.number().nullable().optional(),
+  targetWeightKg: z.number().nullable().optional(),
 })
+
 
 export const DailySummaryDtoSchema = z.object({
   date: z.string(),
@@ -65,7 +68,10 @@ export interface UpdateGoalRequest {
   proteinGoal: number;
   carbGoal: number;
   fatGoal: number;
+  startingWeightKg?: number | null;
+  targetWeightKg?: number | null;
 }
+
 
 type ApiRequestFn = <T>(path: string, options?: RequestInit) => Promise<T>;
 
@@ -143,4 +149,6 @@ export const trackerApi = {
     const raw = await request<unknown>(`/tracker/range?start=${startStr}&end=${endStr}`)
     return z.array(DailySummaryDtoSchema).parse(raw)
   },
+
+
 }

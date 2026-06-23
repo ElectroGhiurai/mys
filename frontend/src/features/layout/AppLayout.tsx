@@ -38,6 +38,13 @@ export function AppLayout() {
     </svg>
   )
 
+  const weightIcon = (
+    <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 3v9M12 12l4.5 4.5" />
+    </svg>
+  )
+
   const logoutIcon = (
     <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
@@ -102,6 +109,10 @@ export function AppLayout() {
           <NavLink to="/tracker" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
             {trackerIcon}
             <span className="nav-label">Calorie Tracker</span>
+          </NavLink>
+          <NavLink to="/weight" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
+            {weightIcon}
+            <span className="nav-label">Weight Tracker</span>
           </NavLink>
         </nav>
 

@@ -61,6 +61,12 @@ public class User implements UserDetails {
     @Column(name = "fat_goal", nullable = false)
     private Double fatGoal = 70.0;
 
+    @Column(name = "starting_weight_kg", nullable = true)
+    private Double startingWeightKg;
+
+    @Column(name = "target_weight_kg", nullable = true)
+    private Double targetWeightKg;
+
     @PrePersist
     private void onCreate() {
         createdAt = Instant.now();
@@ -124,4 +130,10 @@ public class User implements UserDetails {
 
     public Double getFatGoal() { return fatGoal; }
     public void setFatGoal(Double fatGoal) { this.fatGoal = fatGoal; }
+
+    public Double getStartingWeightKg() { return startingWeightKg; }
+    public void setStartingWeightKg(Double startingWeightKg) { this.startingWeightKg = startingWeightKg; }
+
+    public Double getTargetWeightKg() { return targetWeightKg; }
+    public void setTargetWeightKg(Double targetWeightKg) { this.targetWeightKg = targetWeightKg; }
 }

@@ -66,10 +66,22 @@ public class GlobalExceptionHandler {
         return errorResponse(HttpStatus.FORBIDDEN, "FORBIDDEN", ex.getMessage(), null);
     }
 
+    /** 400 Bad Request — illegal argument or bad query parameter. */
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<Map<String, Object>> handleIllegalArgument(IllegalArgumentException ex) {
+        return errorResponse(HttpStatus.BAD_REQUEST, "BAD_REQUEST", ex.getMessage(), null);
+    }
+
     /** 404 — Route not found. Let Spring handle it cleanly instead of falling to the 500 catch-all. */
     @ExceptionHandler(NoResourceFoundException.class)
     public ResponseEntity<Map<String, Object>> handleNotFound(NoResourceFoundException ex) {
         return errorResponse(HttpStatus.NOT_FOUND, "NOT_FOUND", "The requested resource was not found.", null);
+    }
+
+    /** 404 — Domain resource not found. */
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Map<String, Object>> handleResourceNotFound(ResourceNotFoundException ex) {
+        return errorResponse(HttpStatus.NOT_FOUND, "NOT_FOUND", ex.getMessage(), null);
     }
     /** 500 — Catch-all: log internally, return generic message (no info leakage). */
     @ExceptionHandler(Exception.class)

@@ -1,18 +1,19 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { LoginPage, RegisterPage, AuthProvider, ProtectedRoute } from './features/auth'
 import { AppLayout } from './features/layout/AppLayout'
 import DashboardPage from './features/dashboard/DashboardPage'
 import { TrackerPage } from './features/tracker/TrackerPage'
+import { WeightPage } from './features/weight/WeightPage'
 import './index.css'
 
 /**
  * Root application shell.
- * Uses react-router-dom for standard URL-based routing.
+ * Uses react-router-dom's HashRouter to support refreshes on static hosting (e.g. GitHub Pages).
  */
 function App() {
   return (
     <AuthProvider>
-      <BrowserRouter basename={import.meta.env.BASE_URL}>
+      <HashRouter>
         <Routes>
           {/* Redirect root to login for now */}
           <Route path="/" element={<Navigate to="/login" replace />} />
@@ -23,10 +24,11 @@ function App() {
             <Route element={<AppLayout />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/tracker" element={<TrackerPage />} />
+              <Route path="/weight" element={<WeightPage />} />
             </Route>
           </Route>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </AuthProvider>
   )
 }

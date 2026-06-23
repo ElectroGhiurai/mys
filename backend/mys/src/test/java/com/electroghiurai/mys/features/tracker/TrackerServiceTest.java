@@ -204,7 +204,7 @@ class TrackerServiceTest {
     @Test
     void updateGoals_savesAndReturnsGoals() {
         // Arrange
-        UpdateGoalRequest req = new UpdateGoalRequest(1800.0, 140.0, 180.0, 60.0);
+        UpdateGoalRequest req = new UpdateGoalRequest(1800.0, 140.0, 180.0, 60.0, null, null);
 
         // Act
         GoalDto result = trackerService.updateGoals(testUser, req);
