@@ -12,13 +12,14 @@
         <exclude name="GuardLogStatement"/>
         <exclude name="LooseCoupling"/>
         <exclude name="PreserveStackTrace"/>
-        <exclude name="InvalidLogMessageFormat"/>
     </rule>
 
-    <!-- Import error prone bug detectors but exclude duplicate literals, non-instantiatable class, literals in conditions, and log formats -->
+    <!-- Import error prone bug detectors but exclude duplicate literals, non-instantiatable class, serialVersionUID, ReplaceJavaUtilDate, literals in conditions, and log formats -->
     <rule ref="category/java/errorprone.xml">
         <exclude name="AvoidDuplicateLiterals"/>
         <exclude name="MissingStaticMethodInNonInstantiatableClass"/>
+        <exclude name="MissingSerialVersionUID"/>
+        <exclude name="ReplaceJavaUtilDate"/>
         <exclude name="AvoidLiteralsInIfCondition"/>
         <exclude name="InvalidLogMessageFormat"/>
     </rule>

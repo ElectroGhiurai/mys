@@ -67,11 +67,11 @@ public class TrackerService {
     }
 
     public List<FoodItemDto> searchFoods(User user, String query) {
-        String cleanQuery = query == null ? "" : query.trim().toLowerCase();
+        String cleanQuery = query == null ? "" : query.trim().toLowerCase(java.util.Locale.ROOT);
         
         // 1. Filter defaults in-memory
         List<FoodItemDto> matchedDefaults = defaultFoods.stream()
-            .filter(f -> f.name().toLowerCase().contains(cleanQuery))
+            .filter(f -> f.name().toLowerCase(java.util.Locale.ROOT).contains(cleanQuery))
             .collect(Collectors.toList());
 
         // 2. Fetch custom foods from database
