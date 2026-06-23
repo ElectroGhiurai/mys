@@ -67,11 +67,11 @@ public class TrackerService {
     }
 
     public List<FoodItemDto> searchFoods(User user, String query) {
-        String cleanQuery = query == null ? "" : query.trim().toLowerCase();
+        String cleanQuery = query == null ? "" : query.trim().toLowerCase(java.util.Locale.ROOT);
         
         // 1. Filter defaults in-memory
         List<FoodItemDto> matchedDefaults = defaultFoods.stream()
-            .filter(f -> f.name().toLowerCase().contains(cleanQuery))
+            .filter(f -> f.name().toLowerCase(java.util.Locale.ROOT).contains(cleanQuery))
             .collect(Collectors.toList());
 
         // 2. Fetch custom foods from database
@@ -278,7 +278,9 @@ public class TrackerService {
             user.getCalorieGoal(),
             user.getProteinGoal(),
             user.getCarbGoal(),
-            user.getFatGoal()
+            user.getFatGoal(),
+            user.getStartingWeightKg(),
+            user.getTargetWeightKg()
         );
     }
 
@@ -288,6 +290,8 @@ public class TrackerService {
         user.setProteinGoal(req.proteinGoal());
         user.setCarbGoal(req.carbGoal());
         user.setFatGoal(req.fatGoal());
+        user.setStartingWeightKg(req.startingWeightKg());
+        user.setTargetWeightKg(req.targetWeightKg());
 
         userRepository.save(user);
 
@@ -295,7 +299,9 @@ public class TrackerService {
             user.getCalorieGoal(),
             user.getProteinGoal(),
             user.getCarbGoal(),
-            user.getFatGoal()
+            user.getFatGoal(),
+            user.getStartingWeightKg(),
+            user.getTargetWeightKg()
         );
     }
 

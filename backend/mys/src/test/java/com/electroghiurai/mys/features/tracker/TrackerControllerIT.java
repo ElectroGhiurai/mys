@@ -46,6 +46,7 @@ class TrackerControllerIT {
 
     @BeforeEach
     void setUp() {
+        objectMapper.findAndRegisterModules();
         trackedIngredientRepository.deleteAll();
         userRepository.deleteAll();
 
@@ -70,13 +71,13 @@ class TrackerControllerIT {
     @Test
     void endpoints_withoutAuth_return401() throws Exception {
         mockMvc.perform(get("/api/v1/foods"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
 
         mockMvc.perform(get("/api/v1/tracker?date=2026-06-22"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
 
         mockMvc.perform(get("/api/v1/goals"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
     }
 
     @Test

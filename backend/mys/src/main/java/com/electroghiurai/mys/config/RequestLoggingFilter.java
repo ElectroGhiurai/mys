@@ -71,8 +71,8 @@ public class RequestLoggingFilter extends OncePerRequestFilter {
             }
         } catch (Exception e) {
             long duration = System.currentTimeMillis() - startTime;
-            log.error("operation_failure: operation={} duration={}ms error={} correlationId={}",
-                    operation, duration, e.getMessage(), correlationId, e);
+            log.error("operation_failure: operation={} duration={}ms correlationId={}",
+                    operation, duration, correlationId, e);
             throw e;
         } finally {
             MDC.clear();
