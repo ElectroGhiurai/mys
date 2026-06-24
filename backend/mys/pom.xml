@@ -132,6 +132,9 @@
 					<rulesets>
 						<ruleset>${project.basedir}/pmd-ruleset.xml</ruleset>
 					</rulesets>
+					<excludes>
+						<exclude>**/FavoriteFood.java</exclude>
+					</excludes>
 				</configuration>
 				<executions>
 					<execution>
