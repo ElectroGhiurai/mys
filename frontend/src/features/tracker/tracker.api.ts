@@ -150,5 +150,27 @@ export const trackerApi = {
     return z.array(DailySummaryDtoSchema).parse(raw)
   },
 
+  getFavourites: async (request: ApiRequestFn): Promise<FoodItem[]> => {
+    const raw = await request<unknown>('/foods/favourites')
+    return z.array(FoodItemSchema).parse(raw)
+  },
 
+  addFavourite: async (request: ApiRequestFn, data: { name: string; calories: number; protein: number; carbs: number; fat: number }): Promise<FoodItem> => {
+    const raw = await request<unknown>('/foods/favourites', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    })
+    return FoodItemSchema.parse(raw)
+  },
+
+  deleteFavourite: async (request: ApiRequestFn, id: string): Promise<null> => {
+    return request<null>(`/foods/favourites/${id}`, {
+      method: 'DELETE',
+    })
+  },
+
+  getFrequent: async (request: ApiRequestFn): Promise<FoodItem[]> => {
+    const raw = await request<unknown>('/foods/frequent')
+    return z.array(FoodItemSchema).parse(raw)
+  },
 }

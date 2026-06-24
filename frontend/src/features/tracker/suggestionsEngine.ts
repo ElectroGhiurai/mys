@@ -32,19 +32,7 @@ export const TARGETS: GoalTargets = {
   fat: 70,
 };
 
-const SUGGESTION_POOL = [
-  { id: 'def-chicken-breast', name: 'Chicken Breast', calories: 165, protein: 31, carbs: 0, fat: 3.6, category: 'protein' },
-  { id: 'def-greek-yogurt', name: 'Greek Yogurt', calories: 59, protein: 10, carbs: 3.6, fat: 0.4, category: 'protein' },
-  { id: 'def-whey-protein', name: 'Whey Protein', calories: 400, protein: 80, carbs: 6, fat: 6, category: 'protein' },
-  { id: 'def-oats', name: 'Oats', calories: 389, protein: 16.9, carbs: 66, fat: 6.9, category: 'carb' },
-  { id: 'def-sweet-potato', name: 'Sweet Potato', calories: 86, protein: 1.6, carbs: 20, fat: 0.1, category: 'carb' },
-  { id: 'def-banana', name: 'Banana', calories: 89, protein: 1.1, carbs: 23, fat: 0.3, category: 'carb' },
-  { id: 'def-avocado', name: 'Avocado', calories: 160, protein: 2, carbs: 9, fat: 15, category: 'fat' },
-  { id: 'def-almonds', name: 'Almonds', calories: 579, protein: 21, carbs: 22, fat: 49, category: 'fat' },
-  { id: 'def-milk', name: 'Milk', calories: 61, protein: 3.2, carbs: 4.8, fat: 3.3, category: 'dairy' },
-  { id: 'def-honey', name: 'Honey', calories: 304, protein: 0.3, carbs: 82, fat: 0, category: 'sweetener' },
-  { id: 'def-broccoli', name: 'Broccoli', calories: 34, protein: 2.8, carbs: 7, fat: 0.4, category: 'green' }
-];
+import SUGGESTION_POOL from './suggestion_pool.json';
 
 /**
  * Pure calculation logic for generating food suggestions based on currently
@@ -93,6 +81,15 @@ export function getSuggestions(tracked: TrackedSummary[], targets: GoalTargets =
       carbsPer100g: 23,
       fatPer100g: 0.3,
       reason: 'Pairs perfectly with Oats for immediate energy.'
+    });
+    suggestions.push({
+      id: 'def-blueberries',
+      name: 'Blueberries',
+      caloriesPer100g: 57,
+      proteinPer100g: 0.7,
+      carbsPer100g: 14,
+      fatPer100g: 0.3,
+      reason: 'Top your Oats with Blueberries for an antioxidant boost.'
     });
     suggestions.push({
       id: 'def-milk',

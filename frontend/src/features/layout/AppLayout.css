@@ -146,6 +146,12 @@
   flex-shrink: 0;
 }
 
+.brand-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-color);
+}
+
 .brand-name {
   font-size: 1.1rem;
   font-weight: 700;

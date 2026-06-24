@@ -1,0 +1,1322 @@
+:root {
+  --shoulders-color: #f1c40f; /* Amber Gold */
+  --chest-color: #ff4757;     /* Coral Red */
+  --arms-color: #9b5de5;      /* Lilac Purple */
+  --core-color: #2ed573;      /* Emerald Green */
+  --back-color: #3498db;      /* Sky Blue */
+  --legs-color: #1abc9c;      /* Turquoise Teal */
+}
+
+.workout-tracker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: workout-fade-in 0.4s ease;
+}
+
+@keyframes workout-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.workout-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .workout-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.workout-page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin: 0 0 8px 0;
+}
+
+.workout-page-subtitle {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.workout-log-toggle-btn {
+  background-color: var(--accent-color);
+  border: none;
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.workout-log-toggle-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.workout-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 24px;
+}
+
+.workout-card.shadow-sm {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin: 0 0 20px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ─── Grid layouts ────────────────────────────────────────────────────────── */
+.workout-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 24px;
+}
+
+@media (max-width: 1024px) {
+  .workout-grid-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+.workout-grid-3col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 768px) {
+  .workout-grid-3col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── Form Elements ────────────────────────────────────────────────────────── */
+.workout-log-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.workout-text-input {
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  color: var(--heading-color);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: var(--transition);
+  width: 100%;
+}
+
+.workout-text-input::-webkit-outer-spin-button,
+.workout-text-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.workout-text-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.workout-text-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(91, 114, 244, 0.15);
+}
+
+.workout-text-input:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Dynamic Sets Table inside Form */
+.sets-manager-container {
+  margin-top: 10px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 16px;
+}
+
+.sets-header-row {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+  gap: 12px;
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+
+.sets-header-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.set-row {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 0.5fr;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 8px;
+  animation: workout-fade-in 0.25s ease;
+}
+
+.set-number-badge {
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.remove-set-btn {
+  background: none;
+  border: none;
+  color: var(--error-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 6px;
+  transition: var(--transition);
+}
+
+.remove-set-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--error-hover);
+}
+
+.add-set-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.add-set-btn {
+  background-color: var(--surface-color-2);
+  border: 1px dashed var(--border-color);
+  color: var(--accent-color);
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.add-set-btn:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(91, 114, 244, 0.05);
+}
+
+.submit-log-btn {
+  background-color: var(--success-color);
+  border: none;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.submit-log-btn:hover {
+  background-color: var(--success-hover);
+}
+
+.cancel-edit-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cancel-edit-btn:hover {
+  background-color: var(--surface-color-2);
+  color: var(--heading-color);
+}
+
+/* ─── Metrics Grid ────────────────────────────────────────────────────────── */
+.workout-metric-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.workout-metric-icon-box {
+  background-color: rgba(91, 114, 244, 0.1);
+  color: var(--accent-color);
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.workout-metric-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.workout-metric-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+/* ─── SVG Charts ──────────────────────────────────────────────────────────── */
+.chart-svg-container {
+  width: 100%;
+  height: 280px;
+  background-color: var(--surface-color-2);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+}
+
+.chart-grid-line-group line {
+  stroke: var(--border-color);
+  stroke-dasharray: 4,4;
+}
+
+.chart-grid-line-group text {
+  fill: var(--text-muted);
+}
+
+.chart-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 280px;
+  background-color: var(--surface-color-2);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--border-radius);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 24px;
+}
+
+.placeholder-icon {
+  width: 48px;
+  height: 48px;
+  stroke: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.chart-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* ─── History and Filter controls ────────────────────────────────────────── */
+.history-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .history-controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.search-input-wrapper {
+  flex-grow: 1;
+}
+
+.category-filter-list {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.filter-chip {
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  background-color: var(--border-color);
+  color: var(--heading-color);
+}
+
+.filter-chip.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.workout-table-wrapper {
+  overflow-x: auto;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+.workout-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.9rem;
+}
+
+.workout-history-table th {
+  background-color: var(--surface-color-2);
+  color: var(--text-muted);
+  font-weight: 600;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-color);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.workout-history-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+  vertical-align: middle;
+}
+
+.workout-history-table tr:last-child td {
+  border-bottom: none;
+}
+
+.workout-history-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.workout-category-tag {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.workout-category-tag.chest { background-color: rgba(239, 68, 68, 0.15); color: #f87171; }
+.workout-category-tag.back { background-color: rgba(59, 130, 246, 0.15); color: #60a5fa; }
+.workout-category-tag.legs { background-color: rgba(16, 185, 129, 0.15); color: #34d399; }
+.workout-category-tag.shoulders { background-color: rgba(245, 158, 11, 0.15); color: #fbbf24; }
+.workout-category-tag.arms { background-color: rgba(139, 92, 246, 0.15); color: #a78bfa; }
+.workout-category-tag.core { background-color: rgba(236, 72, 153, 0.15); color: #f472b6; }
+.workout-category-tag.cardio { background-color: rgba(6, 182, 212, 0.15); color: #22d3ee; }
+.workout-category-tag.other { background-color: rgba(107, 115, 153, 0.15); color: #9ca3af; }
+
+.sets-detail-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.set-detail-pill {
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--text-color);
+}
+
+.action-buttons-cell {
+  display: flex;
+  gap: 8px;
+}
+
+.action-icon-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 6px;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-icon-btn:hover {
+  background-color: var(--surface-color-2);
+}
+
+.action-icon-btn.edit:hover {
+  color: var(--accent-color);
+}
+
+.action-icon-btn.delete:hover {
+  color: var(--error-color);
+}
+
+/* ─── Alerts & Loading states ─────────────────────────────────────────────── */
+.workout-alert {
+  display: flex;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+
+.workout-alert-error {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid var(--error-color);
+  color: #fca5a5;
+}
+
+.workout-alert-success {
+  background-color: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--success-color);
+  color: #a7f3d0;
+}
+
+.inline-confirm-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-color);
+}
+
+.confirm-yes-btn {
+  background-color: var(--error-color);
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.confirm-no-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ─── Workout Timer styles ─────────────────────────────────────────────────── */
+.workout-timer-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.timer-tabs {
+  display: flex;
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.timer-tab-btn {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.timer-tab-btn:hover {
+  color: var(--heading-color);
+}
+
+.timer-tab-btn.active {
+  background-color: var(--surface-color);
+  color: var(--accent-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rest-timer-view, .stopwatch-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.circle-timer-container {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-text-overlay {
+  position: absolute;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  font-family: monospace;
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.preset-btn {
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.preset-btn:hover {
+  border-color: var(--text-muted);
+  color: var(--heading-color);
+}
+
+.preset-btn.active {
+  background-color: rgba(91, 114, 244, 0.1);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.timer-controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  width: 100%;
+}
+
+.timer-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+  font-size: 0.9rem;
+}
+
+.timer-btn.start {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.timer-btn.start:hover {
+  background-color: var(--accent-hover);
+}
+
+.timer-btn.pause {
+  background-color: #eab308;
+  color: black;
+}
+
+.timer-btn.pause:hover {
+  background-color: #ca8a04;
+}
+
+.timer-btn.add {
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.timer-btn.add:hover {
+  background-color: var(--border-color);
+  color: var(--heading-color);
+}
+
+.timer-btn.reset {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+}
+
+.timer-btn.reset:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--error-color);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.stopwatch-display {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  font-family: monospace;
+  letter-spacing: 1px;
+  margin: 20px 0;
+}
+
+.metric-svg-icon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accent-color);
+  stroke-width: 2;
+  fill: none;
+}
+
+.action-svg {
+  display: block;
+  stroke: currentColor;
+}
+
+/* ─── Routine Checklist styles ────────────────────────────────────────────── */
+.routine-checklist-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.routine-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reset-checklist-btn {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.reset-checklist-btn:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--error-color);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.routine-selector-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checklist-items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+/* Styled Scrollbar for Checklist */
+.checklist-items-container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.checklist-items-container::-webkit-scrollbar-track {
+  background: var(--surface-color-2);
+  border-radius: 4px;
+}
+
+.checklist-items-container::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+  border: 2px solid var(--surface-color-2);
+}
+
+.checklist-items-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.checklist-empty-text {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  padding: 12px;
+}
+
+.checklist-item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  transition: var(--transition);
+}
+
+.checklist-item-row:hover {
+  border-color: var(--text-muted);
+}
+
+.checklist-item-row.completed {
+  opacity: 0.6;
+}
+
+.checklist-item-row.completed .checklist-item-text {
+  text-decoration: line-through;
+  color: var(--text-muted);
+}
+
+.checkbox-label-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  flex: 1;
+  min-width: 160px;
+}
+
+.routine-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.custom-checkmark {
+  position: relative;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  background-color: var(--surface-color-2);
+  border: 1.5px solid var(--border-color);
+  border-radius: 6px;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.checkbox-label-wrapper:hover .custom-checkmark {
+  border-color: var(--accent-color);
+}
+
+.routine-checkbox:checked ~ .custom-checkmark {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.custom-checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.routine-checkbox:checked ~ .custom-checkmark:after {
+  display: block;
+}
+
+.checkbox-label-wrapper .custom-checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checklist-item-text {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--heading-color);
+}
+
+.checklist-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-log-action-btn {
+  background-color: rgba(91, 114, 244, 0.1);
+  border: 1px solid rgba(91, 114, 244, 0.3);
+  color: var(--accent-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.quick-log-action-btn:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.remove-item-action-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.remove-item-action-btn:hover {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: var(--error-color);
+}
+
+.add-checklist-item-form {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.add-item-btn-submit {
+  background-color: var(--accent-color);
+  border: none;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.add-item-btn-submit:hover {
+  background-color: var(--accent-hover);
+}
+
+/* ─── View Mode Toggle Styles ────────────────────────────────────────────── */
+.view-mode-toggle-bar {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+  align-self: flex-start;
+  margin-bottom: 12px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.view-mode-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.view-mode-btn:hover {
+  color: var(--heading-color);
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.view-mode-btn.active {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(91, 114, 244, 0.3);
+}
+
+/* ─── Bulk Logging & Guides Styles ────────────────────────────────────────── */
+.bulk-log-btn {
+  background-color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bulk-log-btn:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+.bulk-log-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.exercise-guide-panel {
+  width: 100%;
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  padding: 18px;
+  border-radius: 8px;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  animation: workout-fade-in 0.25s ease;
+}
+
+.guide-content {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+@media (max-width: 600px) {
+  .guide-content {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.guide-instructions {
+  flex: 1;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.guide-instructions strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--heading-color);
+  font-size: 1.1rem;
+}
+
+.guide-instructions ul {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.guide-image-container {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  background-color: var(--surface-color);
+}
+
+.guide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ─── Checklist Inline inputs ────────────────────────────────────────────── */
+.checklist-inline-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.checklist-inline-input {
+  width: 65px;
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  color: var(--heading-color);
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  text-align: center;
+  font-weight: 600;
+  transition: var(--transition);
+}
+
+.checklist-inline-input::-webkit-outer-spin-button,
+.checklist-inline-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.checklist-inline-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.checklist-inline-input:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(91, 114, 244, 0.15);
+}
+
+.checklist-input-unit {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+/* ─── CSV Import/Export Buttons ───────────────────────────────────────────── */
+.workout-export-btn, .workout-import-btn {
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  transition: var(--transition);
+}
+
+.workout-export-btn:hover, .workout-import-btn:hover {
+  background-color: var(--border-color);
+  color: var(--heading-color);
+}
+
+/* ─── Visual Muscle Map Panel ─────────────────────────────────────────────── */
+.muscle-map-panel {
+  background: linear-gradient(135deg, var(--surface-color-2) 0%, var(--surface-color) 100%);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.muscle-map-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.muscle-map-figures {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.muscle-figure-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.muscle-figure-caption {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.muscle-figure-svg {
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  transition: filter 0.3s ease;
+}
+
+.muscle-figure-svg:hover {
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.6));
+}
+
+/* Muscle legend chips in center column */
+.muscle-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 96px;
+}
+
+.muscle-chip {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  padding: 4px 8px;
+  border-radius: 20px;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.muscle-chip.active.shoulders {
+  color: var(--shoulders-color);
+  background-color: rgba(241, 196, 15, 0.1);
+  border-color: rgba(241, 196, 15, 0.25);
+}
+.muscle-chip.active.shoulders .muscle-chip-dot {
+  background-color: var(--shoulders-color);
+  box-shadow: 0 0 6px var(--shoulders-color);
+}
+
+.muscle-chip.active.chest {
+  color: var(--chest-color);
+  background-color: rgba(255, 71, 87, 0.1);
+  border-color: rgba(255, 71, 87, 0.25);
+}
+.muscle-chip.active.chest .muscle-chip-dot {
+  background-color: var(--chest-color);
+  box-shadow: 0 0 6px var(--chest-color);
+}
+
+.muscle-chip.active.arms {
+  color: var(--arms-color);
+  background-color: rgba(155, 93, 229, 0.1);
+  border-color: rgba(155, 93, 229, 0.25);
+}
+.muscle-chip.active.arms .muscle-chip-dot {
+  background-color: var(--arms-color);
+  box-shadow: 0 0 6px var(--arms-color);
+}
+
+.muscle-chip.active.core {
+  color: var(--core-color);
+  background-color: rgba(46, 213, 115, 0.1);
+  border-color: rgba(46, 213, 115, 0.25);
+}
+.muscle-chip.active.core .muscle-chip-dot {
+  background-color: var(--core-color);
+  box-shadow: 0 0 6px var(--core-color);
+}
+
+.muscle-chip.active.back {
+  color: var(--back-color);
+  background-color: rgba(52, 152, 219, 0.1);
+  border-color: rgba(52, 152, 219, 0.25);
+}
+.muscle-chip.active.back .muscle-chip-dot {
+  background-color: var(--back-color);
+  box-shadow: 0 0 6px var(--back-color);
+}
+
+.muscle-chip.active.legs {
+  color: var(--legs-color);
+  background-color: rgba(26, 188, 156, 0.1);
+  border-color: rgba(26, 188, 156, 0.25);
+}
+.muscle-chip.active.legs .muscle-chip-dot {
+  background-color: var(--legs-color);
+  box-shadow: 0 0 6px var(--legs-color);
+}
+
+.muscle-chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--border-color);
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+
+

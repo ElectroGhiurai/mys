@@ -15,4 +15,5 @@ import java.util.UUID;
 public interface TrackedIngredientRepository extends JpaRepository<TrackedIngredient, UUID> {
     List<TrackedIngredient> findByUserAndTrackedDate(User user, LocalDate trackedDate);
     List<TrackedIngredient> findByUserAndTrackedDateBetween(User user, LocalDate start, LocalDate end);
+    List<TrackedIngredient> findTop200ByUserOrderByTrackedDateDesc(User user);
 }

@@ -130,4 +130,35 @@ public final class TrackerDtos {
         Double carbs,
         Double fat
     ) {}
+
+    public record FavoriteFoodDto(
+        UUID id,
+        String name,
+        Double calories,
+        Double protein,
+        Double carbs,
+        Double fat
+    ) {}
+
+    public record AddFavoriteFoodRequest(
+        @NotBlank(message = "Name is required")
+        @Size(max = 100, message = "Name must be under 100 characters")
+        String name,
+
+        @NotNull(message = "Calories is required")
+        @DecimalMin(value = "0.0", message = "Calories cannot be negative")
+        Double calories,
+
+        @NotNull(message = "Protein is required")
+        @DecimalMin(value = "0.0", message = "Protein cannot be negative")
+        Double protein,
+
+        @NotNull(message = "Carbs is required")
+        @DecimalMin(value = "0.0", message = "Carbs cannot be negative")
+        Double carbs,
+
+        @NotNull(message = "Fat is required")
+        @DecimalMin(value = "0.0", message = "Fat cannot be negative")
+        Double fat
+    ) {}
 }

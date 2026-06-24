@@ -40,7 +40,7 @@ describe('suggestionsEngine', () => {
 
     // Assert
     // Check that we suggest Greek Yogurt, Chicken Breast, or Whey Protein
-    const hasProteinSug = suggestions.some(s => s.name === 'Greek Yogurt' || s.name === 'Chicken Breast' || s.name === 'Whey Protein');
+    const hasProteinSug = suggestions.some(s => s.name.startsWith('Greek yogurt') || s.name.startsWith('Chicken breast') || s.name === 'Whey protein powder');
     expect(hasProteinSug).toBe(true);
   });
 
@@ -61,7 +61,7 @@ describe('suggestionsEngine', () => {
     const suggestions = getSuggestions(trackedList, customTargets);
 
     // Assert
-    const hasCarbSug = suggestions.some(s => s.name === 'Oats' || s.name === 'Sweet Potato' || s.name === 'Banana');
+    const hasCarbSug = suggestions.some(s => s.name.startsWith('Oats') || s.name.startsWith('Sweet potato') || s.name === 'Banana');
     expect(hasCarbSug).toBe(true);
   });
 });

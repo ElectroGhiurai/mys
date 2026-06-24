@@ -21,8 +21,9 @@ import java.util.Map;
  *
  * Token delivery (security-principles):
  * - Access token → JSON body (short-lived, read by JS)
- * - Refresh token → HttpOnly; Secure; SameSite=Strict cookie (JS cannot touch
- * it)
+ * - Refresh token → HttpOnly; Secure; SameSite=None cookie (JS cannot touch it).
+ *   SameSite=None is used to allow cross-origin requests from the GitHub Pages frontend to the Render backend,
+ *   restricted to the "/api/v1/auth" path with Secure=true to mitigate CSRF risks.
  */
 @RestController
 @RequestMapping("/api/v1/auth")
@@ -72,7 +73,7 @@ public class AuthController {
         ResponseCookie clearCookie = ResponseCookie.from(REFRESH_COOKIE_NAME, "")
                 .httpOnly(true)
                 .secure(true)
-                .sameSite("Strict")
+                .sameSite("None")
                 .path("/api/v1/auth")
                 .maxAge(0)
                 .build();
@@ -87,7 +88,7 @@ public class AuthController {
         ResponseCookie refreshCookie = ResponseCookie.from(REFRESH_COOKIE_NAME, tokens.refreshToken())
                 .httpOnly(true)
                 .secure(true)
-                .sameSite("Strict")
+                .sameSite("None") // cross-origin: GitHub Pages → Render
                 .path("/api/v1/auth") // only sent to auth endpoints — minimize exposure
                 .maxAge(REFRESH_MAX_AGE_SEC)
                 .build();
