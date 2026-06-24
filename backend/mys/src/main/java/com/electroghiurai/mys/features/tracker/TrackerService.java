@@ -6,6 +6,8 @@ import com.electroghiurai.mys.features.auth.User;
 import com.electroghiurai.mys.features.auth.UserRepository;
 import com.electroghiurai.mys.features.auth.AuthExceptions.AccessDeniedException;
 import com.electroghiurai.mys.features.tracker.TrackerDtos.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,20 +26,25 @@ import java.util.stream.Collectors;
 @Service
 public class TrackerService {
 
+    private static final Logger log = LoggerFactory.getLogger(TrackerService.class);
+
     private final CustomFoodRepository customFoodRepository;
     private final TrackedIngredientRepository trackedIngredientRepository;
     private final UserRepository userRepository;
     private final ObjectMapper objectMapper;
+    private final FavoriteFoodRepository favoriteFoodRepository;
     private List<FoodItemDto> defaultFoods = new ArrayList<>();
 
     public TrackerService(CustomFoodRepository customFoodRepository,
                           TrackedIngredientRepository trackedIngredientRepository,
                           UserRepository userRepository,
-                          ObjectMapper objectMapper) {
+                          ObjectMapper objectMapper,
+                          FavoriteFoodRepository favoriteFoodRepository) {
         this.customFoodRepository = customFoodRepository;
         this.trackedIngredientRepository = trackedIngredientRepository;
         this.userRepository = userRepository;
         this.objectMapper = objectMapper;
+        this.favoriteFoodRepository = favoriteFoodRepository;
         loadDefaultFoods();
     }
 
@@ -303,6 +310,117 @@ public class TrackerService {
             user.getStartingWeightKg(),
             user.getTargetWeightKg()
         );
+    }
+
+    public List<FoodItemDto> getFrequentFoods(User user) {
+        log.info("Fetching frequent foods for userId={}", user.getId());
+        List<TrackedIngredient> recent = trackedIngredientRepository.findTop200ByUserOrderByTrackedDateDesc(user);
+        
+        // Group by food name case-insensitively, counting frequency
+        java.util.Map<String, Long> frequencyMap = recent.stream()
+            .collect(Collectors.groupingBy(
+                ti -> ti.getName().trim().toLowerCase(java.util.Locale.ROOT),
+                Collectors.counting()
+            ));
+
+        // Group by food name case-insensitively and select one representative entity for macro values
+        java.util.Map<String, TrackedIngredient> representativeMap = recent.stream()
+            .collect(Collectors.toMap(
+                ti -> ti.getName().trim().toLowerCase(java.util.Locale.ROOT),
+                ti -> ti,
+                (existing, replacement) -> existing // keep first (most recent)
+            ));
+
+        List<FoodItemDto> list = frequencyMap.entrySet().stream()
+            .sorted((e1, e2) -> e2.getValue().compareTo(e1.getValue())) // sort by frequency desc
+            .map(entry -> {
+                TrackedIngredient rep = representativeMap.get(entry.getKey());
+                return new FoodItemDto(
+                    "freq-" + rep.getId().toString(),
+                    rep.getName(),
+                    rep.getCaloriesPer100g(),
+                    rep.getProteinPer100g(),
+                    rep.getCarbsPer100g(),
+                    rep.getFatPer100g(),
+                    false
+                );
+            })
+            .limit(10) // top 10 frequent
+            .collect(Collectors.toList());
+
+        log.info("Found {} frequent foods for userId={}", list.size(), user.getId());
+        return list;
+    }
+
+    @Transactional(readOnly = true)
+    public List<FoodItemDto> getFavouriteFoods(User user) {
+        log.info("Fetching favorite foods for userId={}", user.getId());
+        return favoriteFoodRepository.findByUser(user).stream()
+            .map(ff -> new FoodItemDto(
+                ff.getId().toString(),
+                ff.getName(),
+                ff.getCalories(),
+                ff.getProtein(),
+                ff.getCarbs(),
+                ff.getFat(),
+                false
+            ))
+            .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public FoodItemDto addFavouriteFood(User user, AddFavoriteFoodRequest req) {
+        log.info("Adding favorite food for userId={} name={}", user.getId(), req.name());
+        
+        java.util.Optional<FavoriteFood> existing = favoriteFoodRepository.findByUserAndNameIgnoreCase(user, req.name().trim());
+        if (existing.isPresent()) {
+            log.info("Favorite food already exists: id={}", existing.get().getId());
+            FavoriteFood ff = existing.get();
+            return new FoodItemDto(
+                ff.getId().toString(),
+                ff.getName(),
+                ff.getCalories(),
+                ff.getProtein(),
+                ff.getCarbs(),
+                ff.getFat(),
+                false
+            );
+        }
+
+        FavoriteFood ff = new FavoriteFood();
+        ff.setUser(user);
+        ff.setName(req.name().trim());
+        ff.setCalories(req.calories());
+        ff.setProtein(req.protein());
+        ff.setCarbs(req.carbs());
+        ff.setFat(req.fat());
+
+        FavoriteFood saved = favoriteFoodRepository.save(ff);
+        log.info("Added favorite food success: id={}", saved.getId());
+        return new FoodItemDto(
+            saved.getId().toString(),
+            saved.getName(),
+            saved.getCalories(),
+            saved.getProtein(),
+            saved.getCarbs(),
+            saved.getFat(),
+            false
+        );
+    }
+
+    @Transactional
+    public void deleteFavouriteFood(User user, UUID id) {
+        log.info("Deleting favorite food for userId={} id={}", user.getId(), id);
+        FavoriteFood ff = favoriteFoodRepository.findById(id)
+            .orElseThrow(() -> new com.electroghiurai.mys.common.ResourceNotFoundException("Favorite food not found"));
+
+        if (!ff.getUser().getId().equals(user.getId())) {
+            log.warn("Access denied: User={} tried to delete favorite food belonging to User={}", user.getId(), ff.getUser().getId());
+            throw new AccessDeniedException("Unauthorized deletion of favorite food");
+        }
+
+        favoriteFoodRepository.delete(ff);
+        log.info("Deleted favorite food success: id={}", id);
     }
 
     private record DefaultFoodJson(

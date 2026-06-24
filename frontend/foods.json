@@ -1,0 +1,2627 @@
+[
+  {
+    "name": "Chicken breast (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 165,
+    "protein_g": 31,
+    "carbs_g": 0,
+    "fat_g": 3.6,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Chicken thigh (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 209,
+    "protein_g": 26,
+    "carbs_g": 0,
+    "fat_g": 11,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein"
+    ]
+  },
+  {
+    "name": "Ground beef 80/20 (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 254,
+    "protein_g": 26,
+    "carbs_g": 0,
+    "fat_g": 17,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein"
+    ]
+  },
+  {
+    "name": "Ground beef 95/5 (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 174,
+    "protein_g": 28,
+    "carbs_g": 0,
+    "fat_g": 7,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean"
+    ]
+  },
+  {
+    "name": "Beef steak (sirloin, cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 207,
+    "protein_g": 30,
+    "carbs_g": 0,
+    "fat_g": 9,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein"
+    ]
+  },
+  {
+    "name": "Turkey breast (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 135,
+    "protein_g": 30,
+    "carbs_g": 0,
+    "fat_g": 1,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Pork loin (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 189,
+    "protein_g": 27,
+    "carbs_g": 0,
+    "fat_g": 9,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein"
+    ]
+  },
+  {
+    "name": "Bacon (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 417,
+    "protein_g": 37,
+    "carbs_g": 1.4,
+    "fat_g": 28,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high fat",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Lamb (leg, cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 218,
+    "protein_g": 29,
+    "carbs_g": 0,
+    "fat_g": 11,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein"
+    ]
+  },
+  {
+    "name": "Salmon (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 208,
+    "protein_g": 25,
+    "carbs_g": 0,
+    "fat_g": 12,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "omega-3",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Tuna (canned in water)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 116,
+    "protein_g": 26,
+    "carbs_g": 0,
+    "fat_g": 1,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Tuna (canned in oil)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 198,
+    "protein_g": 29,
+    "carbs_g": 0,
+    "fat_g": 9,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein"
+    ]
+  },
+  {
+    "name": "Shrimp (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 99,
+    "protein_g": 24,
+    "carbs_g": 0.2,
+    "fat_g": 0.3,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Cod (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 105,
+    "protein_g": 23,
+    "carbs_g": 0,
+    "fat_g": 1,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Tilapia (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 128,
+    "protein_g": 26,
+    "carbs_g": 0,
+    "fat_g": 3,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean"
+    ]
+  },
+  {
+    "name": "Sardines (canned in oil)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 208,
+    "protein_g": 25,
+    "carbs_g": 0,
+    "fat_g": 12,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "omega-3",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Mackerel (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 262,
+    "protein_g": 24,
+    "carbs_g": 0,
+    "fat_g": 18,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "omega-3",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Whole milk",
+    "category": "dairy",
+    "serving": "240ml",
+    "calories": 149,
+    "protein_g": 8,
+    "carbs_g": 12,
+    "fat_g": 8,
+    "fiber_g": 0,
+    "sugar_g": 12,
+    "tags": [
+      "calcium"
+    ]
+  },
+  {
+    "name": "Skim milk",
+    "category": "dairy",
+    "serving": "240ml",
+    "calories": 83,
+    "protein_g": 8,
+    "carbs_g": 12,
+    "fat_g": 0.2,
+    "fiber_g": 0,
+    "sugar_g": 12,
+    "tags": [
+      "calcium",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Greek yogurt (plain, 0%)",
+    "category": "dairy",
+    "serving": "170g",
+    "calories": 100,
+    "protein_g": 17,
+    "carbs_g": 6,
+    "fat_g": 0.7,
+    "fiber_g": 0,
+    "sugar_g": 6,
+    "tags": [
+      "high protein",
+      "probiotic",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Greek yogurt (plain, full fat)",
+    "category": "dairy",
+    "serving": "170g",
+    "calories": 160,
+    "protein_g": 15,
+    "carbs_g": 6,
+    "fat_g": 8,
+    "fiber_g": 0,
+    "sugar_g": 5,
+    "tags": [
+      "high protein",
+      "probiotic"
+    ]
+  },
+  {
+    "name": "Cottage cheese (low fat)",
+    "category": "dairy",
+    "serving": "100g",
+    "calories": 72,
+    "protein_g": 12,
+    "carbs_g": 3,
+    "fat_g": 1,
+    "fiber_g": 0,
+    "sugar_g": 2,
+    "tags": [
+      "high protein",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Cheddar cheese",
+    "category": "dairy",
+    "serving": "28g (1 slice)",
+    "calories": 113,
+    "protein_g": 7,
+    "carbs_g": 0.4,
+    "fat_g": 9,
+    "fiber_g": 0,
+    "sugar_g": 0.1,
+    "tags": [
+      "calcium",
+      "high fat"
+    ]
+  },
+  {
+    "name": "Mozzarella (part skim)",
+    "category": "dairy",
+    "serving": "28g",
+    "calories": 72,
+    "protein_g": 7,
+    "carbs_g": 1,
+    "fat_g": 4.5,
+    "fiber_g": 0,
+    "sugar_g": 0.3,
+    "tags": [
+      "calcium"
+    ]
+  },
+  {
+    "name": "Butter",
+    "category": "dairy",
+    "serving": "14g (1 tbsp)",
+    "calories": 102,
+    "protein_g": 0.1,
+    "carbs_g": 0,
+    "fat_g": 11.5,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high fat"
+    ]
+  },
+  {
+    "name": "Whole egg",
+    "category": "egg",
+    "serving": "1 large (50g)",
+    "calories": 72,
+    "protein_g": 6,
+    "carbs_g": 0.4,
+    "fat_g": 5,
+    "fiber_g": 0,
+    "sugar_g": 0.2,
+    "tags": [
+      "complete protein"
+    ]
+  },
+  {
+    "name": "Egg white",
+    "category": "egg",
+    "serving": "1 large (33g)",
+    "calories": 17,
+    "protein_g": 3.6,
+    "carbs_g": 0.2,
+    "fat_g": 0.1,
+    "fiber_g": 0,
+    "sugar_g": 0.2,
+    "tags": [
+      "high protein",
+      "low fat",
+      "low cal"
+    ]
+  },
+  {
+    "name": "White rice (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 130,
+    "protein_g": 2.7,
+    "carbs_g": 28,
+    "fat_g": 0.3,
+    "fiber_g": 0.4,
+    "sugar_g": 0,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Brown rice (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 112,
+    "protein_g": 2.6,
+    "carbs_g": 24,
+    "fat_g": 0.9,
+    "fiber_g": 1.8,
+    "sugar_g": 0,
+    "tags": [
+      "high carb",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Oats (dry)",
+    "category": "grain",
+    "serving": "40g (1/2 cup)",
+    "calories": 154,
+    "protein_g": 5.4,
+    "carbs_g": 27,
+    "fat_g": 2.6,
+    "fiber_g": 4,
+    "sugar_g": 0.5,
+    "tags": [
+      "high carb",
+      "fiber",
+      "slow release"
+    ]
+  },
+  {
+    "name": "Whole wheat bread",
+    "category": "grain",
+    "serving": "1 slice (30g)",
+    "calories": 81,
+    "protein_g": 4,
+    "carbs_g": 15,
+    "fat_g": 1.1,
+    "fiber_g": 2,
+    "sugar_g": 1.7,
+    "tags": [
+      "high carb",
+      "fiber"
+    ]
+  },
+  {
+    "name": "White bread",
+    "category": "grain",
+    "serving": "1 slice (30g)",
+    "calories": 79,
+    "protein_g": 2.7,
+    "carbs_g": 15,
+    "fat_g": 1,
+    "fiber_g": 0.6,
+    "sugar_g": 1.7,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Pasta (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 158,
+    "protein_g": 5.8,
+    "carbs_g": 31,
+    "fat_g": 0.9,
+    "fiber_g": 1.8,
+    "sugar_g": 0.6,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Sweet potato (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 90,
+    "protein_g": 2,
+    "carbs_g": 21,
+    "fat_g": 0.1,
+    "fiber_g": 3.3,
+    "sugar_g": 4.2,
+    "tags": [
+      "high carb",
+      "fiber",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Potato (boiled)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 87,
+    "protein_g": 1.9,
+    "carbs_g": 20,
+    "fat_g": 0.1,
+    "fiber_g": 1.8,
+    "sugar_g": 0.9,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Quinoa (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 120,
+    "protein_g": 4.4,
+    "carbs_g": 22,
+    "fat_g": 1.9,
+    "fiber_g": 2.8,
+    "sugar_g": 0.9,
+    "tags": [
+      "high carb",
+      "complete protein",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Black beans (cooked)",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 132,
+    "protein_g": 9,
+    "carbs_g": 24,
+    "fat_g": 0.5,
+    "fiber_g": 8.7,
+    "sugar_g": 0.3,
+    "tags": [
+      "high protein",
+      "fiber",
+      "high carb"
+    ]
+  },
+  {
+    "name": "Chickpeas (cooked)",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 164,
+    "protein_g": 8.9,
+    "carbs_g": 27,
+    "fat_g": 2.6,
+    "fiber_g": 7.6,
+    "sugar_g": 4.8,
+    "tags": [
+      "high protein",
+      "fiber",
+      "high carb"
+    ]
+  },
+  {
+    "name": "Lentils (cooked)",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 116,
+    "protein_g": 9,
+    "carbs_g": 20,
+    "fat_g": 0.4,
+    "fiber_g": 7.9,
+    "sugar_g": 1.8,
+    "tags": [
+      "high protein",
+      "fiber",
+      "high carb"
+    ]
+  },
+  {
+    "name": "Edamame (cooked)",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 122,
+    "protein_g": 11,
+    "carbs_g": 9.9,
+    "fat_g": 5.2,
+    "fiber_g": 5.2,
+    "sugar_g": 2.2,
+    "tags": [
+      "high protein",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Tofu (firm)",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 76,
+    "protein_g": 8,
+    "carbs_g": 1.9,
+    "fat_g": 4.8,
+    "fiber_g": 0.3,
+    "sugar_g": 0.5,
+    "tags": [
+      "high protein",
+      "plant-based"
+    ]
+  },
+  {
+    "name": "Broccoli (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 34,
+    "protein_g": 2.8,
+    "carbs_g": 6.6,
+    "fat_g": 0.4,
+    "fiber_g": 2.6,
+    "sugar_g": 1.7,
+    "tags": [
+      "low cal",
+      "fiber",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Spinach (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 23,
+    "protein_g": 2.9,
+    "carbs_g": 3.6,
+    "fat_g": 0.4,
+    "fiber_g": 2.2,
+    "sugar_g": 0.4,
+    "tags": [
+      "low cal",
+      "iron",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Kale (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 49,
+    "protein_g": 4.3,
+    "carbs_g": 9,
+    "fat_g": 0.9,
+    "fiber_g": 3.6,
+    "sugar_g": 2.3,
+    "tags": [
+      "low cal",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Bell pepper (red, raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 31,
+    "protein_g": 1,
+    "carbs_g": 6,
+    "fat_g": 0.3,
+    "fiber_g": 2.1,
+    "sugar_g": 4.2,
+    "tags": [
+      "low cal",
+      "vitamin C"
+    ]
+  },
+  {
+    "name": "Carrot (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 41,
+    "protein_g": 0.9,
+    "carbs_g": 10,
+    "fat_g": 0.2,
+    "fiber_g": 2.8,
+    "sugar_g": 4.7,
+    "tags": [
+      "low cal",
+      "fiber",
+      "vitamin A"
+    ]
+  },
+  {
+    "name": "Cucumber (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 15,
+    "protein_g": 0.7,
+    "carbs_g": 3.6,
+    "fat_g": 0.1,
+    "fiber_g": 0.5,
+    "sugar_g": 1.7,
+    "tags": [
+      "low cal",
+      "hydrating"
+    ]
+  },
+  {
+    "name": "Tomato (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 18,
+    "protein_g": 0.9,
+    "carbs_g": 3.9,
+    "fat_g": 0.2,
+    "fiber_g": 1.2,
+    "sugar_g": 2.6,
+    "tags": [
+      "low cal",
+      "antioxidant"
+    ]
+  },
+  {
+    "name": "Zucchini (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 17,
+    "protein_g": 1.2,
+    "carbs_g": 3.1,
+    "fat_g": 0.3,
+    "fiber_g": 1,
+    "sugar_g": 2.5,
+    "tags": [
+      "low cal"
+    ]
+  },
+  {
+    "name": "Mushrooms (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 22,
+    "protein_g": 3.1,
+    "carbs_g": 3.3,
+    "fat_g": 0.3,
+    "fiber_g": 1,
+    "sugar_g": 2,
+    "tags": [
+      "low cal"
+    ]
+  },
+  {
+    "name": "Banana",
+    "category": "fruit",
+    "serving": "1 medium (118g)",
+    "calories": 105,
+    "protein_g": 1.3,
+    "carbs_g": 27,
+    "fat_g": 0.4,
+    "fiber_g": 3.1,
+    "sugar_g": 14,
+    "tags": [
+      "high carb",
+      "potassium",
+      "quick energy"
+    ]
+  },
+  {
+    "name": "Apple",
+    "category": "fruit",
+    "serving": "1 medium (182g)",
+    "calories": 95,
+    "protein_g": 0.5,
+    "carbs_g": 25,
+    "fat_g": 0.3,
+    "fiber_g": 4.4,
+    "sugar_g": 19,
+    "tags": [
+      "fiber",
+      "antioxidant"
+    ]
+  },
+  {
+    "name": "Blueberries",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 57,
+    "protein_g": 0.7,
+    "carbs_g": 14,
+    "fat_g": 0.3,
+    "fiber_g": 2.4,
+    "sugar_g": 10,
+    "tags": [
+      "antioxidant",
+      "low cal"
+    ]
+  },
+  {
+    "name": "Strawberries",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 32,
+    "protein_g": 0.7,
+    "carbs_g": 7.7,
+    "fat_g": 0.3,
+    "fiber_g": 2,
+    "sugar_g": 4.9,
+    "tags": [
+      "low cal",
+      "vitamin C"
+    ]
+  },
+  {
+    "name": "Orange",
+    "category": "fruit",
+    "serving": "1 medium (131g)",
+    "calories": 62,
+    "protein_g": 1.2,
+    "carbs_g": 15,
+    "fat_g": 0.2,
+    "fiber_g": 3.1,
+    "sugar_g": 12,
+    "tags": [
+      "vitamin C"
+    ]
+  },
+  {
+    "name": "Avocado",
+    "category": "fruit",
+    "serving": "1/2 fruit (68g)",
+    "calories": 114,
+    "protein_g": 1.3,
+    "carbs_g": 6,
+    "fat_g": 10.5,
+    "fiber_g": 4.6,
+    "sugar_g": 0.2,
+    "tags": [
+      "healthy fats",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Mango",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 60,
+    "protein_g": 0.8,
+    "carbs_g": 15,
+    "fat_g": 0.4,
+    "fiber_g": 1.6,
+    "sugar_g": 13.7,
+    "tags": [
+      "high carb",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Almonds",
+    "category": "nut",
+    "serving": "28g (about 23)",
+    "calories": 164,
+    "protein_g": 6,
+    "carbs_g": 6,
+    "fat_g": 14,
+    "fiber_g": 3.5,
+    "sugar_g": 1.2,
+    "tags": [
+      "healthy fats",
+      "vitamin E"
+    ]
+  },
+  {
+    "name": "Walnuts",
+    "category": "nut",
+    "serving": "28g (about 14 halves)",
+    "calories": 185,
+    "protein_g": 4.3,
+    "carbs_g": 3.9,
+    "fat_g": 18.5,
+    "fiber_g": 1.9,
+    "sugar_g": 0.7,
+    "tags": [
+      "omega-3",
+      "healthy fats"
+    ]
+  },
+  {
+    "name": "Cashews",
+    "category": "nut",
+    "serving": "28g (about 18)",
+    "calories": 157,
+    "protein_g": 5.2,
+    "carbs_g": 8.6,
+    "fat_g": 12.4,
+    "fiber_g": 0.9,
+    "sugar_g": 1.7,
+    "tags": [
+      "healthy fats"
+    ]
+  },
+  {
+    "name": "Peanuts",
+    "category": "nut",
+    "serving": "28g",
+    "calories": 161,
+    "protein_g": 7.3,
+    "carbs_g": 4.6,
+    "fat_g": 14,
+    "fiber_g": 2.4,
+    "sugar_g": 1.1,
+    "tags": [
+      "high protein",
+      "healthy fats"
+    ]
+  },
+  {
+    "name": "Peanut butter",
+    "category": "nut",
+    "serving": "32g (2 tbsp)",
+    "calories": 190,
+    "protein_g": 8,
+    "carbs_g": 6,
+    "fat_g": 16,
+    "fiber_g": 2,
+    "sugar_g": 3,
+    "tags": [
+      "high protein",
+      "high fat"
+    ]
+  },
+  {
+    "name": "Chia seeds",
+    "category": "nut",
+    "serving": "28g (2 tbsp)",
+    "calories": 138,
+    "protein_g": 4.7,
+    "carbs_g": 12,
+    "fat_g": 8.7,
+    "fiber_g": 9.8,
+    "sugar_g": 0,
+    "tags": [
+      "omega-3",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Flaxseeds",
+    "category": "nut",
+    "serving": "10g (1 tbsp)",
+    "calories": 55,
+    "protein_g": 1.9,
+    "carbs_g": 3,
+    "fat_g": 4.3,
+    "fiber_g": 2.8,
+    "sugar_g": 0.2,
+    "tags": [
+      "omega-3",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Sunflower seeds",
+    "category": "nut",
+    "serving": "28g",
+    "calories": 164,
+    "protein_g": 5.8,
+    "carbs_g": 5.6,
+    "fat_g": 14,
+    "fiber_g": 2.4,
+    "sugar_g": 0.7,
+    "tags": [
+      "vitamin E",
+      "healthy fats"
+    ]
+  },
+  {
+    "name": "Olive oil",
+    "category": "oil",
+    "serving": "14g (1 tbsp)",
+    "calories": 119,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 13.5,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "healthy fats",
+      "monounsaturated"
+    ]
+  },
+  {
+    "name": "Coconut oil",
+    "category": "oil",
+    "serving": "14g (1 tbsp)",
+    "calories": 121,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 13.6,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high fat",
+      "saturated"
+    ]
+  },
+  {
+    "name": "Avocado oil",
+    "category": "oil",
+    "serving": "14g (1 tbsp)",
+    "calories": 124,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 14,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "healthy fats",
+      "monounsaturated"
+    ]
+  },
+  {
+    "name": "Whey protein powder",
+    "category": "snack",
+    "serving": "30g (1 scoop)",
+    "calories": 120,
+    "protein_g": 24,
+    "carbs_g": 3,
+    "fat_g": 2,
+    "fiber_g": 0,
+    "sugar_g": 2,
+    "tags": [
+      "high protein",
+      "supplement"
+    ]
+  },
+  {
+    "name": "Dark chocolate (70%+)",
+    "category": "snack",
+    "serving": "28g",
+    "calories": 170,
+    "protein_g": 2.2,
+    "carbs_g": 13,
+    "fat_g": 12,
+    "fiber_g": 3.1,
+    "sugar_g": 6.8,
+    "tags": [
+      "antioxidant",
+      "high fat"
+    ]
+  },
+  {
+    "name": "Hummus",
+    "category": "snack",
+    "serving": "2 tbsp (30g)",
+    "calories": 70,
+    "protein_g": 2,
+    "carbs_g": 6,
+    "fat_g": 4.5,
+    "fiber_g": 1.5,
+    "sugar_g": 0.5,
+    "tags": [
+      "plant-based",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Rice cakes (plain)",
+    "category": "snack",
+    "serving": "2 cakes (18g)",
+    "calories": 70,
+    "protein_g": 1.4,
+    "carbs_g": 15,
+    "fat_g": 0.5,
+    "fiber_g": 0.4,
+    "sugar_g": 0,
+    "tags": [
+      "low cal",
+      "high carb"
+    ]
+  },
+  {
+    "name": "Water",
+    "category": "drink",
+    "serving": "240ml",
+    "calories": 0,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 0,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "hydration",
+      "zero cal"
+    ]
+  },
+  {
+    "name": "Black coffee",
+    "category": "drink",
+    "serving": "240ml",
+    "calories": 2,
+    "protein_g": 0.3,
+    "carbs_g": 0,
+    "fat_g": 0,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "zero cal",
+      "caffeine"
+    ]
+  },
+  {
+    "name": "Orange juice (no added sugar)",
+    "category": "drink",
+    "serving": "240ml",
+    "calories": 112,
+    "protein_g": 1.7,
+    "carbs_g": 26,
+    "fat_g": 0.5,
+    "fiber_g": 0.5,
+    "sugar_g": 21,
+    "tags": [
+      "vitamin C",
+      "high sugar"
+    ]
+  },
+  {
+    "name": "Protein shake (water mix)",
+    "category": "drink",
+    "serving": "400ml",
+    "calories": 130,
+    "protein_g": 25,
+    "carbs_g": 4,
+    "fat_g": 2,
+    "fiber_g": 0,
+    "sugar_g": 2,
+    "tags": [
+      "high protein",
+      "supplement"
+    ]
+  },
+  {
+    "name": "Greek yogurt (plain, 2%)",
+    "category": "dairy",
+    "serving": "170g",
+    "calories": 120,
+    "protein_g": 17,
+    "carbs_g": 7,
+    "fat_g": 3,
+    "fiber_g": 0,
+    "sugar_g": 6,
+    "tags": [
+      "high protein",
+      "probiotic"
+    ]
+  },
+  {
+    "name": "Greek yogurt (plain, 5%)",
+    "category": "dairy",
+    "serving": "170g",
+    "calories": 145,
+    "protein_g": 16,
+    "carbs_g": 7,
+    "fat_g": 6,
+    "fiber_g": 0,
+    "sugar_g": 6,
+    "tags": [
+      "high protein",
+      "probiotic"
+    ]
+  },
+  {
+    "name": "Regular yogurt (plain, whole milk)",
+    "category": "dairy",
+    "serving": "170g",
+    "calories": 104,
+    "protein_g": 6,
+    "carbs_g": 8,
+    "fat_g": 5.5,
+    "fiber_g": 0,
+    "sugar_g": 8,
+    "tags": [
+      "probiotic",
+      "calcium"
+    ]
+  },
+  {
+    "name": "Regular yogurt (plain, low fat)",
+    "category": "dairy",
+    "serving": "170g",
+    "calories": 95,
+    "protein_g": 8,
+    "carbs_g": 13,
+    "fat_g": 2.3,
+    "fiber_g": 0,
+    "sugar_g": 12,
+    "tags": [
+      "probiotic",
+      "calcium",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Skyr (plain)",
+    "category": "dairy",
+    "serving": "170g",
+    "calories": 110,
+    "protein_g": 19,
+    "carbs_g": 7,
+    "fat_g": 0.5,
+    "fiber_g": 0,
+    "sugar_g": 5,
+    "tags": [
+      "high protein",
+      "low fat",
+      "probiotic"
+    ]
+  },
+  {
+    "name": "Cottage cheese (full fat)",
+    "category": "dairy",
+    "serving": "100g",
+    "calories": 103,
+    "protein_g": 11,
+    "carbs_g": 3.4,
+    "fat_g": 4.5,
+    "fiber_g": 0,
+    "sugar_g": 2.7,
+    "tags": [
+      "high protein"
+    ]
+  },
+  {
+    "name": "Ricotta (whole milk)",
+    "category": "dairy",
+    "serving": "100g",
+    "calories": 174,
+    "protein_g": 11,
+    "carbs_g": 3,
+    "fat_g": 13,
+    "fiber_g": 0,
+    "sugar_g": 0.3,
+    "tags": [
+      "high protein",
+      "calcium"
+    ]
+  },
+  {
+    "name": "Parmesan (grated)",
+    "category": "dairy",
+    "serving": "28g",
+    "calories": 122,
+    "protein_g": 11,
+    "carbs_g": 1.1,
+    "fat_g": 8,
+    "fiber_g": 0,
+    "sugar_g": 0.3,
+    "tags": [
+      "high protein",
+      "calcium",
+      "high fat"
+    ]
+  },
+  {
+    "name": "Feta cheese",
+    "category": "dairy",
+    "serving": "28g",
+    "calories": 75,
+    "protein_g": 4,
+    "carbs_g": 1.2,
+    "fat_g": 6,
+    "fiber_g": 0,
+    "sugar_g": 0.5,
+    "tags": [
+      "calcium"
+    ]
+  },
+  {
+    "name": "Gouda cheese",
+    "category": "dairy",
+    "serving": "28g",
+    "calories": 101,
+    "protein_g": 7.1,
+    "carbs_g": 0.6,
+    "fat_g": 7.8,
+    "fiber_g": 0,
+    "sugar_g": 0.6,
+    "tags": [
+      "calcium",
+      "high fat"
+    ]
+  },
+  {
+    "name": "Cream cheese",
+    "category": "dairy",
+    "serving": "28g (2 tbsp)",
+    "calories": 99,
+    "protein_g": 1.7,
+    "carbs_g": 1.6,
+    "fat_g": 9.8,
+    "fiber_g": 0,
+    "sugar_g": 1.4,
+    "tags": [
+      "high fat"
+    ]
+  },
+  {
+    "name": "Heavy cream",
+    "category": "dairy",
+    "serving": "15ml (1 tbsp)",
+    "calories": 52,
+    "protein_g": 0.3,
+    "carbs_g": 0.4,
+    "fat_g": 5.5,
+    "fiber_g": 0,
+    "sugar_g": 0.4,
+    "tags": [
+      "high fat"
+    ]
+  },
+  {
+    "name": "2% milk",
+    "category": "dairy",
+    "serving": "240ml",
+    "calories": 122,
+    "protein_g": 8,
+    "carbs_g": 12,
+    "fat_g": 4.8,
+    "fiber_g": 0,
+    "sugar_g": 12,
+    "tags": [
+      "calcium"
+    ]
+  },
+  {
+    "name": "Kefir (plain)",
+    "category": "dairy",
+    "serving": "240ml",
+    "calories": 110,
+    "protein_g": 9,
+    "carbs_g": 12,
+    "fat_g": 2.5,
+    "fiber_g": 0,
+    "sugar_g": 9,
+    "tags": [
+      "probiotic",
+      "calcium"
+    ]
+  },
+  {
+    "name": "Chicken breast (raw)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 120,
+    "protein_g": 22,
+    "carbs_g": 0,
+    "fat_g": 2.6,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Chicken drumstick (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 172,
+    "protein_g": 28,
+    "carbs_g": 0,
+    "fat_g": 6,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein"
+    ]
+  },
+  {
+    "name": "Beef ribeye (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 291,
+    "protein_g": 24,
+    "carbs_g": 0,
+    "fat_g": 21,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "high fat"
+    ]
+  },
+  {
+    "name": "Ground turkey (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 170,
+    "protein_g": 27,
+    "carbs_g": 0,
+    "fat_g": 7,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean"
+    ]
+  },
+  {
+    "name": "Ham (sliced, lean)",
+    "category": "meat",
+    "serving": "85g (3 slices)",
+    "calories": 83,
+    "protein_g": 13,
+    "carbs_g": 1.6,
+    "fat_g": 2.7,
+    "fiber_g": 0,
+    "sugar_g": 1.3,
+    "tags": [
+      "high protein",
+      "lean"
+    ]
+  },
+  {
+    "name": "Beef liver (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 175,
+    "protein_g": 27,
+    "carbs_g": 4.9,
+    "fat_g": 5,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "iron",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Venison (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 158,
+    "protein_g": 30,
+    "carbs_g": 0,
+    "fat_g": 3.2,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Bison (cooked)",
+    "category": "meat",
+    "serving": "100g",
+    "calories": 166,
+    "protein_g": 29,
+    "carbs_g": 0,
+    "fat_g": 4.5,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean"
+    ]
+  },
+  {
+    "name": "Salmon (raw)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 168,
+    "protein_g": 20,
+    "carbs_g": 0,
+    "fat_g": 9.7,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "omega-3",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Halibut (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 140,
+    "protein_g": 27,
+    "carbs_g": 0,
+    "fat_g": 2.9,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean"
+    ]
+  },
+  {
+    "name": "Trout (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 190,
+    "protein_g": 27,
+    "carbs_g": 0,
+    "fat_g": 8.5,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "omega-3",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Crab (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 97,
+    "protein_g": 19,
+    "carbs_g": 0,
+    "fat_g": 1.5,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Scallops (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 111,
+    "protein_g": 23,
+    "carbs_g": 2,
+    "fat_g": 0.8,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Lobster (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 98,
+    "protein_g": 21,
+    "carbs_g": 0.5,
+    "fat_g": 0.6,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "lean",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Herring (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 203,
+    "protein_g": 23,
+    "carbs_g": 0,
+    "fat_g": 11.5,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "omega-3",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Anchovies (canned in oil)",
+    "category": "fish",
+    "serving": "28g",
+    "calories": 60,
+    "protein_g": 8.2,
+    "carbs_g": 0,
+    "fat_g": 2.8,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "omega-3",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Mussels (cooked)",
+    "category": "fish",
+    "serving": "100g",
+    "calories": 172,
+    "protein_g": 24,
+    "carbs_g": 7.4,
+    "fat_g": 4.5,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "iron"
+    ]
+  },
+  {
+    "name": "Scrambled eggs (2 eggs, no butter)",
+    "category": "egg",
+    "serving": "2 eggs (110g)",
+    "calories": 148,
+    "protein_g": 12,
+    "carbs_g": 1.6,
+    "fat_g": 10,
+    "fiber_g": 0,
+    "sugar_g": 1.2,
+    "tags": [
+      "complete protein"
+    ]
+  },
+  {
+    "name": "Hard boiled egg",
+    "category": "egg",
+    "serving": "1 large (50g)",
+    "calories": 78,
+    "protein_g": 6.3,
+    "carbs_g": 0.6,
+    "fat_g": 5.3,
+    "fiber_g": 0,
+    "sugar_g": 0.6,
+    "tags": [
+      "complete protein"
+    ]
+  },
+  {
+    "name": "Basmati rice (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 121,
+    "protein_g": 2.7,
+    "carbs_g": 26,
+    "fat_g": 0.4,
+    "fiber_g": 0.6,
+    "sugar_g": 0,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Jasmine rice (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 129,
+    "protein_g": 2.7,
+    "carbs_g": 28,
+    "fat_g": 0.3,
+    "fiber_g": 0.4,
+    "sugar_g": 0,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Sourdough bread",
+    "category": "grain",
+    "serving": "1 slice (35g)",
+    "calories": 93,
+    "protein_g": 3.8,
+    "carbs_g": 18,
+    "fat_g": 0.7,
+    "fiber_g": 1,
+    "sugar_g": 0.5,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Rye bread",
+    "category": "grain",
+    "serving": "1 slice (32g)",
+    "calories": 83,
+    "protein_g": 2.7,
+    "carbs_g": 15.5,
+    "fat_g": 1,
+    "fiber_g": 1.9,
+    "sugar_g": 1.4,
+    "tags": [
+      "high carb",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Corn tortilla",
+    "category": "grain",
+    "serving": "1 medium (26g)",
+    "calories": 57,
+    "protein_g": 1.5,
+    "carbs_g": 12,
+    "fat_g": 0.7,
+    "fiber_g": 1.4,
+    "sugar_g": 0.2,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Flour tortilla",
+    "category": "grain",
+    "serving": "1 medium (45g)",
+    "calories": 146,
+    "protein_g": 3.7,
+    "carbs_g": 25,
+    "fat_g": 3.5,
+    "fiber_g": 1.5,
+    "sugar_g": 1.4,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Couscous (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 112,
+    "protein_g": 3.8,
+    "carbs_g": 23,
+    "fat_g": 0.2,
+    "fiber_g": 1.4,
+    "sugar_g": 0.1,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Buckwheat (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 92,
+    "protein_g": 3.4,
+    "carbs_g": 20,
+    "fat_g": 0.6,
+    "fiber_g": 2.7,
+    "sugar_g": 0,
+    "tags": [
+      "high carb",
+      "fiber",
+      "gluten-free"
+    ]
+  },
+  {
+    "name": "Millet (cooked)",
+    "category": "grain",
+    "serving": "100g",
+    "calories": 119,
+    "protein_g": 3.5,
+    "carbs_g": 23,
+    "fat_g": 1,
+    "fiber_g": 1.3,
+    "sugar_g": 0,
+    "tags": [
+      "high carb",
+      "gluten-free"
+    ]
+  },
+  {
+    "name": "Whole grain crackers",
+    "category": "grain",
+    "serving": "5 crackers (20g)",
+    "calories": 79,
+    "protein_g": 2,
+    "carbs_g": 14,
+    "fat_g": 1.5,
+    "fiber_g": 1.6,
+    "sugar_g": 0.5,
+    "tags": [
+      "high carb",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Granola (plain)",
+    "category": "grain",
+    "serving": "45g (1/2 cup)",
+    "calories": 200,
+    "protein_g": 4.4,
+    "carbs_g": 32,
+    "fat_g": 7,
+    "fiber_g": 2.5,
+    "sugar_g": 10,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Kidney beans (cooked)",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 127,
+    "protein_g": 8.7,
+    "carbs_g": 22.8,
+    "fat_g": 0.5,
+    "fiber_g": 6.4,
+    "sugar_g": 0.3,
+    "tags": [
+      "high protein",
+      "fiber",
+      "high carb"
+    ]
+  },
+  {
+    "name": "Pinto beans (cooked)",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 143,
+    "protein_g": 9,
+    "carbs_g": 26.2,
+    "fat_g": 0.7,
+    "fiber_g": 9,
+    "sugar_g": 0.4,
+    "tags": [
+      "high protein",
+      "fiber",
+      "high carb"
+    ]
+  },
+  {
+    "name": "Green peas (cooked)",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 84,
+    "protein_g": 5.4,
+    "carbs_g": 15.6,
+    "fat_g": 0.2,
+    "fiber_g": 5.5,
+    "sugar_g": 5.7,
+    "tags": [
+      "high protein",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Tempeh",
+    "category": "legume",
+    "serving": "100g",
+    "calories": 193,
+    "protein_g": 19,
+    "carbs_g": 9,
+    "fat_g": 11,
+    "fiber_g": 5,
+    "sugar_g": 0,
+    "tags": [
+      "high protein",
+      "plant-based",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Soy milk (unsweetened)",
+    "category": "legume",
+    "serving": "240ml",
+    "calories": 80,
+    "protein_g": 7,
+    "carbs_g": 4,
+    "fat_g": 4,
+    "fiber_g": 1,
+    "sugar_g": 1,
+    "tags": [
+      "high protein",
+      "plant-based"
+    ]
+  },
+  {
+    "name": "Cauliflower (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 25,
+    "protein_g": 1.9,
+    "carbs_g": 5,
+    "fat_g": 0.3,
+    "fiber_g": 2,
+    "sugar_g": 1.9,
+    "tags": [
+      "low cal",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Asparagus (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 20,
+    "protein_g": 2.2,
+    "carbs_g": 3.7,
+    "fat_g": 0.1,
+    "fiber_g": 2.1,
+    "sugar_g": 1.9,
+    "tags": [
+      "low cal",
+      "fiber",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Green beans (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 31,
+    "protein_g": 1.8,
+    "carbs_g": 7,
+    "fat_g": 0.1,
+    "fiber_g": 2.7,
+    "sugar_g": 3.3,
+    "tags": [
+      "low cal",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Celery (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 14,
+    "protein_g": 0.7,
+    "carbs_g": 3,
+    "fat_g": 0.2,
+    "fiber_g": 1.6,
+    "sugar_g": 1.3,
+    "tags": [
+      "low cal",
+      "hydrating"
+    ]
+  },
+  {
+    "name": "Onion (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 40,
+    "protein_g": 1.1,
+    "carbs_g": 9.3,
+    "fat_g": 0.1,
+    "fiber_g": 1.7,
+    "sugar_g": 4.2,
+    "tags": [
+      "low cal"
+    ]
+  },
+  {
+    "name": "Garlic (raw)",
+    "category": "vegetable",
+    "serving": "10g (3 cloves)",
+    "calories": 15,
+    "protein_g": 0.6,
+    "carbs_g": 3.3,
+    "fat_g": 0.1,
+    "fiber_g": 0.2,
+    "sugar_g": 0.1,
+    "tags": [
+      "antioxidant"
+    ]
+  },
+  {
+    "name": "Eggplant (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 25,
+    "protein_g": 1,
+    "carbs_g": 5.9,
+    "fat_g": 0.2,
+    "fiber_g": 3,
+    "sugar_g": 3.5,
+    "tags": [
+      "low cal",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Cabbage (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 25,
+    "protein_g": 1.3,
+    "carbs_g": 5.8,
+    "fat_g": 0.1,
+    "fiber_g": 2.5,
+    "sugar_g": 3.2,
+    "tags": [
+      "low cal",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Brussels sprouts (raw)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 43,
+    "protein_g": 3.4,
+    "carbs_g": 8.9,
+    "fat_g": 0.3,
+    "fiber_g": 3.8,
+    "sugar_g": 2.2,
+    "tags": [
+      "low cal",
+      "fiber",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Corn (cooked)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 96,
+    "protein_g": 3.4,
+    "carbs_g": 21,
+    "fat_g": 1.5,
+    "fiber_g": 2.4,
+    "sugar_g": 4.5,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Beets (cooked)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 44,
+    "protein_g": 1.7,
+    "carbs_g": 10,
+    "fat_g": 0.2,
+    "fiber_g": 2,
+    "sugar_g": 7.6,
+    "tags": [
+      "low cal",
+      "antioxidant"
+    ]
+  },
+  {
+    "name": "Artichoke (cooked)",
+    "category": "vegetable",
+    "serving": "100g",
+    "calories": 53,
+    "protein_g": 2.9,
+    "carbs_g": 12,
+    "fat_g": 0.2,
+    "fiber_g": 5.4,
+    "sugar_g": 1.3,
+    "tags": [
+      "low cal",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Grapes (red/green)",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 69,
+    "protein_g": 0.7,
+    "carbs_g": 18,
+    "fat_g": 0.2,
+    "fiber_g": 0.9,
+    "sugar_g": 15.5,
+    "tags": [
+      "antioxidant"
+    ]
+  },
+  {
+    "name": "Watermelon",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 30,
+    "protein_g": 0.6,
+    "carbs_g": 7.6,
+    "fat_g": 0.2,
+    "fiber_g": 0.4,
+    "sugar_g": 6.2,
+    "tags": [
+      "low cal",
+      "hydrating"
+    ]
+  },
+  {
+    "name": "Pineapple (raw)",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 50,
+    "protein_g": 0.5,
+    "carbs_g": 13,
+    "fat_g": 0.1,
+    "fiber_g": 1.4,
+    "sugar_g": 9.9,
+    "tags": [
+      "vitamin C"
+    ]
+  },
+  {
+    "name": "Peach (raw)",
+    "category": "fruit",
+    "serving": "1 medium (150g)",
+    "calories": 59,
+    "protein_g": 1.4,
+    "carbs_g": 14,
+    "fat_g": 0.4,
+    "fiber_g": 2.3,
+    "sugar_g": 13,
+    "tags": [
+      "low cal",
+      "vitamins"
+    ]
+  },
+  {
+    "name": "Kiwi",
+    "category": "fruit",
+    "serving": "1 medium (76g)",
+    "calories": 46,
+    "protein_g": 0.9,
+    "carbs_g": 11,
+    "fat_g": 0.4,
+    "fiber_g": 2.3,
+    "sugar_g": 6.8,
+    "tags": [
+      "vitamin C",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Pear (raw)",
+    "category": "fruit",
+    "serving": "1 medium (178g)",
+    "calories": 101,
+    "protein_g": 0.6,
+    "carbs_g": 27,
+    "fat_g": 0.2,
+    "fiber_g": 5.5,
+    "sugar_g": 17,
+    "tags": [
+      "fiber"
+    ]
+  },
+  {
+    "name": "Cherries (raw)",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 63,
+    "protein_g": 1.1,
+    "carbs_g": 16,
+    "fat_g": 0.2,
+    "fiber_g": 2.1,
+    "sugar_g": 12.8,
+    "tags": [
+      "antioxidant"
+    ]
+  },
+  {
+    "name": "Pomegranate seeds",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 83,
+    "protein_g": 1.7,
+    "carbs_g": 19,
+    "fat_g": 1.2,
+    "fiber_g": 4,
+    "sugar_g": 13.7,
+    "tags": [
+      "antioxidant",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Raspberries",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 52,
+    "protein_g": 1.2,
+    "carbs_g": 11.9,
+    "fat_g": 0.7,
+    "fiber_g": 6.5,
+    "sugar_g": 4.4,
+    "tags": [
+      "low cal",
+      "fiber",
+      "antioxidant"
+    ]
+  },
+  {
+    "name": "Blackberries",
+    "category": "fruit",
+    "serving": "100g",
+    "calories": 43,
+    "protein_g": 1.4,
+    "carbs_g": 9.6,
+    "fat_g": 0.5,
+    "fiber_g": 5.3,
+    "sugar_g": 4.9,
+    "tags": [
+      "low cal",
+      "fiber",
+      "antioxidant"
+    ]
+  },
+  {
+    "name": "Grapefruit (raw)",
+    "category": "fruit",
+    "serving": "1/2 fruit (123g)",
+    "calories": 52,
+    "protein_g": 0.9,
+    "carbs_g": 13,
+    "fat_g": 0.2,
+    "fiber_g": 2,
+    "sugar_g": 8.5,
+    "tags": [
+      "low cal",
+      "vitamin C"
+    ]
+  },
+  {
+    "name": "Dates (dried)",
+    "category": "fruit",
+    "serving": "3 dates (24g)",
+    "calories": 66,
+    "protein_g": 0.5,
+    "carbs_g": 18,
+    "fat_g": 0.1,
+    "fiber_g": 1.6,
+    "sugar_g": 16,
+    "tags": [
+      "high carb",
+      "quick energy",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Macadamia nuts",
+    "category": "nut",
+    "serving": "28g (about 11)",
+    "calories": 204,
+    "protein_g": 2.2,
+    "carbs_g": 3.9,
+    "fat_g": 21.5,
+    "fiber_g": 2.4,
+    "sugar_g": 1.3,
+    "tags": [
+      "healthy fats",
+      "high fat"
+    ]
+  },
+  {
+    "name": "Pistachios",
+    "category": "nut",
+    "serving": "28g (about 49)",
+    "calories": 159,
+    "protein_g": 5.7,
+    "carbs_g": 7.7,
+    "fat_g": 12.9,
+    "fiber_g": 3,
+    "sugar_g": 2.2,
+    "tags": [
+      "healthy fats",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Brazil nuts",
+    "category": "nut",
+    "serving": "28g (about 6)",
+    "calories": 187,
+    "protein_g": 4.1,
+    "carbs_g": 3.5,
+    "fat_g": 19,
+    "fiber_g": 2.1,
+    "sugar_g": 0.7,
+    "tags": [
+      "healthy fats",
+      "selenium"
+    ]
+  },
+  {
+    "name": "Hemp seeds",
+    "category": "nut",
+    "serving": "30g (3 tbsp)",
+    "calories": 166,
+    "protein_g": 9.5,
+    "carbs_g": 2.6,
+    "fat_g": 14.6,
+    "fiber_g": 1.2,
+    "sugar_g": 0.5,
+    "tags": [
+      "omega-3",
+      "high protein",
+      "healthy fats"
+    ]
+  },
+  {
+    "name": "Pumpkin seeds",
+    "category": "nut",
+    "serving": "28g",
+    "calories": 151,
+    "protein_g": 7,
+    "carbs_g": 5,
+    "fat_g": 13,
+    "fiber_g": 1.7,
+    "sugar_g": 0.4,
+    "tags": [
+      "high protein",
+      "healthy fats",
+      "zinc"
+    ]
+  },
+  {
+    "name": "Sesame seeds",
+    "category": "nut",
+    "serving": "9g (1 tbsp)",
+    "calories": 52,
+    "protein_g": 1.6,
+    "carbs_g": 2.1,
+    "fat_g": 4.5,
+    "fiber_g": 1.1,
+    "sugar_g": 0,
+    "tags": [
+      "healthy fats",
+      "calcium"
+    ]
+  },
+  {
+    "name": "Tahini",
+    "category": "nut",
+    "serving": "15g (1 tbsp)",
+    "calories": 89,
+    "protein_g": 2.6,
+    "carbs_g": 3.2,
+    "fat_g": 8,
+    "fiber_g": 1.4,
+    "sugar_g": 0.1,
+    "tags": [
+      "healthy fats",
+      "calcium"
+    ]
+  },
+  {
+    "name": "Almond butter",
+    "category": "nut",
+    "serving": "32g (2 tbsp)",
+    "calories": 196,
+    "protein_g": 6.7,
+    "carbs_g": 6.1,
+    "fat_g": 17.8,
+    "fiber_g": 3.3,
+    "sugar_g": 1.8,
+    "tags": [
+      "healthy fats",
+      "high protein"
+    ]
+  },
+  {
+    "name": "Ghee",
+    "category": "oil",
+    "serving": "14g (1 tbsp)",
+    "calories": 123,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 14,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "high fat",
+      "saturated"
+    ]
+  },
+  {
+    "name": "Canola oil",
+    "category": "oil",
+    "serving": "14g (1 tbsp)",
+    "calories": 124,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 14,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "healthy fats"
+    ]
+  },
+  {
+    "name": "Casein protein powder",
+    "category": "snack",
+    "serving": "30g (1 scoop)",
+    "calories": 110,
+    "protein_g": 24,
+    "carbs_g": 2,
+    "fat_g": 1,
+    "fiber_g": 0,
+    "sugar_g": 1,
+    "tags": [
+      "high protein",
+      "supplement",
+      "slow release"
+    ]
+  },
+  {
+    "name": "Protein bar (generic)",
+    "category": "snack",
+    "serving": "60g (1 bar)",
+    "calories": 200,
+    "protein_g": 20,
+    "carbs_g": 22,
+    "fat_g": 7,
+    "fiber_g": 5,
+    "sugar_g": 6,
+    "tags": [
+      "high protein",
+      "supplement"
+    ]
+  },
+  {
+    "name": "Oat bar (granola bar)",
+    "category": "snack",
+    "serving": "35g (1 bar)",
+    "calories": 140,
+    "protein_g": 2.4,
+    "carbs_g": 24,
+    "fat_g": 4.5,
+    "fiber_g": 1.5,
+    "sugar_g": 10,
+    "tags": [
+      "high carb"
+    ]
+  },
+  {
+    "name": "Popcorn (air-popped)",
+    "category": "snack",
+    "serving": "28g (3 cups)",
+    "calories": 108,
+    "protein_g": 3.6,
+    "carbs_g": 22,
+    "fat_g": 1.2,
+    "fiber_g": 4.3,
+    "sugar_g": 0.2,
+    "tags": [
+      "low cal",
+      "fiber",
+      "high carb"
+    ]
+  },
+  {
+    "name": "Pita bread (whole wheat)",
+    "category": "snack",
+    "serving": "1 small (28g)",
+    "calories": 74,
+    "protein_g": 3,
+    "carbs_g": 15,
+    "fat_g": 0.7,
+    "fiber_g": 2.2,
+    "sugar_g": 0.5,
+    "tags": [
+      "high carb",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Dried cranberries",
+    "category": "snack",
+    "serving": "40g (1/4 cup)",
+    "calories": 130,
+    "protein_g": 0,
+    "carbs_g": 33,
+    "fat_g": 0.5,
+    "fiber_g": 1.6,
+    "sugar_g": 26,
+    "tags": [
+      "high carb",
+      "high sugar"
+    ]
+  },
+  {
+    "name": "Beef jerky (plain)",
+    "category": "snack",
+    "serving": "28g",
+    "calories": 81,
+    "protein_g": 11,
+    "carbs_g": 5.6,
+    "fat_g": 1,
+    "fiber_g": 0.4,
+    "sugar_g": 4,
+    "tags": [
+      "high protein",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Mixed nuts",
+    "category": "snack",
+    "serving": "28g",
+    "calories": 173,
+    "protein_g": 5,
+    "carbs_g": 6,
+    "fat_g": 16,
+    "fiber_g": 1.8,
+    "sugar_g": 1,
+    "tags": [
+      "healthy fats",
+      "high fat"
+    ]
+  },
+  {
+    "name": "Green tea (unsweetened)",
+    "category": "drink",
+    "serving": "240ml",
+    "calories": 2,
+    "protein_g": 0,
+    "carbs_g": 0.5,
+    "fat_g": 0,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "zero cal",
+      "antioxidant",
+      "caffeine"
+    ]
+  },
+  {
+    "name": "Whole milk latte (16oz)",
+    "category": "drink",
+    "serving": "480ml",
+    "calories": 250,
+    "protein_g": 14,
+    "carbs_g": 25,
+    "fat_g": 10,
+    "fiber_g": 0,
+    "sugar_g": 21,
+    "tags": [
+      "calcium",
+      "protein"
+    ]
+  },
+  {
+    "name": "Oat milk (unsweetened)",
+    "category": "drink",
+    "serving": "240ml",
+    "calories": 100,
+    "protein_g": 3,
+    "carbs_g": 15,
+    "fat_g": 3.5,
+    "fiber_g": 1.9,
+    "sugar_g": 7,
+    "tags": [
+      "plant-based",
+      "fiber"
+    ]
+  },
+  {
+    "name": "Almond milk (unsweetened)",
+    "category": "drink",
+    "serving": "240ml",
+    "calories": 37,
+    "protein_g": 1,
+    "carbs_g": 1.4,
+    "fat_g": 3,
+    "fiber_g": 0.5,
+    "sugar_g": 0,
+    "tags": [
+      "low cal",
+      "plant-based",
+      "low fat"
+    ]
+  },
+  {
+    "name": "Coconut water",
+    "category": "drink",
+    "serving": "240ml",
+    "calories": 46,
+    "protein_g": 1.7,
+    "carbs_g": 8.9,
+    "fat_g": 0.5,
+    "fiber_g": 2.6,
+    "sugar_g": 6,
+    "tags": [
+      "electrolytes",
+      "potassium"
+    ]
+  },
+  {
+    "name": "Whole milk chocolate (240ml)",
+    "category": "drink",
+    "serving": "240ml",
+    "calories": 208,
+    "protein_g": 8,
+    "carbs_g": 32,
+    "fat_g": 8,
+    "fiber_g": 1,
+    "sugar_g": 25,
+    "tags": [
+      "calcium",
+      "recovery"
+    ]
+  },
+  {
+    "name": "Sports drink (e.g. Gatorade)",
+    "category": "drink",
+    "serving": "360ml",
+    "calories": 80,
+    "protein_g": 0,
+    "carbs_g": 21,
+    "fat_g": 0,
+    "fiber_g": 0,
+    "sugar_g": 21,
+    "tags": [
+      "high carb",
+      "electrolytes",
+      "high sugar"
+    ]
+  },
+  {
+    "name": "Espresso (single shot)",
+    "category": "drink",
+    "serving": "30ml",
+    "calories": 3,
+    "protein_g": 0.1,
+    "carbs_g": 0.3,
+    "fat_g": 0.1,
+    "fiber_g": 0,
+    "sugar_g": 0,
+    "tags": [
+      "zero cal",
+      "caffeine"
+    ]
+  }
+]

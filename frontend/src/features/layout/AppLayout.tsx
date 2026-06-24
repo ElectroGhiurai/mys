@@ -45,6 +45,16 @@ export function AppLayout() {
     </svg>
   )
 
+  const workoutIcon = (
+    <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M18 8h2a1 1 0 0 1 1 1v6a1 1 0 0 1-1 1h-2" />
+      <path d="M6 8H4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2" />
+      <rect x="8" y="11" width="8" height="2" rx="1" />
+      <rect x="6" y="6" width="2" height="12" rx="1" />
+      <rect x="16" y="6" width="2" height="12" rx="1" />
+    </svg>
+  )
+
   const logoutIcon = (
     <svg className="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
@@ -90,7 +100,11 @@ export function AppLayout() {
       <aside className={`app-sidebar ${isCollapsed ? 'collapsed' : ''} ${isMobileOpen ? 'mobile-open' : ''}`}>
         <div className="sidebar-header">
           <div className="brand-box">
-            <div className="brand-icon">⚡</div>
+            <div className="brand-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" fill="var(--accent-color)" />
+              </svg>
+            </div>
             <span className="brand-name">MYS Nutrition</span>
           </div>
           <button className="collapse-btn" onClick={toggleCollapse} aria-label="Collapse sidebar">
@@ -113,6 +127,10 @@ export function AppLayout() {
           <NavLink to="/weight" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
             {weightIcon}
             <span className="nav-label">Weight Tracker</span>
+          </NavLink>
+          <NavLink to="/workout" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} onClick={closeMobile}>
+            {workoutIcon}
+            <span className="nav-label">Workout Tracker</span>
           </NavLink>
         </nav>
 
