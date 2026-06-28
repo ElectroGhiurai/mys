@@ -1,0 +1,502 @@
+.weight-tracker-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: weight-fade-in 0.4s ease;
+}
+
+@keyframes weight-fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.weight-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .weight-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.weight-page-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin: 0 0 8px 0;
+}
+
+.weight-page-subtitle {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.goal-setup-toggle-btn {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.goal-setup-toggle-btn:hover {
+  background-color: var(--surface-color-2);
+  border-color: var(--accent-color);
+  color: var(--heading-color);
+}
+
+/* ─── Alerts ────────────────────────────────────────────────────────────── */
+.weight-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.weight-alert-error {
+  background-color: color-mix(in srgb, var(--error-color) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--error-color) 20%, transparent);
+  color: color-mix(in srgb, var(--error-color) 70%, white);
+}
+
+.weight-alert-success {
+  background-color: color-mix(in srgb, var(--success-color) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--success-color) 20%, transparent);
+  color: color-mix(in srgb, var(--success-color) 70%, white);
+}
+
+.inner-alert {
+  margin-bottom: 16px;
+}
+
+/* ─── Goals Setup Panel ─────────────────────────────────────────────────── */
+.goals-setup-panel {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.panel-title {
+  font-size: 1.25rem;
+  color: var(--heading-color);
+  margin: 0 0 16px 0;
+}
+
+.goals-setup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.weight-text-input {
+  background-color: var(--surface-color-2);
+  border: 1px solid var(--border-color);
+  color: var(--heading-color);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: var(--transition);
+  outline: none;
+}
+
+.weight-text-input:focus {
+  border-color: var(--accent-color);
+}
+
+.weight-text-input::-webkit-outer-spin-button,
+.weight-text-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.weight-text-input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.save-goals-btn {
+  background-color: var(--accent-color);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.save-goals-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+.cancel-goals-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cancel-goals-btn:hover {
+  background-color: var(--surface-color-2);
+}
+
+/* ─── Metrics Grid ──────────────────────────────────────────────────────── */
+.weight-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .weight-metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .weight-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.metric-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: var(--transition);
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.metric-card.highlight-card {
+  background: radial-gradient(ellipse at bottom, rgba(91, 114, 244, 0.08), transparent);
+  border-color: rgba(91, 114, 244, 0.3);
+}
+
+.metric-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.metric-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.loss-text {
+  color: var(--success-color);
+}
+
+.gain-text {
+  color: var(--info-color);
+}
+
+/* ─── Progress Bar Card ─────────────────────────────────────────────────── */
+.weight-progress-bar-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progress-bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.progress-percentage-label {
+  color: var(--text-color);
+}
+
+.progress-percentage-value {
+  color: var(--accent-color);
+}
+
+.progress-track {
+  height: 10px;
+  background-color: var(--surface-color-2);
+  border-radius: 5px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--accent-color);
+  border-radius: 5px;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ─── Dashboard Columns Layout ───────────────────────────────────────────── */
+.dashboard-columns {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .dashboard-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.weight-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: 24px;
+}
+
+.card-title {
+  font-size: 1.15rem;
+  color: var(--heading-color);
+  margin: 0 0 20px 0;
+  font-weight: 700;
+}
+
+.weight-log-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.submit-log-btn {
+  background-color: var(--accent-color);
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 8px;
+}
+
+.submit-log-btn:hover {
+  background-color: var(--accent-hover);
+}
+
+/* ─── Chart Card ────────────────────────────────────────────────────────── */
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.chart-svg-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+}
+
+.chart-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--text-muted);
+  gap: 16px;
+}
+
+.placeholder-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--border-color);
+}
+
+/* SVG specific styles */
+.chart-dot-group circle:hover {
+  fill: var(--heading-color);
+  r: 6;
+  transition: r 0.2s ease, fill 0.2s ease;
+}
+
+/* ─── History Card ───────────────────────────────────────────────────────── */
+.no-history-text {
+  color: var(--text-muted);
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.history-table-wrapper {
+  overflow-x: auto;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.history-table th {
+  padding: 12px 16px;
+  border-bottom: 2px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.history-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.history-table tbody tr:hover {
+  background-color: var(--surface-color-2);
+}
+
+.font-semibold {
+  font-weight: 500;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.text-accent {
+  color: var(--accent-color);
+}
+
+.text-right {
+  text-align: right;
+}
+
+.delete-log-btn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+}
+
+.delete-log-btn:hover {
+  color: var(--error-color);
+  background-color: color-mix(in srgb, var(--error-color) 8%, transparent);
+}
+
+.delete-log-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Inline delete confirmation buttons */
+.inline-confirm-buttons {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.confirm-delete-btn-inline {
+  background-color: var(--error-color);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.confirm-delete-btn-inline:hover {
+  background-color: color-mix(in srgb, var(--error-color) 85%, black);
+}
+
+.cancel-delete-btn-inline {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cancel-delete-btn-inline:hover {
+  background-color: var(--surface-color-2);
+}

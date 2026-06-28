@@ -144,4 +144,38 @@ public class TrackerController {
         log.info("Updated nutrition goals successfully for userId={} values={}", user.getId(), data);
         return ResponseEntity.ok(Map.of("data", data));
     }
+
+    @GetMapping("/foods/favourites")
+    public ResponseEntity<Map<String, List<FoodItemDto>>> getFavouriteFoods(
+            @AuthenticationPrincipal User user) {
+        log.info("Fetching favorite foods for userId={}", user.getId());
+        List<FoodItemDto> data = trackerService.getFavouriteFoods(user);
+        return ResponseEntity.ok(Map.of("data", data));
+    }
+
+    @PostMapping("/foods/favourites")
+    public ResponseEntity<Map<String, FoodItemDto>> addFavouriteFood(
+            @AuthenticationPrincipal User user,
+            @Valid @RequestBody AddFavoriteFoodRequest req) {
+        log.info("Adding favorite food for userId={} name={}", user.getId(), req.name());
+        FoodItemDto data = trackerService.addFavouriteFood(user, req);
+        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("data", data));
+    }
+
+    @DeleteMapping("/foods/favourites/{id}")
+    public ResponseEntity<Void> deleteFavouriteFood(
+            @AuthenticationPrincipal User user,
+            @PathVariable(name = "id") UUID id) {
+        log.info("Deleting favorite food for userId={} id={}", user.getId(), id);
+        trackerService.deleteFavouriteFood(user, id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/foods/frequent")
+    public ResponseEntity<Map<String, List<FoodItemDto>>> getFrequentFoods(
+            @AuthenticationPrincipal User user) {
+        log.info("Fetching frequent foods for userId={}", user.getId());
+        List<FoodItemDto> data = trackerService.getFrequentFoods(user);
+        return ResponseEntity.ok(Map.of("data", data));
+    }
 }

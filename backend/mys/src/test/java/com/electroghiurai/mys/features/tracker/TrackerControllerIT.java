@@ -46,6 +46,7 @@ class TrackerControllerIT {
 
     @BeforeEach
     void setUp() {
+        objectMapper.findAndRegisterModules();
         trackedIngredientRepository.deleteAll();
         userRepository.deleteAll();
 
@@ -70,13 +71,13 @@ class TrackerControllerIT {
     @Test
     void endpoints_withoutAuth_return401() throws Exception {
         mockMvc.perform(get("/api/v1/foods"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
 
         mockMvc.perform(get("/api/v1/tracker?date=2026-06-22"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
 
         mockMvc.perform(get("/api/v1/goals"))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isForbidden());
     }
 
     @Test
@@ -234,5 +235,51 @@ class TrackerControllerIT {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data", hasSize(3)))
                 .andExpect(jsonPath("$.data[*].name", containsInAnyOrder("Apple", "Banana", "Orange")));
+    }
+
+    @Test
+    void getFavouriteFoods_returnsUserSpecificAggregatedFavourites() throws Exception {
+        LocalDate today = LocalDate.now();
+
+        // Seed some tracked foods for user 1 (Apple twice, Banana once)
+        TrackedIngredient ti1 = new TrackedIngredient();
+        ti1.setUser(testUser1);
+        ti1.setName("Apple");
+        ti1.setWeight(100.0);
+        ti1.setCaloriesPer100g(52.0);
+        ti1.setProteinPer100g(0.3);
+        ti1.setCarbsPer100g(14.0);
+        ti1.setFatPer100g(0.2);
+        ti1.setTrackedDate(today);
+        trackedIngredientRepository.save(ti1);
+
+        TrackedIngredient ti2 = new TrackedIngredient();
+        ti2.setUser(testUser1);
+        ti2.setName("Apple");
+        ti2.setWeight(150.0);
+        ti2.setCaloriesPer100g(52.0);
+        ti2.setProteinPer100g(0.3);
+        ti2.setCarbsPer100g(14.0);
+        ti2.setFatPer100g(0.2);
+        ti2.setTrackedDate(today);
+        trackedIngredientRepository.save(ti2);
+
+        TrackedIngredient ti3 = new TrackedIngredient();
+        ti3.setUser(testUser1);
+        ti3.setName("Banana");
+        ti3.setWeight(120.0);
+        ti3.setCaloriesPer100g(89.0);
+        ti3.setProteinPer100g(1.1);
+        ti3.setCarbsPer100g(22.8);
+        ti3.setFatPer100g(0.3);
+        ti3.setTrackedDate(today);
+        trackedIngredientRepository.save(ti3);
+
+        mockMvc.perform(get("/api/v1/foods/favourites")
+                        .header("Authorization", "Bearer " + tokenUser1))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.data", hasSize(2)))
+                .andExpect(jsonPath("$.data[0].name", is("Apple"))) // Apple should be first (frequency 2)
+                .andExpect(jsonPath("$.data[1].name", is("Banana"))); // Banana second (frequency 1)
     }
 }

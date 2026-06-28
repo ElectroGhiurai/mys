@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter
+    xmlns="https://github.com/spotbugs/filter/3.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/filter/3.0.0/src/filter/filter.xsd">
+
+    <!-- Ignore Expose Representation (EI_EXPOSE_REP / EI_EXPOSE_REP2) -->
+    <Match>
+        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
+    </Match>
+
+    <!-- Ignore uncalled private methods (false positive on JPA pre-persist/pre-update hooks) -->
+    <Match>
+        <Bug pattern="UPM_UNCALLED_PRIVATE_METHOD"/>
+    </Match>
+
+    <!-- Ignore logger CRLF injection warnings -->
+    <Match>
+        <Bug pattern="CRLF_INJECTION_LOGS"/>
+    </Match>
+
+    <!-- Ignore String case conversion warning -->
+    <Match>
+        <Bug pattern="DM_CONVERT_CASE"/>
+    </Match>
+
+    <!-- Ignore Spring Controller endpoint warnings -->
+    <Match>
+        <Bug pattern="SPRING_ENDPOINT"/>
+    </Match>
+
+    <!-- Ignore CSRF disabled warning (intentional for JWT stateless REST API) -->
+    <Match>
+        <Bug pattern="SPRING_CSRF_PROTECTION_DISABLED"/>
+    </Match>
+
+    <!-- Ignore generic throws clause/catch warning -->
+    <Match>
+        <Bug pattern="THROWS_METHOD_THROWS_CLAUSE_BASIC_EXCEPTION,REC_CATCH_EXCEPTION"/>
+    </Match>
+
+    <!-- Ignore constructor throwing exceptions (Finalizer attack warning) -->
+    <Match>
+        <Bug pattern="CT_CONSTRUCTOR_THROW"/>
+    </Match>
+
+    <!-- Ignore serialVersionUID warning on Serializable classes -->
+    <Match>
+        <Bug pattern="SE_NO_SERIALVERSIONID"/>
+    </Match>
+
+    <!-- Ignore Unicode / Inner class / Throws RuntimeException warnings -->
+    <Match>
+        <Bug pattern="IMPROPER_UNICODE,SIC_INNER_SHOULD_BE_STATIC_ANON,THROWS_METHOD_THROWS_RUNTIMEEXCEPTION"/>
+    </Match>
+</FindBugsFilter>

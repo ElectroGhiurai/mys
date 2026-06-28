@@ -21,6 +21,7 @@ class TrackerServiceTest {
     private CustomFoodRepository customFoodRepository;
     private TrackedIngredientRepository trackedIngredientRepository;
     private UserRepository userRepository;
+    private FavoriteFoodRepository favoriteFoodRepository;
     private TrackerService trackerService;
     private User testUser;
 
@@ -29,8 +30,15 @@ class TrackerServiceTest {
         customFoodRepository = mock(CustomFoodRepository.class);
         trackedIngredientRepository = mock(TrackedIngredientRepository.class);
         userRepository = mock(UserRepository.class);
+        favoriteFoodRepository = mock(FavoriteFoodRepository.class);
         
-        trackerService = new TrackerService(customFoodRepository, trackedIngredientRepository, userRepository, new ObjectMapper());
+        trackerService = new TrackerService(
+            customFoodRepository,
+            trackedIngredientRepository,
+            userRepository,
+            new ObjectMapper(),
+            favoriteFoodRepository
+        );
 
         testUser = new User();
         // Set properties
@@ -53,21 +61,21 @@ class TrackerServiceTest {
 
         // Assert
         assertFalse(results.isEmpty());
-        assertTrue(results.stream().anyMatch(f -> f.name().equalsIgnoreCase("Chicken Breast")));
+        assertTrue(results.stream().anyMatch(f -> f.name().equalsIgnoreCase("Chicken breast (cooked)")));
     }
 
     @Test
     void searchFoods_withQuery_filtersDefaultsAndCustom() {
         // Arrange
-        when(customFoodRepository.findByUserAndNameContainingIgnoreCase(testUser, "oat"))
+        when(customFoodRepository.findByUserAndNameContainingIgnoreCase(testUser, "oats (dry)"))
             .thenReturn(Collections.emptyList());
 
         // Act
-        List<FoodItemDto> results = trackerService.searchFoods(testUser, "oat");
+        List<FoodItemDto> results = trackerService.searchFoods(testUser, "oats (dry)");
 
         // Assert
         assertEquals(1, results.size());
-        assertEquals("Oats", results.get(0).name());
+        assertEquals("Oats (dry)", results.get(0).name());
         assertFalse(results.get(0).isCustom());
     }
 
@@ -204,7 +212,7 @@ class TrackerServiceTest {
     @Test
     void updateGoals_savesAndReturnsGoals() {
         // Arrange
-        UpdateGoalRequest req = new UpdateGoalRequest(1800.0, 140.0, 180.0, 60.0);
+        UpdateGoalRequest req = new UpdateGoalRequest(1800.0, 140.0, 180.0, 60.0, null, null);
 
         // Act
         GoalDto result = trackerService.updateGoals(testUser, req);
@@ -216,5 +224,105 @@ class TrackerServiceTest {
         verify(testUser).setFatGoal(60.0);
         verify(userRepository).save(testUser);
         assertNotNull(result);
+    }
+
+    @Test
+    void getFrequentFoods_aggregatesAndSortsByFrequency() {
+        // Arrange
+        TrackedIngredient ti1 = new TrackedIngredient();
+        ti1.setId(UUID.randomUUID());
+        ti1.setName("Chicken breast (cooked)");
+        ti1.setCaloriesPer100g(165.0);
+        ti1.setProteinPer100g(31.0);
+        ti1.setCarbsPer100g(0.0);
+        ti1.setFatPer100g(3.6);
+
+        TrackedIngredient ti2 = new TrackedIngredient();
+        ti2.setId(UUID.randomUUID());
+        ti2.setName("Chicken breast (cooked)");
+        ti2.setCaloriesPer100g(165.0);
+        ti2.setProteinPer100g(31.0);
+        ti2.setCarbsPer100g(0.0);
+        ti2.setFatPer100g(3.6);
+
+        TrackedIngredient ti3 = new TrackedIngredient();
+        ti3.setId(UUID.randomUUID());
+        ti3.setName("Banana");
+        ti3.setCaloriesPer100g(89.0);
+        ti3.setProteinPer100g(1.1);
+        ti3.setCarbsPer100g(23.0);
+        ti3.setFatPer100g(0.3);
+
+        when(trackedIngredientRepository.findTop200ByUserOrderByTrackedDateDesc(testUser))
+            .thenReturn(List.of(ti1, ti2, ti3));
+
+        // Act
+        List<FoodItemDto> result = trackerService.getFrequentFoods(testUser);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(2, result.size());
+        assertEquals("Chicken breast (cooked)", result.get(0).name()); // highest frequency (2)
+        assertEquals("Banana", result.get(1).name()); // lower frequency (1)
+    }
+
+    @Test
+    void getFavouriteFoods_returnsManualFavorites() {
+        // Arrange
+        FavoriteFood ff = new FavoriteFood();
+        ff.setId(UUID.randomUUID());
+        ff.setName("Blueberries");
+        ff.setCalories(57.0);
+        ff.setProtein(0.7);
+        ff.setCarbs(14.0);
+        ff.setFat(0.3);
+        ff.setUser(testUser);
+
+        when(favoriteFoodRepository.findByUser(testUser)).thenReturn(List.of(ff));
+
+        // Act
+        List<FoodItemDto> result = trackerService.getFavouriteFoods(testUser);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        assertEquals("Blueberries", result.get(0).name());
+    }
+
+    @Test
+    void addFavouriteFood_savesFavoriteIfNotPresent() {
+        // Arrange
+        AddFavoriteFoodRequest req = new AddFavoriteFoodRequest("Strawberries", 32.0, 0.7, 7.7, 0.3);
+        when(favoriteFoodRepository.findByUserAndNameIgnoreCase(testUser, "Strawberries")).thenReturn(Optional.empty());
+        when(favoriteFoodRepository.save(any(FavoriteFood.class))).thenAnswer(inv -> {
+            FavoriteFood saved = inv.getArgument(0);
+            saved.setId(UUID.randomUUID());
+            return saved;
+        });
+
+        // Act
+        FoodItemDto result = trackerService.addFavouriteFood(testUser, req);
+
+        // Assert
+        assertNotNull(result);
+        assertEquals("Strawberries", result.name());
+        verify(favoriteFoodRepository).save(any(FavoriteFood.class));
+    }
+
+    @Test
+    void deleteFavouriteFood_ofSelf_succeeds() {
+        // Arrange
+        UUID favId = UUID.randomUUID();
+        FavoriteFood ff = new FavoriteFood();
+        ff.setId(favId);
+        ff.setUser(testUser);
+
+        when(favoriteFoodRepository.findById(favId)).thenReturn(Optional.of(ff));
+
+        // Act
+        trackerService.deleteFavouriteFood(testUser, favId);
+
+        // Assert
+        verify(favoriteFoodRepository).delete(ff);
     }
 }

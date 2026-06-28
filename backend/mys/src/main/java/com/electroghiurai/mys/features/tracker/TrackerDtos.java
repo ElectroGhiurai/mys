@@ -92,7 +92,9 @@ public final class TrackerDtos {
         Double calorieGoal,
         Double proteinGoal,
         Double carbGoal,
-        Double fatGoal
+        Double fatGoal,
+        Double startingWeightKg,
+        Double targetWeightKg
     ) {}
 
     public record UpdateGoalRequest(
@@ -110,7 +112,15 @@ public final class TrackerDtos {
 
         @NotNull(message = "Fat goal is required")
         @DecimalMin(value = "5.0", message = "Fat goal must be at least 5g")
-        Double fatGoal
+        Double fatGoal,
+
+        @DecimalMin(value = "20.0", message = "Starting weight must be at least 20 kg")
+        @DecimalMax(value = "300.0", message = "Starting weight must be at most 300 kg")
+        Double startingWeightKg,
+
+        @DecimalMin(value = "20.0", message = "Target weight must be at least 20 kg")
+        @DecimalMax(value = "300.0", message = "Target weight must be at most 300 kg")
+        Double targetWeightKg
     ) {}
 
     public record DailySummaryDto(
@@ -118,6 +128,37 @@ public final class TrackerDtos {
         Double calories,
         Double protein,
         Double carbs,
+        Double fat
+    ) {}
+
+    public record FavoriteFoodDto(
+        UUID id,
+        String name,
+        Double calories,
+        Double protein,
+        Double carbs,
+        Double fat
+    ) {}
+
+    public record AddFavoriteFoodRequest(
+        @NotBlank(message = "Name is required")
+        @Size(max = 100, message = "Name must be under 100 characters")
+        String name,
+
+        @NotNull(message = "Calories is required")
+        @DecimalMin(value = "0.0", message = "Calories cannot be negative")
+        Double calories,
+
+        @NotNull(message = "Protein is required")
+        @DecimalMin(value = "0.0", message = "Protein cannot be negative")
+        Double protein,
+
+        @NotNull(message = "Carbs is required")
+        @DecimalMin(value = "0.0", message = "Carbs cannot be negative")
+        Double carbs,
+
+        @NotNull(message = "Fat is required")
+        @DecimalMin(value = "0.0", message = "Fat cannot be negative")
         Double fat
     ) {}
 }

@@ -42,6 +42,8 @@ export function TrackerPage() {
   const [fetchedRange, setFetchedRange] = useState<{ start: string; end: string } | null>(null)
   const [customFoods, setCustomFoods] = useState<FoodItem[]>([])
   const [goals, setGoals] = useState<GoalTargets>({ ...TARGETS })
+  const [favourites, setFavourites] = useState<FoodItem[]>([])
+  const [frequentFoods, setFrequentFoods] = useState<FoodItem[]>([])
 
   // Search state
   const [searchQuery, setSearchQuery] = useState<string>('')
@@ -87,17 +89,38 @@ export function TrackerPage() {
     }
   }, [])
 
-  // 1. Load custom foods and goals once on mount / request change
+  // 1. Load custom foods, goals, favorites, and frequent foods on mount (defensive loading)
   useEffect(() => {
     let active = true
     async function loadInitial() {
+      const customPromise = trackerApi.getCustomFoods(request).catch(err => {
+        console.error('Failed to load custom foods', err)
+        return []
+      })
+      const goalsPromise = trackerApi.getGoals(request).catch(err => {
+        console.error('Failed to load goals', err)
+        return null
+      })
+      const favouritesPromise = trackerApi.getFavourites(request).catch(err => {
+        console.error('Failed to load favorites', err)
+        return []
+      })
+      const frequentPromise = trackerApi.getFrequent(request).catch(err => {
+        console.error('Failed to load frequent foods', err)
+        return []
+      })
+
       try {
-        const [customData, goalsData] = await Promise.all([
-          trackerApi.getCustomFoods(request),
-          trackerApi.getGoals(request),
+        const [customData, goalsData, favouritesData, frequentData] = await Promise.all([
+          customPromise,
+          goalsPromise,
+          favouritesPromise,
+          frequentPromise,
         ])
         if (active) {
           setCustomFoods(customData)
+          setFavourites(favouritesData)
+          setFrequentFoods(frequentData)
           if (goalsData) {
             setGoals({
               calories: goalsData.calorieGoal,
@@ -108,7 +131,7 @@ export function TrackerPage() {
           }
         }
       } catch (err) {
-        console.error('Failed to load initial custom foods/goals', err)
+        console.error('Unexpected error loading initial data', err)
       }
     }
     void loadInitial()
@@ -116,6 +139,25 @@ export function TrackerPage() {
       active = false
     }
   }, [request])
+
+  // Sync frequent foods when logged/tracked ingredients change
+  useEffect(() => {
+    let active = true
+    async function refreshFrequent() {
+      try {
+        const frequentData = await trackerApi.getFrequent(request)
+        if (active) {
+          setFrequentFoods(frequentData)
+        }
+      } catch (err) {
+        console.error('Failed to refresh frequent foods list', err)
+      }
+    }
+    void refreshFrequent()
+    return () => {
+      active = false
+    }
+  }, [rangeIngredients, request])
 
   // 2. Manage Range Fetching
   useEffect(() => {
@@ -218,6 +260,27 @@ export function TrackerPage() {
   const suggestions = getSuggestions(suggestionInput, goals)
 
   // Handlers
+  const handleToggleFavourite = async (food: FoodItem) => {
+    const existing = favourites.find(fav => fav.name.toLowerCase() === food.name.toLowerCase())
+    try {
+      if (existing) {
+        await trackerApi.deleteFavourite(request, existing.id)
+        setFavourites(prev => prev.filter(fav => fav.id !== existing.id))
+      } else {
+        const response = await trackerApi.addFavourite(request, {
+          name: food.name,
+          calories: food.calories,
+          protein: food.protein,
+          carbs: food.carbs,
+          fat: food.fat,
+        })
+        setFavourites(prev => [...prev, response])
+      }
+    } catch (err) {
+      console.error('Failed to toggle favorite status', err)
+    }
+  }
+
   const handleDateChange = (days: number) => {
     const [year, month, day] = selectedDate.split('-').map(Number)
     if (!year || !month || !day) return
@@ -437,7 +500,16 @@ export function TrackerPage() {
             <div className={`log-content-area${isLoading ? ' log-fading' : ''}`}>
               {trackedIngredients.length === 0 && !isLoading ? (
                 <div className="empty-log-placeholder">
-                  <span className="empty-icon">🥗</span>
+                  <span className="empty-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: '48px', height: '48px', opacity: 0.6, marginBottom: '12px' }}>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 7H8a15.3 15.3 0 0 1 4-7z" />
+                      <path d="M2 12h20" />
+                      <path d="M4 12v1a8 8 0 0 0 16 0v-1" />
+                      <path d="M12 12v3" />
+                      <path d="M8 12c.5 1 1 2 2 2" />
+                      <path d="M16 12c-.5 1-1 2-2 2" />
+                    </svg>
+                  </span>
                   <p>No ingredients logged for today.</p>
                   <p className="subtext">Use the lookup panel to search and add food items.</p>
                 </div>
@@ -551,6 +623,9 @@ export function TrackerPage() {
                   setAddWeight={setAddWeight}
                   handleSelectFood={handleSelectFood}
                   handleAddFood={handleAddFood}
+                  favourites={favourites}
+                  frequentFoods={frequentFoods}
+                  handleToggleFavourite={handleToggleFavourite}
                 />
               )}
 

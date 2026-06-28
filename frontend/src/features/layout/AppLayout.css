@@ -14,6 +14,11 @@
   --heading-color: #edf0fa;
   --border-radius: 12px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --error-color: #ef4444;
+  --error-hover: #dc2626;
+  --success-color: #10b981;
+  --success-hover: #059669;
+  --info-color: #3b82f6;
 }
 
 .app-shell {
@@ -139,6 +144,12 @@
   color: var(--accent-color);
   border: 1px solid rgba(91, 114, 244, 0.2);
   flex-shrink: 0;
+}
+
+.brand-icon svg {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-color);
 }
 
 .brand-name {

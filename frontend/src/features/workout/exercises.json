@@ -1,0 +1,2037 @@
+[
+  {
+    "name": "Push-up",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "front deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Start in a high plank. Lower your chest to the floor keeping elbows at ~45°. Push back up to full arm extension."
+  },
+  {
+    "name": "Bench press",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "front deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "description": "Lie on a bench, grip barbell slightly wider than shoulder-width. Lower bar to mid-chest, press back up to lockout."
+  },
+  {
+    "name": "Dumbbell fly",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "horizontal_adduction"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "description": "Lie on a bench, arms extended above chest. Lower dumbbells in wide arcs until you feel a chest stretch, then bring them back together."
+  },
+  {
+    "name": "Incline bench press",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "upper chest"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "description": "Set bench to 30-45°. Same motion as flat bench press but targets the upper chest more."
+  },
+  {
+    "name": "Cable crossover",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "horizontal_adduction"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Stand between cables set high. Pull handles down and together in a hugging arc. Squeeze chest at the end."
+  },
+  {
+    "name": "Dips (chest focus)",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "lower chest"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "movementPatterns": [
+      "horizontal_adduction"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dip bars"
+    ],
+    "description": "On parallel bars, lean slightly forward. Lower until upper arms are parallel to the floor, then press back up."
+  },
+  {
+    "name": "Pull-up",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear deltoids"
+    ],
+    "movementPatterns": [
+      "vertical_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "pull-up bar"
+    ],
+    "description": "Hang from a bar with an overhand grip. Pull yourself up until chin is above the bar. Lower with control."
+  },
+  {
+    "name": "Chin-up",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "movementPatterns": [
+      "vertical_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "pull-up bar"
+    ],
+    "description": "Same as pull-up but with an underhand (supinated) grip, which engages biceps more."
+  },
+  {
+    "name": "Barbell row",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "rhomboids",
+      "biceps",
+      "rear deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Hinge forward at hips, back flat. Pull bar to lower chest/upper abdomen. Squeeze shoulder blades together."
+  },
+  {
+    "name": "Dumbbell row",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "rhomboids",
+      "rear deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "description": "Support yourself with one hand on a bench. Pull dumbbell to hip with elbow driving back. One arm at a time."
+  },
+  {
+    "name": "Lat pulldown",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "movementPatterns": [
+      "vertical_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Sit at machine, overhand grip on bar. Pull bar down to upper chest while leaning back slightly. Return slowly."
+  },
+  {
+    "name": "Seated cable row",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "mid-back"
+    ],
+    "secondaryMuscles": [
+      "rhomboids",
+      "biceps"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Sit upright, pull handle to abdomen. Keep chest tall and squeeze shoulder blades at the end of each rep."
+  },
+  {
+    "name": "Deadlift",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "lower back",
+      "traps",
+      "core"
+    ],
+    "movementPatterns": [
+      "hinge"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "full_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Bar over mid-foot. Hinge, grip bar. Drive floor away with legs, lock hips out at the top. Keep back neutral throughout."
+  },
+  {
+    "name": "Face pull",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "rear deltoids"
+    ],
+    "secondaryMuscles": [
+      "rotator cuff",
+      "upper traps"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Cable set at head height. Pull rope to face with elbows flaring out. Externally rotate at the end."
+  },
+  {
+    "name": "Squat",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings",
+      "core"
+    ],
+    "movementPatterns": [
+      "squat_pattern"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Feet shoulder-width. Push hips back and knees out as you lower until thighs are parallel to floor. Drive through heels to stand."
+  },
+  {
+    "name": "Leg press",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "movementPatterns": [
+      "squat_pattern"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Sit in machine, feet mid-platform. Lower platform until knees reach ~90°, press back up without locking knees out hard."
+  },
+  {
+    "name": "Romanian deadlift",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "lower back"
+    ],
+    "movementPatterns": [
+      "hip_hinge"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Hold bar at hips. Hinge forward with a slight knee bend, lowering bar along legs until hamstrings are fully stretched. Drive hips forward to stand."
+  },
+  {
+    "name": "Leg curl",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "leg_isolation"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "lower_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Lie face-down on machine. Curl weight up toward glutes, pause, then lower with control."
+  },
+  {
+    "name": "Leg extension",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "leg_isolation"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Sit in machine, feet under pad. Extend legs fully, hold briefly, then lower slowly."
+  },
+  {
+    "name": "Walking lunge",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "movementPatterns": [
+      "squat_pattern"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Step forward and drop back knee toward floor. Push off front foot to bring rear foot forward into next step. Torso upright."
+  },
+  {
+    "name": "Bulgarian split squat",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hip flexors"
+    ],
+    "movementPatterns": [
+      "squat_pattern"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "bench"
+    ],
+    "description": "Rear foot elevated on bench, front foot forward. Lower until front thigh is parallel to ground."
+  },
+  {
+    "name": "Calf raise",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "gastrocnemius"
+    ],
+    "secondaryMuscles": [
+      "soleus"
+    ],
+    "movementPatterns": [
+      "ankle_extension"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Stand on edge of step or flat ground. Rise onto balls of feet as high as possible, lower below step level for full stretch."
+  },
+  {
+    "name": "Step-up",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "movementPatterns": [
+      "squat_pattern"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "box"
+    ],
+    "description": "Step onto a box or bench with one foot, drive through that heel to bring other foot up. Step back down and repeat."
+  },
+  {
+    "name": "Hip thrust",
+    "category": "strength",
+    "group": "glutes",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "movementPatterns": [
+      "hip_hinge"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "description": "Upper back on bench, bar across hips. Drive hips upward until body is flat, squeeze glutes hard at top. Lower with control."
+  },
+  {
+    "name": "Glute bridge",
+    "category": "strength",
+    "group": "glutes",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings"
+    ],
+    "movementPatterns": [
+      "hip_hinge"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Lie on floor, knees bent, feet flat. Push hips up by squeezing glutes. Hold at top, lower slowly."
+  },
+  {
+    "name": "Cable kickback",
+    "category": "strength",
+    "group": "glutes",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "hip_hinge"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Attach ankle cuff to low cable. Kick leg back and up while keeping core braced. Squeeze glute at top of each rep."
+  },
+  {
+    "name": "Sumo squat",
+    "category": "strength",
+    "group": "glutes",
+    "primaryMuscles": [
+      "inner thighs"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "quads"
+    ],
+    "movementPatterns": [
+      "squat_pattern"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Wide stance, toes turned out. Lower straight down keeping chest tall and knees tracking over toes."
+  },
+  {
+    "name": "Overhead press",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "front deltoids"
+    ],
+    "secondaryMuscles": [
+      "lateral deltoids",
+      "triceps",
+      "upper traps"
+    ],
+    "movementPatterns": [
+      "vertical_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Bar at collar-bone level. Press straight up overhead until arms are locked out. Lower under control. Keep core braced."
+  },
+  {
+    "name": "Lateral raise",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "lateral deltoids"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "shoulder_abduction"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Hold dumbbells at sides. Raise arms out to shoulder height, leading with elbows slightly bent. Lower slowly."
+  },
+  {
+    "name": "Front raise",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "front deltoids"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "shoulder_abduction"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Hold weights at thighs. Raise one or both arms straight forward to shoulder height. Lower slowly."
+  },
+  {
+    "name": "Reverse fly",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "rear deltoids"
+    ],
+    "secondaryMuscles": [
+      "rhomboids"
+    ],
+    "movementPatterns": [
+      "shoulder_abduction"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Hinge forward or use reverse pec deck machine. Raise arms out to sides in a reverse hugging motion. Squeeze shoulder blades."
+  },
+  {
+    "name": "Arnold press",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "front deltoids"
+    ],
+    "secondaryMuscles": [
+      "lateral deltoids",
+      "rear deltoids"
+    ],
+    "movementPatterns": [
+      "vertical_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Start with palms facing you at shoulder level. Rotate palms out as you press overhead. Reverse on the way down."
+  },
+  {
+    "name": "Upright row",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "lateral deltoids"
+    ],
+    "secondaryMuscles": [
+      "traps"
+    ],
+    "movementPatterns": [
+      "shoulder_abduction"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Grip bar narrow, pull up toward chin with elbows leading. Stop when elbows reach shoulder height. Lower with control."
+  },
+  {
+    "name": "Shrug",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "upper traps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "shoulder_abduction"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Hold weights at sides. Elevate shoulders straight up toward ears, hold briefly, lower slowly. No rolling motion."
+  },
+  {
+    "name": "Bicep curl",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "elbow_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Hold dumbbells at sides, palms forward. Curl weight up to shoulder height. Don't swing — keep elbows still."
+  },
+  {
+    "name": "Hammer curl",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "brachialis"
+    ],
+    "movementPatterns": [
+      "elbow_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Same as bicep curl but palms face each other throughout. Works brachialis and a different part of the bicep."
+  },
+  {
+    "name": "Preacher curl",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "elbow_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "barbell",
+      "preacher bench"
+    ],
+    "description": "Rest upper arms on a preacher bench pad. Curl weight up, lower fully until arms are straight. Eliminates cheating."
+  },
+  {
+    "name": "Tricep pushdown",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "elbow_extension"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Stand at cable machine, push bar or rope down until arms are fully extended. Keep elbows pinned to sides."
+  },
+  {
+    "name": "Skull crusher",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "elbow_extension"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "description": "Lie on bench, bar above chest. Lower bar toward forehead by bending elbows. Press back to start. Elbows stay fixed."
+  },
+  {
+    "name": "Overhead tricep extension",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "elbow_extension"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Hold weight above head with both hands. Lower behind head by bending elbows. Press back up."
+  },
+  {
+    "name": "Dips (tricep focus)",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "lower chest"
+    ],
+    "movementPatterns": [
+      "elbow_extension"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dip bars"
+    ],
+    "description": "On parallel bars, stay upright (no lean forward). Lower until arms reach 90°, press back up."
+  },
+  {
+    "name": "Wrist curl",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "forearm flexors"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "elbow_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Sit, forearms resting on thighs, palms up. Curl wrists up, lower slowly below neutral."
+  },
+  {
+    "name": "Plank",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "transverse abdominis"
+    ],
+    "secondaryMuscles": [
+      "obliques"
+    ],
+    "movementPatterns": [
+      "core_isometric"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "Forearms and toes on floor, body in a straight line. Hold. Don't let hips sag or rise. Breathe steadily."
+  },
+  {
+    "name": "Crunch",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "rectus abdominis"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "Lie on back, knees bent. Lift shoulder blades off floor by contracting abs — don't pull your neck. Lower slowly."
+  },
+  {
+    "name": "Leg raise",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "lower abs"
+    ],
+    "secondaryMuscles": [
+      "hip flexors"
+    ],
+    "movementPatterns": [
+      "core_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "Lie flat, hands under hips. Raise straight legs to 90°, lower slowly without touching the floor. Keep lower back pressed down."
+  },
+  {
+    "name": "Russian twist",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "obliques"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_rotation"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "Sit with knees bent, lean back slightly. Rotate torso side to side. Add weight for more difficulty."
+  },
+  {
+    "name": "Ab wheel rollout",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_rotation"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [
+      "ab wheel"
+    ],
+    "description": "Kneel, grip ab wheel. Roll forward until body is nearly parallel to ground, then pull back using your abs."
+  },
+  {
+    "name": "Mountain climber",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_rotation"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "High plank position. Drive knees alternately toward chest in a running motion. Keep hips level and move fast."
+  },
+  {
+    "name": "Dead bug",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "deep core"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_rotation"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "Lie on back, arms up, knees at 90°. Lower opposite arm and leg toward floor simultaneously. Keep lower back pressed flat."
+  },
+  {
+    "name": "Cable crunch",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "rectus abdominis"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Kneel at cable, rope behind head. Crunch elbows toward knees by contracting abs — not by pulling with arms."
+  },
+  {
+    "name": "Side plank",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "obliques"
+    ],
+    "secondaryMuscles": [
+      "hip abductors"
+    ],
+    "movementPatterns": [
+      "core_isometric"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "Lie on side, prop on one forearm. Raise hips until body is a straight line. Hold. Switch sides."
+  },
+  {
+    "name": "Running",
+    "category": "cardio",
+    "group": "cardio",
+    "primaryMuscles": [
+      "cardiovascular system"
+    ],
+    "secondaryMuscles": [
+      "legs"
+    ],
+    "movementPatterns": [
+      "cardio_aerobic"
+    ],
+    "exerciseType": "cardio",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Maintain an upright posture, mid-foot strike, relaxed arms. Start slow and build pace."
+  },
+  {
+    "name": "Jump rope",
+    "category": "cardio",
+    "group": "cardio",
+    "primaryMuscles": [
+      "cardiovascular system"
+    ],
+    "secondaryMuscles": [
+      "calves"
+    ],
+    "movementPatterns": [
+      "cardio_aerobic"
+    ],
+    "exerciseType": "cardio",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "jump rope"
+    ],
+    "description": "Stay on balls of feet, small jumps, rotate wrists not arms. Start slow and build rhythm."
+  },
+  {
+    "name": "Rowing machine",
+    "category": "cardio",
+    "group": "cardio",
+    "primaryMuscles": [
+      "cardiovascular system"
+    ],
+    "secondaryMuscles": [
+      "back",
+      "legs",
+      "arms"
+    ],
+    "movementPatterns": [
+      "cardio_aerobic"
+    ],
+    "exerciseType": "cardio",
+    "bodyRegion": "full_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Legs push first, then lean back, then pull handle to lower chest. Reverse in the same order. Don't lead with your back."
+  },
+  {
+    "name": "Cycling",
+    "category": "cardio",
+    "group": "cardio",
+    "primaryMuscles": [
+      "cardiovascular system"
+    ],
+    "secondaryMuscles": [
+      "quads",
+      "glutes"
+    ],
+    "movementPatterns": [
+      "cardio_aerobic"
+    ],
+    "exerciseType": "cardio",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "bike"
+    ],
+    "description": "Adjust seat so knee has slight bend at bottom. Maintain steady cadence. Outdoors or stationary bike."
+  },
+  {
+    "name": "Burpee",
+    "category": "cardio",
+    "group": "cardio",
+    "primaryMuscles": [
+      "cardiovascular system"
+    ],
+    "secondaryMuscles": [
+      "full body"
+    ],
+    "movementPatterns": [
+      "cardio_aerobic"
+    ],
+    "exerciseType": "cardio",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Stand, drop to a squat, kick feet back to plank, do a push-up, jump feet to hands, explosively jump up with arms overhead."
+  },
+  {
+    "name": "Jumping jack",
+    "category": "cardio",
+    "group": "cardio",
+    "primaryMuscles": [
+      "cardiovascular system"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "legs"
+    ],
+    "movementPatterns": [
+      "cardio_aerobic"
+    ],
+    "exerciseType": "cardio",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [],
+    "description": "Jump feet out while raising arms overhead. Jump feet back together while lowering arms. Keep a steady rhythm."
+  },
+  {
+    "name": "Stair climber",
+    "category": "cardio",
+    "group": "cardio",
+    "primaryMuscles": [
+      "cardiovascular system"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "quads",
+      "calves"
+    ],
+    "movementPatterns": [
+      "cardio_aerobic"
+    ],
+    "exerciseType": "cardio",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Step at a steady controlled pace. Don't lean heavily on handrails — that reduces the workout."
+  },
+  {
+    "name": "Elliptical",
+    "category": "cardio",
+    "group": "cardio",
+    "primaryMuscles": [
+      "cardiovascular system"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "cardio_aerobic"
+    ],
+    "exerciseType": "cardio",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Step in a smooth oval motion. Push and pull handles to engage arms. Low impact — good option if joints are sensitive."
+  },
+  {
+    "name": "Kettlebell swing",
+    "category": "strength",
+    "group": "fullbody",
+    "primaryMuscles": [
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "hamstrings",
+      "core",
+      "shoulders"
+    ],
+    "movementPatterns": [
+      "full_body_power"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "kettlebell"
+    ],
+    "description": "Hinge forward, swing KB between legs. Drive hips explosively forward to swing it to chest height. It's a hip hinge — not a squat."
+  },
+  {
+    "name": "Clean and press",
+    "category": "strength",
+    "group": "fullbody",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "back",
+      "shoulders",
+      "arms"
+    ],
+    "movementPatterns": [
+      "full_body_power"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Deadlift bar, explosively pull and catch it at shoulders, then press overhead. A complex power movement."
+  },
+  {
+    "name": "Turkish get-up",
+    "category": "strength",
+    "group": "fullbody",
+    "primaryMuscles": [
+      "full body"
+    ],
+    "secondaryMuscles": [
+      "stability"
+    ],
+    "movementPatterns": [
+      "full_body_power"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "kettlebell"
+    ],
+    "description": "Lying with weight held up, use a specific sequence of movements to stand up and then return to the floor. Keep weight above you the entire time."
+  },
+  {
+    "name": "Battle ropes",
+    "category": "strength",
+    "group": "fullbody",
+    "primaryMuscles": [
+      "arms"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "core"
+    ],
+    "movementPatterns": [
+      "full_body_power"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "battle ropes"
+    ],
+    "description": "Hold one end of each rope. Alternate arms in an up-down wave motion. Or do simultaneous slams for more core work."
+  },
+  {
+    "name": "Thruster",
+    "category": "strength",
+    "group": "fullbody",
+    "primaryMuscles": [
+      "legs"
+    ],
+    "secondaryMuscles": [
+      "shoulders",
+      "core"
+    ],
+    "movementPatterns": [
+      "full_body_power"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Hold bar at shoulders, squat deep, then use the momentum from standing to press bar overhead in one fluid motion."
+  },
+  {
+    "name": "Box jump",
+    "category": "strength",
+    "group": "fullbody",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes"
+    ],
+    "movementPatterns": [
+      "full_body_power"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "full_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "plyo box"
+    ],
+    "description": "Stand in front of box, hinge slightly, then explosively jump up landing softly with both feet on the box. Step back down."
+  },
+  {
+    "name": "Incline dumbbell press",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "front deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "description": "Set bench to 30-45°. Press dumbbells from shoulders straight up until arms are fully extended."
+  },
+  {
+    "name": "Dumbbell press",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "front deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "description": "Lie flat on a bench, press dumbbells from chest level straight up until arms are fully extended."
+  },
+  {
+    "name": "Decline bench press",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "front deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "description": "Lie on a decline bench. Press barbell from lower chest straight up to lockout."
+  },
+  {
+    "name": "Pec deck fly",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Sit at machine, grip handles. Pull arms together in a wide arc, squeezing chest in the center."
+  },
+  {
+    "name": "Machine chest press",
+    "category": "strength",
+    "group": "chest",
+    "primaryMuscles": [
+      "chest"
+    ],
+    "secondaryMuscles": [
+      "triceps",
+      "front deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Sit at machine, press handles forward until arms are fully extended. Return with control."
+  },
+  {
+    "name": "T-bar row",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Straddle bar, hinge forward. Pull bar handles to midsection, squeezing shoulder blades at the top."
+  },
+  {
+    "name": "Chest-supported row",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps",
+      "rear deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "description": "Lie face down on incline bench. Pull dumbbells up to sides, keeping chest flat on the pad."
+  },
+  {
+    "name": "Straight-arm pulldown",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "movementPatterns": [
+      "vertical_pull"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Stand facing cable machine. Keep arms straight, pull bar down to thighs using lats."
+  },
+  {
+    "name": "Machine row",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lats",
+      "rhomboids"
+    ],
+    "secondaryMuscles": [
+      "biceps"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Sit at machine, pull handles toward chest while keeping posture tall."
+  },
+  {
+    "name": "Rack pull",
+    "category": "strength",
+    "group": "back",
+    "primaryMuscles": [
+      "lower back",
+      "traps"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "movementPatterns": [
+      "hinge"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "full_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Set bar on pins at knee height. Hinge, grip bar, drive hips forward to stand and lock out."
+  },
+  {
+    "name": "Front squat",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "core"
+    ],
+    "movementPatterns": [
+      "squat"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Hold bar in a front rack position, feet shoulder-width. Lower hips down, drive back up keeping torso upright."
+  },
+  {
+    "name": "Goblet squat",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "core"
+    ],
+    "movementPatterns": [
+      "squat"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Hold a dumbbell vertically at chest height. Lower into a squat and stand back up."
+  },
+  {
+    "name": "Hack squat",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "quads"
+    ],
+    "secondaryMuscles": [
+      "glutes",
+      "hamstrings"
+    ],
+    "movementPatterns": [
+      "squat"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Position back against hack squat pad. Lower sled until knees reach 90 degrees, press back up."
+  },
+  {
+    "name": "Good morning",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "hamstrings",
+      "glutes"
+    ],
+    "secondaryMuscles": [
+      "lower back"
+    ],
+    "movementPatterns": [
+      "hinge"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "lower_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Place bar on upper back. Hinge at the hips, keeping back straight, then return to standing by engaging hamstrings."
+  },
+  {
+    "name": "Nordic curl",
+    "category": "strength",
+    "group": "legs",
+    "primaryMuscles": [
+      "hamstrings"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "hinge"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "lower_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [],
+    "description": "Anchor ankles. Lower torso to floor slowly using hamstrings. Push off floor lightly and pull back up."
+  },
+  {
+    "name": "Dumbbell shoulder press",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "front deltoids",
+      "lateral deltoids"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "movementPatterns": [
+      "vertical_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "description": "Sit or stand, press dumbbells from shoulder height straight up until arms lock out."
+  },
+  {
+    "name": "Machine shoulder press",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "front deltoids",
+      "lateral deltoids"
+    ],
+    "secondaryMuscles": [
+      "triceps"
+    ],
+    "movementPatterns": [
+      "vertical_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Sit at machine. Press handles overhead in a controlled upward arc."
+  },
+  {
+    "name": "Cable lateral raise",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "lateral deltoids"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "vertical_push"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Stand next to low cable. Pull cable handle across body out to shoulder height."
+  },
+  {
+    "name": "Rear delt machine fly",
+    "category": "strength",
+    "group": "shoulders",
+    "primaryMuscles": [
+      "rear deltoids"
+    ],
+    "secondaryMuscles": [
+      "rhomboids"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "machine"
+    ],
+    "description": "Sit facing machine pad. Pull handles back in a wide horizontal arc to contract rear delts."
+  },
+  {
+    "name": "Incline dumbbell curl",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "dumbbells",
+      "bench"
+    ],
+    "description": "Lie back on incline bench. Let arms hang, curl dumbbells up to shoulder level."
+  },
+  {
+    "name": "Concentration curl",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "dumbbells"
+    ],
+    "description": "Sit, rest elbow against inner thigh. Curl dumbbell up to chin height while keeping arm isolated."
+  },
+  {
+    "name": "EZ-bar curl",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "biceps"
+    ],
+    "secondaryMuscles": [
+      "forearms"
+    ],
+    "movementPatterns": [
+      "horizontal_pull"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "pull",
+    "forceType": "pull",
+    "equipment": [
+      "barbell"
+    ],
+    "description": "Hold EZ-bar with underhand grip. Curl bar to chest height keeping elbows pinned."
+  },
+  {
+    "name": "Close-grip bench press",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [
+      "chest",
+      "front deltoids"
+    ],
+    "movementPatterns": [
+      "horizontal_push"
+    ],
+    "exerciseType": "compound",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "barbell",
+      "bench"
+    ],
+    "description": "Lie flat. Grip bar with shoulder-width grip. Lower to mid-chest, press up focusing on triceps."
+  },
+  {
+    "name": "Rope tricep pushdown",
+    "category": "strength",
+    "group": "arms",
+    "primaryMuscles": [
+      "triceps"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "vertical_push"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "upper_body",
+    "mechanics": "push",
+    "forceType": "push",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Tuck elbows, pull rope down from high cable, flaring rope ends apart at full extension."
+  },
+  {
+    "name": "Hanging leg raise",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "abs"
+    ],
+    "secondaryMuscles": [
+      "hip flexors"
+    ],
+    "movementPatterns": [
+      "core_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [
+      "pull-up bar"
+    ],
+    "description": "Hang from bar, raise straight legs to 90 degrees, lower slowly without swinging."
+  },
+  {
+    "name": "Bicycle crunch",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "abs",
+      "obliques"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "dynamic",
+    "forceType": "dynamic",
+    "equipment": [],
+    "description": "Lie on back. Touch opposite elbow to opposite knee while cycling legs in the air."
+  },
+  {
+    "name": "Pallof press",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "obliques",
+      "core"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "anti_rotation"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [
+      "cables"
+    ],
+    "description": "Stand sideways to cable machine. Hold cable at chest, press handles straight out, resisting rotation."
+  },
+  {
+    "name": "Bird dog",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "lower back",
+      "glutes"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_extension"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "On all fours, extend opposite arm and opposite leg parallel to floor. Hold, switch sides."
+  },
+  {
+    "name": "Hollow body hold",
+    "category": "strength",
+    "group": "core",
+    "primaryMuscles": [
+      "abs"
+    ],
+    "secondaryMuscles": [],
+    "movementPatterns": [
+      "core_flexion"
+    ],
+    "exerciseType": "isolation",
+    "bodyRegion": "core",
+    "mechanics": "static",
+    "forceType": "static",
+    "equipment": [],
+    "description": "Lie on back. Raise legs and shoulder blades slightly off floor, forming a hollow banana shape. Hold."
+  }
+]

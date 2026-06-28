@@ -36,6 +36,32 @@ describe('TrackerPage', () => {
           },
         ]
       }
+      if (path.startsWith('/foods/favourites')) {
+        return [
+          {
+            id: 'fav-1',
+            name: 'Blueberries',
+            calories: 57,
+            protein: 0.7,
+            carbs: 14,
+            fat: 0.3,
+            isCustom: false,
+          }
+        ]
+      }
+      if (path.startsWith('/foods/frequent')) {
+        return [
+          {
+            id: 'freq-1',
+            name: 'Chicken breast (cooked)',
+            calories: 165,
+            protein: 31,
+            carbs: 0,
+            fat: 3.6,
+            isCustom: false,
+          }
+        ]
+      }
       if (path.startsWith('/foods/custom')) {
         return [
           {
@@ -57,7 +83,7 @@ describe('TrackerPage', () => {
           fatGoal: 70,
         }
       }
-      return null
+      return []
     })
   })
 

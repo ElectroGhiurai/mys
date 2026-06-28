@@ -1,4 +1,4 @@
-import { RefObject } from 'react'
+import { RefObject, useState } from 'react'
 import { FoodItem } from '../tracker.api'
 
 interface TrackerLogTabProps {
@@ -14,7 +14,52 @@ interface TrackerLogTabProps {
   setAddWeight: (val: number) => void;
   handleSelectFood: (food: FoodItem) => void;
   handleAddFood: () => void;
+  favourites: FoodItem[];
+  frequentFoods: FoodItem[];
+  handleToggleFavourite: (food: FoodItem) => void;
 }
+
+const StarIcon = ({ filled, style }: { filled: boolean; style?: React.CSSProperties }) => (
+  <svg
+    className={`star-icon ${filled ? 'filled' : ''}`}
+    viewBox="0 0 24 24"
+    fill={filled ? '#ffb800' : 'none'}
+    stroke={filled ? '#ffb800' : 'currentColor'}
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    style={{
+      width: '18px',
+      height: '18px',
+      cursor: 'pointer',
+      transition: 'transform 0.2s, fill 0.2s, stroke 0.2s',
+      flexShrink: 0,
+      ...style
+    }}
+  >
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
+)
+
+const ClockIcon = ({ style }: { style?: React.CSSProperties }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    style={{
+      width: '18px',
+      height: '18px',
+      flexShrink: 0,
+      ...style
+    }}
+  >
+    <circle cx="12" cy="12" r="10" />
+    <polyline points="12 6 12 12 16 14" />
+  </svg>
+)
 
 export function TrackerLogTab({
   searchQuery,
@@ -29,7 +74,16 @@ export function TrackerLogTab({
   setAddWeight,
   handleSelectFood,
   handleAddFood,
+  favourites,
+  frequentFoods,
+  handleToggleFavourite,
 }: TrackerLogTabProps) {
+  const [subTab, setSubTab] = useState<'favourites' | 'frequent'>('favourites')
+
+  const isFavorited = (foodName: string) => {
+    return favourites.some(fav => fav.name.toLowerCase() === foodName.toLowerCase())
+  }
+
   return (
     <div className="tab-search-panel">
       <div className="search-autocomplete-box" ref={dropdownRef}>
@@ -46,22 +100,48 @@ export function TrackerLogTab({
         />
         {showDropdown && searchResults.length > 0 && (
           <div className="autocomplete-dropdown">
-            {searchResults.map(food => (
-              <div
-                key={food.id}
-                className="dropdown-food-item"
-                onClick={() => handleSelectFood(food)}
-              >
-                <div className="food-name-row">
-                  <span className="food-name">{food.name}</span>
-                  {food.isCustom && <span className="custom-badge">Custom</span>}
+            {searchResults.map(food => {
+              const isFav = isFavorited(food.name)
+              return (
+                <div
+                  key={food.id}
+                  className="dropdown-food-item"
+                  onClick={() => handleSelectFood(food)}
+                  style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
+                    <div className="food-name-row" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                      <span className="food-name" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{food.name}</span>
+                      {food.isCustom && <span className="custom-badge">Custom</span>}
+                    </div>
+                    <span className="food-macros">
+                      {food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F:{' '}
+                      {food.fat}g (per 100g)
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    className="fav-toggle-btn"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      handleToggleFavourite(food)
+                    }}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      padding: '8px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      cursor: 'pointer',
+                    }}
+                    aria-label={isFav ? `Remove ${food.name} from favorites` : `Add ${food.name} to favorites`}
+                  >
+                    <StarIcon filled={isFav} />
+                  </button>
                 </div>
-                <span className="food-macros">
-                  {food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F:{' '}
-                  {food.fat}g (per 100g)
-                </span>
-              </div>
-            ))}
+              )
+            })}
           </div>
         )}
       </div>
@@ -103,8 +183,154 @@ export function TrackerLogTab({
           </div>
         </div>
       ) : (
-        <div className="search-instruction">
-          <p>Type above to look up standard ingredients or foods you created.</p>
+        <div className="quick-access-panel" style={{ marginTop: '20px' }}>
+          <div className="quick-access-tabs" style={{ display: 'flex', borderBottom: '1px solid var(--border-color)', gap: '16px', marginBottom: '16px' }}>
+            <button
+              type="button"
+              className={`quick-tab ${subTab === 'favourites' ? 'active' : ''}`}
+              onClick={() => setSubTab('favourites')}
+              style={{
+                background: 'none',
+                border: 'none',
+                borderBottom: subTab === 'favourites' ? '2px solid var(--accent-color)' : '2px solid transparent',
+                padding: '8px 4px',
+                color: subTab === 'favourites' ? 'var(--accent-color)' : 'var(--text-muted)',
+                fontWeight: 600,
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              <StarIcon filled={subTab === 'favourites'} style={{ width: '16px', height: '16px' }} /> Favorites ({favourites.length})
+            </button>
+            <button
+              type="button"
+              className={`quick-tab ${subTab === 'frequent' ? 'active' : ''}`}
+              onClick={() => setSubTab('frequent')}
+              style={{
+                background: 'none',
+                border: 'none',
+                borderBottom: subTab === 'frequent' ? '2px solid var(--accent-color)' : '2px solid transparent',
+                padding: '8px 4px',
+                color: subTab === 'frequent' ? 'var(--accent-color)' : 'var(--text-muted)',
+                fontWeight: 600,
+                cursor: 'pointer',
+                fontSize: '0.9rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px'
+              }}
+            >
+              <ClockIcon style={{ width: '16px', height: '16px' }} /> Frequently Eaten ({frequentFoods.length})
+            </button>
+          </div>
+
+          <div className="quick-list-container" style={{ maxHeight: '280px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {subTab === 'favourites' && (
+              favourites.length === 0 ? (
+                <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', padding: '16px 0', textAlign: 'center' }}>
+                  No favorite foods added yet. Search a food and tap the star icon to save it here!
+                </div>
+              ) : (
+                favourites.map(food => (
+                  <div
+                    key={food.id}
+                    className="dropdown-food-item"
+                    onClick={() => handleSelectFood(food)}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      border: '1px solid var(--border-color)',
+                      borderRadius: '8px',
+                      padding: '10px 12px',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.2s, border-color 0.2s',
+                    }}
+                  >
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <span className="food-name" style={{ display: 'block', fontWeight: 500, color: 'var(--heading-color)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{food.name}</span>
+                      <span className="food-macros" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                        {food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g (per 100g)
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      className="fav-toggle-btn"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        handleToggleFavourite(food)
+                      }}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        padding: '6px',
+                        cursor: 'pointer',
+                      }}
+                      aria-label="Remove from favorites"
+                    >
+                      <StarIcon filled={true} />
+                    </button>
+                  </div>
+                ))
+              )
+            )}
+
+            {subTab === 'frequent' && (
+              frequentFoods.length === 0 ? (
+                <div style={{ color: 'var(--text-muted)', fontSize: '0.85rem', padding: '16px 0', textAlign: 'center' }}>
+                  Frequently eaten foods will show up here as you log your meals over time.
+                </div>
+              ) : (
+                frequentFoods.map(food => {
+                  const isFav = isFavorited(food.name)
+                  return (
+                    <div
+                      key={food.id}
+                      className="dropdown-food-item"
+                      onClick={() => handleSelectFood(food)}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        border: '1px solid var(--border-color)',
+                        borderRadius: '8px',
+                        padding: '10px 12px',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.2s, border-color 0.2s',
+                      }}
+                    >
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <span className="food-name" style={{ display: 'block', fontWeight: 500, color: 'var(--heading-color)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{food.name}</span>
+                        <span className="food-macros" style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                          {food.calories} kcal | P: {food.protein}g | C: {food.carbs}g | F: {food.fat}g (per 100g)
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        className="fav-toggle-btn"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          handleToggleFavourite(food)
+                        }}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          padding: '6px',
+                          cursor: 'pointer',
+                        }}
+                        aria-label={isFav ? "Remove from favorites" : "Add to favorites"}
+                      >
+                        <StarIcon filled={isFav} />
+                      </button>
+                    </div>
+                  )
+                })
+              )
+            )}
+          </div>
         </div>
       )}
     </div>
