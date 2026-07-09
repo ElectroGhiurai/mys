@@ -65,6 +65,10 @@ describe('WorkoutPage', () => {
 
     await screen.findByText('75 kg')
 
+    // Switch to Log Single Exercise tab
+    const logTabBtn = screen.getByRole('button', { name: /log single exercise/i })
+    await user.click(logTabBtn)
+
     // Find and type custom exercise name by enabling custom toggle
     const toggleCustomBtn = screen.getByRole('button', { name: /write custom/i })
     await user.click(toggleCustomBtn)
@@ -118,7 +122,7 @@ describe('WorkoutPage', () => {
     expect(screen.queryByText('Reset Checks')).not.toBeInTheDocument()
 
     // Toggle to Active Gym Session mode
-    const activeSessionBtn = screen.getByRole('button', { name: /active gym session/i })
+    const activeSessionBtn = screen.getByRole('button', { name: /active session/i })
     await user.click(activeSessionBtn)
 
     // Now in Active Gym Session mode
@@ -134,7 +138,7 @@ describe('WorkoutPage', () => {
     await screen.findByText('75 kg')
 
     // Switch to Active Gym Session mode
-    const activeSessionBtn = screen.getByRole('button', { name: /active gym session/i })
+    const activeSessionBtn = screen.getByRole('button', { name: /active session/i })
     await user.click(activeSessionBtn)
 
     // Expand guide for Dumbbell Press
@@ -153,7 +157,7 @@ describe('WorkoutPage', () => {
     await screen.findByText('75 kg')
 
     // Switch to Active Gym Session mode
-    const activeSessionBtn = screen.getByRole('button', { name: /active gym session/i })
+    const activeSessionBtn = screen.getByRole('button', { name: /active session/i })
     await user.click(activeSessionBtn)
 
     // By default, the selected routine is 'Push Day'
