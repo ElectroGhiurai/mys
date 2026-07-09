@@ -7,6 +7,7 @@ import { WorkoutTrendChart } from './components/WorkoutTrendChart'
 import { WorkoutHistoryTable } from './components/WorkoutHistoryTable'
 import { WorkoutTimer } from './components/WorkoutTimer'
 import { WorkoutRoutineChecklist } from './components/WorkoutRoutineChecklist'
+import { WorkoutMuscleMap } from './components/WorkoutMuscleMap'
 import './WorkoutPage.css'
 
 import exercisesData from './exercises.json'
@@ -69,8 +70,8 @@ export function WorkoutPage() {
   const [error, setError] = useState<string | null>(null)
   const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
-  // View Mode & Bulk Logging
-  const [viewMode, setViewMode] = useState<'dashboard' | 'active-session'>('dashboard')
+  // View Tab & Bulk Logging
+  const [activeTab, setActiveTab] = useState<'session' | 'quick-log' | 'muscle-map' | 'history'>('history')
   const [isBulkLogging, setIsBulkLogging] = useState(false)
 
   // Filtering & Search
@@ -106,6 +107,29 @@ export function WorkoutPage() {
       new Set(exercisesData.flatMap(ex => ex.equipment || []))
     ).sort()
   }, [])
+
+  const lastLogMap = React.useMemo(() => {
+    const map: Record<string, { weight?: string | undefined; reps?: string | undefined; distanceKm?: string | undefined; durationMinutes?: string | undefined; date?: string | undefined }> = {}
+    // Since exercises is sorted by loggedDate descending, the first one encountered is the most recent
+    exercises.forEach(log => {
+      const key = log.exerciseName.toLowerCase().trim()
+      if (!map[key]) {
+        const firstSet = log.sets[0]
+        if (firstSet) {
+          const d = new Date(log.loggedDate)
+          const formattedDate = d.toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+          map[key] = {
+            weight: firstSet.weight !== undefined && firstSet.weight !== null ? String(firstSet.weight) : undefined,
+            reps: firstSet.reps !== undefined && firstSet.reps !== null ? String(firstSet.reps) : undefined,
+            distanceKm: firstSet.distanceKm !== undefined && firstSet.distanceKm !== null ? String(firstSet.distanceKm) : undefined,
+            durationMinutes: firstSet.durationMinutes !== undefined && firstSet.durationMinutes !== null ? String(firstSet.durationMinutes) : undefined,
+            date: formattedDate
+          }
+        }
+      }
+    })
+    return map
+  }, [exercises])
 
   const handleToggleEquipment = (eq: string) => {
     setSelectedEquipment(prev =>
@@ -241,6 +265,7 @@ export function WorkoutPage() {
         durationMinutes: ''
       }])
     }
+    setActiveTab('quick-log')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
@@ -660,12 +685,44 @@ export function WorkoutPage() {
         </div>
       </div>
 
-      {/* View Mode Toggle Bar */}
-      <div className="view-mode-toggle-bar">
+      {/* Tab Navigation */}
+      <div className="workout-tabs-nav">
         <button
           type="button"
-          className={`view-mode-btn ${viewMode === 'dashboard' ? 'active' : ''}`}
-          onClick={() => setViewMode('dashboard')}
+          className={`workout-tab-nav-btn ${activeTab === 'session' ? 'active' : ''}`}
+          onClick={() => setActiveTab('session')}
+        >
+          <svg className="action-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polyline points="9 11 12 14 22 4" />
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+          </svg>
+          Active Session
+        </button>
+        <button
+          type="button"
+          className={`workout-tab-nav-btn ${activeTab === 'quick-log' ? 'active' : ''}`}
+          onClick={() => setActiveTab('quick-log')}
+        >
+          <svg className="action-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          Log Single Exercise
+        </button>
+        <button
+          type="button"
+          className={`workout-tab-nav-btn ${activeTab === 'muscle-map' ? 'active' : ''}`}
+          onClick={() => setActiveTab('muscle-map')}
+        >
+          <svg className="action-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M12 2a5 5 0 0 0-5 5v3a5 5 0 0 0 10 0V7a5 5 0 0 0-5-5z" />
+            <path d="M18 11a6 6 0 0 1-6 6H9" />
+          </svg>
+          Muscle Map
+        </button>
+        <button
+          type="button"
+          className={`workout-tab-nav-btn ${activeTab === 'history' ? 'active' : ''}`}
+          onClick={() => setActiveTab('history')}
         >
           <svg className="action-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="3" y="3" width="7" height="9" />
@@ -673,18 +730,7 @@ export function WorkoutPage() {
             <rect x="14" y="12" width="7" height="9" />
             <rect x="3" y="16" width="7" height="5" />
           </svg>
-          Dashboard & History
-        </button>
-        <button
-          type="button"
-          className={`view-mode-btn ${viewMode === 'active-session' ? 'active' : ''}`}
-          onClick={() => setViewMode('active-session')}
-        >
-          <svg className="action-svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <polyline points="9 11 12 14 22 4" />
-            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-          </svg>
-          Active Gym Session
+          History & Charts
         </button>
       </div>
 
@@ -700,7 +746,71 @@ export function WorkoutPage() {
         </div>
       )}
 
-      {viewMode === 'dashboard' ? (
+      {activeTab === 'session' && (
+        <div className="workout-grid-2col">
+          {/* Routine Checklist (Left) */}
+          <WorkoutRoutineChecklist
+            onQuickLog={handleQuickLog}
+            onBulkLog={handleBulkLog}
+            isBulkLogging={isBulkLogging}
+            est1RMMap={est1RMMap}
+            lastLogMap={lastLogMap}
+          />
+
+          {/* Timer (Right) */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            <WorkoutTimer />
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'muscle-map' && (
+        <WorkoutMuscleMap />
+      )}
+
+      {activeTab === 'quick-log' && (
+        <div className="workout-single-log-container">
+          <WorkoutLoggerForm
+            editingId={editingId}
+            selectedDate={selectedDate}
+            setSelectedDate={setSelectedDate}
+            category={category}
+            setCategory={handleCategoryChange}
+            exerciseName={exerciseName}
+            setExerciseName={setExerciseName}
+            isCustomExercise={isCustomExercise}
+            setIsCustomExercise={setIsCustomExercise}
+            customExerciseName={customExerciseName}
+            setCustomExerciseName={setCustomExerciseName}
+            sets={sets}
+            onSetChange={handleSetChange}
+            onAddSet={handleAddSet}
+            onRemoveSet={handleRemoveSet}
+            onSubmit={handleSubmit}
+            isLogging={isLogging}
+            onCancelEdit={resetForm}
+            categories={CATEGORIES}
+            predefinedExercises={combinedExercises.filter(e => {
+              if (e.category !== category) return false;
+              if (selectedEquipment.length > 0) {
+                const orig = exercisesData.find(ex => ex.name.toLowerCase() === e.name.toLowerCase());
+                if (orig) {
+                  const reqEq = orig.equipment || [];
+                  return reqEq.every(eq => selectedEquipment.includes(eq.toLowerCase()));
+                }
+              }
+              return true;
+            })}
+            onPredefinedChange={handlePredefinedChange}
+            selectedEquipment={selectedEquipment}
+            onToggleEquipment={handleToggleEquipment}
+            onClearEquipment={handleClearEquipment}
+            allEquipment={allEquipment}
+          />
+        </div>
+      )}
+
+      {activeTab === 'history' && (
         <>
           {/* Metrics Row */}
           <WorkoutMetricsGrid
@@ -710,45 +820,6 @@ export function WorkoutPage() {
           />
 
           <div className="workout-grid-2col">
-            {/* Form Column */}
-            <WorkoutLoggerForm
-              editingId={editingId}
-              selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
-              category={category}
-              setCategory={handleCategoryChange}
-              exerciseName={exerciseName}
-              setExerciseName={setExerciseName}
-              isCustomExercise={isCustomExercise}
-              setIsCustomExercise={setIsCustomExercise}
-              customExerciseName={customExerciseName}
-              setCustomExerciseName={setCustomExerciseName}
-              sets={sets}
-              onSetChange={handleSetChange}
-              onAddSet={handleAddSet}
-              onRemoveSet={handleRemoveSet}
-              onSubmit={handleSubmit}
-              isLogging={isLogging}
-              onCancelEdit={resetForm}
-              categories={CATEGORIES}
-              predefinedExercises={combinedExercises.filter(e => {
-                if (e.category !== category) return false;
-                if (selectedEquipment.length > 0) {
-                  const orig = exercisesData.find(ex => ex.name.toLowerCase() === e.name.toLowerCase());
-                  if (orig) {
-                    const reqEq = orig.equipment || [];
-                    return reqEq.every(eq => selectedEquipment.includes(eq.toLowerCase()));
-                  }
-                }
-                return true;
-              })}
-              onPredefinedChange={handlePredefinedChange}
-              selectedEquipment={selectedEquipment}
-              onToggleEquipment={handleToggleEquipment}
-              onClearEquipment={handleClearEquipment}
-              allEquipment={allEquipment}
-            />
-
             {/* Progress Charts Column */}
             <WorkoutTrendChart
               chartExercise={chartExercise}
@@ -758,78 +829,29 @@ export function WorkoutPage() {
               loggedExerciseNames={loggedExerciseNames}
               chartPoints={chartPoints}
             />
-          </div>
 
-          {/* History Log Section */}
-          <WorkoutHistoryTable
-            searchQuery={searchQuery}
-            setSearchQuery={setSearchQuery}
-            activeCategory={activeCategory}
-            setActiveCategory={setActiveCategory}
-            categories={CATEGORIES}
-            isFetching={isFetching}
-            filteredExercises={filteredExercises}
-            deletingId={deletingId}
-            setDeletingId={setDeletingId}
-            handleDelete={handleDelete}
-            handleEditClick={handleEditClick}
-            isDeleting={isDeleting}
-            onExportCSV={handleExportCSV}
-            onImportCSV={handleImportCSV}
-          />
-        </>
-      ) : (
-        <div className="workout-grid-2col">
-          {/* Routine Checklist (Left) */}
-          <WorkoutRoutineChecklist
-            onQuickLog={handleQuickLog}
-            onBulkLog={handleBulkLog}
-            isBulkLogging={isBulkLogging}
-            est1RMMap={est1RMMap}
-          />
-
-          {/* Timer & Logger Form (Right) */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <WorkoutTimer />
-            <WorkoutLoggerForm
-              editingId={editingId}
-              selectedDate={selectedDate}
-              setSelectedDate={setSelectedDate}
-              category={category}
-              setCategory={handleCategoryChange}
-              exerciseName={exerciseName}
-              setExerciseName={setExerciseName}
-              isCustomExercise={isCustomExercise}
-              setIsCustomExercise={setIsCustomExercise}
-              customExerciseName={customExerciseName}
-              setCustomExerciseName={setCustomExerciseName}
-              sets={sets}
-              onSetChange={handleSetChange}
-              onAddSet={handleAddSet}
-              onRemoveSet={handleRemoveSet}
-              onSubmit={handleSubmit}
-              isLogging={isLogging}
-              onCancelEdit={resetForm}
+            {/* History Log Section */}
+            <WorkoutHistoryTable
+              searchQuery={searchQuery}
+              setSearchQuery={setSearchQuery}
+              activeCategory={activeCategory}
+              setActiveCategory={setActiveCategory}
               categories={CATEGORIES}
-              predefinedExercises={combinedExercises.filter(e => {
-                if (e.category !== category) return false;
-                if (selectedEquipment.length > 0) {
-                  const orig = exercisesData.find(ex => ex.name.toLowerCase() === e.name.toLowerCase());
-                  if (orig) {
-                    const reqEq = orig.equipment || [];
-                    return reqEq.every(eq => selectedEquipment.includes(eq.toLowerCase()));
-                  }
-                }
-                return true;
-              })}
-              onPredefinedChange={handlePredefinedChange}
-              selectedEquipment={selectedEquipment}
-              onToggleEquipment={handleToggleEquipment}
-              onClearEquipment={handleClearEquipment}
-              allEquipment={allEquipment}
+              isFetching={isFetching}
+              filteredExercises={filteredExercises}
+              deletingId={deletingId}
+              setDeletingId={setDeletingId}
+              handleDelete={handleDelete}
+              handleEditClick={(log) => {
+                handleEditClick(log)
+                setActiveTab('quick-log')
+              }}
+              isDeleting={isDeleting}
+              onExportCSV={handleExportCSV}
+              onImportCSV={handleImportCSV}
             />
           </div>
-        </div>
+        </>
       )}
     </div>
   )

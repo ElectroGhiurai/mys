@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { useAuthForm } from './useAuthForm'
 import { FormField, ServerErrorBanner } from './AuthFormFields'
@@ -11,10 +12,11 @@ import './AuthPage.css'
 export default function LoginPage() {
   const navigate = useNavigate()
   const { loginUser } = useAuth()
+  const [keepLoggedIn, setKeepLoggedIn] = useState(true)
 
   const handleLogin = async (values: Record<string, string>) => {
     const data = await login(values)
-    loginUser(data.user, data.accessToken)
+    loginUser(data.user, data.accessToken, keepLoggedIn)
     navigate('/dashboard')
   }
 
@@ -58,6 +60,19 @@ export default function LoginPage() {
             onChange={handleChange}
             error={errors.password}
           />
+
+          <div className="auth-remember-me">
+            <input
+              type="checkbox"
+              id="keep-logged-in"
+              checked={keepLoggedIn}
+              onChange={(e) => setKeepLoggedIn(e.target.checked)}
+              className="auth-remember-checkbox"
+            />
+            <label htmlFor="keep-logged-in" className="auth-remember-label">
+              Keep me logged in
+            </label>
+          </div>
 
           <button
             type="submit"

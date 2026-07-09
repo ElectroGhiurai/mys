@@ -23,6 +23,26 @@
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
+@media (max-width: 480px) {
+  .tracker-date-navbar {
+    padding: 8px 12px;
+    gap: 8px;
+    width: 100%;
+  }
+  
+  .date-nav-btn {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .date-picker-input {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    flex: 1;
+    text-align: center;
+  }
+}
+
 .date-nav-btn {
   background-color: var(--surface-color-2);
   border: 1px solid var(--border-color);
@@ -68,6 +88,37 @@
 @media (max-width: 900px) {
   .totals-dashboard-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .totals-dashboard-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+  }
+  
+  .total-ring-card.primary-card {
+    grid-column: span 3 !important;
+    padding: 16px !important;
+  }
+  
+  .total-ring-card {
+    padding: 12px 6px !important;
+    min-height: auto !important;
+  }
+  
+  .total-ring-card .progress-ring-svg {
+    width: 66px !important;
+    height: 66px !important;
+  }
+  
+  .progress-inner-value.small .current-value {
+    font-size: 0.95rem !important;
+  }
+  
+  .ring-card-label {
+    font-size: 0.75rem !important;
+    text-align: center;
   }
 }
 
@@ -173,6 +224,14 @@
   .tracker-split-layout {
     grid-template-columns: 1fr;
   }
+  
+  .tracker-left-panel {
+    order: 2;
+  }
+  
+  .tracker-right-panel {
+    order: 1;
+  }
 }
 
 .panel-card {
@@ -254,6 +313,22 @@
   border: 1px solid var(--border-color);
   border-radius: 8px;
   transition: var(--transition);
+}
+
+@media (max-width: 480px) {
+  .logged-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+  }
+  
+  .logged-item-actions {
+    width: 100%;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 8px;
+  }
 }
 
 .logged-item:hover {

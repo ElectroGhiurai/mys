@@ -303,3 +303,52 @@
     font-size: 1.5rem;
   }
 }
+
+/* ─── Remember Me Checkbox ────────────────────────────────────────────────── */
+.auth-remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 6px 0 16px;
+}
+
+.auth-remember-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--auth-border);
+  border-radius: 4px;
+  background-color: var(--auth-surface-2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.auth-remember-checkbox:checked {
+  background-color: var(--auth-accent);
+  border-color: var(--auth-accent);
+}
+
+.auth-remember-checkbox:checked::before {
+  content: '✓';
+  font-size: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.auth-remember-checkbox:focus-visible {
+  border-color: var(--auth-border-focus);
+  box-shadow: 0 0 0 2px rgba(91, 114, 244, 0.25);
+}
+
+.auth-remember-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--auth-text);
+  cursor: pointer;
+  user-select: none;
+}
