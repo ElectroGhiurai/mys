@@ -984,7 +984,7 @@
 }
 
 /* ─── View Mode Toggle Styles ────────────────────────────────────────────── */
-.view-mode-toggle-bar {
+.workout-tabs-nav {
   display: flex;
   background-color: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-color);
@@ -996,7 +996,13 @@
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.view-mode-btn {
+@media (max-width: 576px) {
+  .workout-tabs-nav {
+    width: 100%;
+  }
+}
+
+.workout-tab-nav-btn {
   background: none;
   border: none;
   color: var(--text-muted);
@@ -1011,15 +1017,40 @@
   gap: 8px;
 }
 
-.view-mode-btn:hover {
+@media (max-width: 576px) {
+  .workout-tab-nav-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    gap: 4px;
+  }
+}
+
+.workout-tab-nav-btn:hover {
   color: var(--heading-color);
   background-color: rgba(255, 255, 255, 0.02);
 }
 
-.view-mode-btn.active {
+.workout-tab-nav-btn.active {
   background-color: var(--accent-color);
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(91, 114, 244, 0.3);
+}
+
+.workout-single-log-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  padding: 10px 0;
+  animation: workout-fade-in 0.4s ease;
+}
+
+.workout-single-log-container .workout-card {
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 /* ─── Bulk Logging & Guides Styles ────────────────────────────────────────── */
@@ -1316,6 +1347,105 @@
   background-color: var(--border-color);
   flex-shrink: 0;
   transition: background-color 0.2s ease;
+}
+
+/* ─── Mobile Responsiveness Tweaks ───────────────────────────────────────── */
+@media (max-width: 600px) {
+  .muscle-map-figures {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+  
+  .muscle-legend {
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-width: unset !important;
+  }
+  
+  .muscle-chip {
+    padding: 6px 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sets-header-row {
+    gap: 8px !important;
+  }
+  
+  .set-row {
+    gap: 8px !important;
+  }
+  
+  .checklist-item-row {
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+    padding: 12px !important;
+  }
+  
+  .checklist-inline-inputs {
+    margin-left: 32px !important;
+    margin-top: 4px !important;
+    width: calc(100% - 32px) !important;
+    justify-content: flex-start !important;
+    margin-right: 0 !important;
+  }
+  
+  .checklist-actions {
+    margin-left: auto !important;
+  }
+}
+
+/* Holographic Muscle Visualizer Dashboard Styles */
+.muscle-map-flex-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.muscle-visualizer-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 16px;
+  background-color: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  box-shadow: inset 0 4px 12px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.muscle-figure-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.muscle-figure-caption {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.muscle-figure-svg {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+}
+
+@media (min-width: 768px) {
+  .muscle-map-flex-container {
+    flex-direction: row;
+    align-items: stretch;
+  }
+  .muscle-visualizer-section {
+    flex: 1;
+    padding: 28px;
+  }
 }
 
 
