@@ -17,6 +17,7 @@ interface TrackerLogTabProps {
   favourites: FoodItem[];
   frequentFoods: FoodItem[];
   handleToggleFavourite: (food: FoodItem) => void;
+  setShowScannerModal: (show: boolean) => void;
 }
 
 const StarIcon = ({ filled, style }: { filled: boolean; style?: React.CSSProperties }) => (
@@ -77,6 +78,7 @@ export function TrackerLogTab({
   favourites,
   frequentFoods,
   handleToggleFavourite,
+  setShowScannerModal,
 }: TrackerLogTabProps) {
   const [subTab, setSubTab] = useState<'favourites' | 'frequent'>('favourites')
 
@@ -86,18 +88,19 @@ export function TrackerLogTab({
 
   return (
     <div className="tab-search-panel">
-      <div className="search-autocomplete-box" ref={dropdownRef}>
-        <input
-          type="text"
-          className="search-input-field"
-          placeholder="Search standard or custom foods..."
-          value={searchQuery}
-          onChange={e => {
-            setSearchQuery(e.target.value)
-            setShowDropdown(true)
-          }}
-          onFocus={() => setShowDropdown(true)}
-        />
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+        <div className="search-autocomplete-box" ref={dropdownRef} style={{ flex: 1, marginBottom: 0 }}>
+          <input
+            type="text"
+            className="search-input-field"
+            placeholder="Search standard or custom foods..."
+            value={searchQuery}
+            onChange={e => {
+              setSearchQuery(e.target.value)
+              setShowDropdown(true)
+            }}
+            onFocus={() => setShowDropdown(true)}
+          />
         {showDropdown && searchResults.length > 0 && (
           <div className="autocomplete-dropdown">
             {searchResults.map(food => {
@@ -145,6 +148,34 @@ export function TrackerLogTab({
           </div>
         )}
       </div>
+      <button
+        type="button"
+        onClick={() => setShowScannerModal(true)}
+        className="barcode-scan-btn"
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '6px',
+          backgroundColor: 'var(--surface-color-2)',
+          border: '1px solid var(--border-color)',
+          color: 'var(--text-color)',
+          padding: '10px 14px',
+          borderRadius: '8px',
+          cursor: 'pointer',
+          fontWeight: 600,
+          fontSize: '0.85rem',
+          transition: 'all 0.2s',
+          whiteSpace: 'nowrap'
+        }}
+        title="Scan barcode to look up nutrition"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M3 5v14M21 5v14M7 5v14M17 5v14M11 5v14M14 5v14" />
+        </svg>
+        Scan
+      </button>
+    </div>
 
       {/* Add Form if food selected */}
       {selectedFood ? (
