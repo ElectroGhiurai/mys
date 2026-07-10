@@ -1,10 +1,20 @@
 import { useState, useEffect } from 'react'
 import exercisesData from '../exercises.json'
+import { ExerciseLog } from '../workout.api'
+import { WeightLog } from '../../weight/weight.api'
+import { TrackedIngredient } from '../../tracker/tracker.api'
+import { WorkoutTrophies } from './WorkoutTrophies'
 
 export interface RoutineItem {
   name: string;
   category: string;
   completed: boolean;
+}
+
+export interface WorkoutMuscleMapProps {
+  exercises?: ExerciseLog[];
+  weightLogs?: WeightLog[];
+  todayFoodItems?: TrackedIngredient[];
 }
 
 const DEFAULT_ROUTINES: Record<string, { name: string; category: string }[]> = {
@@ -78,10 +88,11 @@ const titleCase = (str: string): string => {
     .join(' ')
 }
 
-export function WorkoutMuscleMap() {
+export function WorkoutMuscleMap({ exercises = [], weightLogs = [], todayFoodItems = [] }: WorkoutMuscleMapProps) {
   const [selectedRoutine, setSelectedRoutine] = useState<string>('Push Day')
   const [items, setItems] = useState<RoutineItem[]>([])
   const [viewSide, setViewSide] = useState<'front' | 'back'>('front')
+  const [mapMode, setMapMode] = useState<'targets' | 'recovery'>('targets')
   const [selectedMuscle, setSelectedMuscle] = useState<string | null>(null)
   const [hoveredMuscle, setHoveredMuscle] = useState<string | null>(null)
 
@@ -137,6 +148,51 @@ export function WorkoutMuscleMap() {
       .map(item => item.name)
   }
 
+  const getMuscleRecovery = (muscleName: string) => {
+    const m = muscleName.toLowerCase()
+    const catMap: Record<string, string[]> = {
+      chest: ['chest'],
+      back: ['back'],
+      upperback: ['back'],
+      lats: ['back'],
+      traps: ['back', 'shoulders'],
+      shoulders: ['shoulders'],
+      biceps: ['arms'],
+      triceps: ['arms'],
+      forearms: ['arms'],
+      abs: ['core'],
+      obliques: ['core'],
+      quads: ['legs'],
+      hamstrings: ['legs'],
+      glutes: ['legs'],
+      calves: ['legs'],
+      neck: ['back', 'shoulders']
+    }
+
+    const cats = catMap[m] || []
+    const matchingLogs = exercises.filter(log => cats.some(c => log.category.toLowerCase() === c.toLowerCase()))
+    if (matchingLogs.length === 0) {
+      return { status: 'untrained', hours: null }
+    }
+
+    let latestTime = 0
+    matchingLogs.forEach(log => {
+      const time = new Date(log.loggedDate).getTime()
+      if (time > latestTime) {
+        latestTime = time
+      }
+    })
+
+    const hours = (Date.now() - latestTime) / (1000 * 60 * 60)
+    if (hours < 24) {
+      return { status: 'sore', hours }
+    }
+    if (hours < 48) {
+      return { status: 'recovering', hours }
+    }
+    return { status: 'recovered', hours }
+  }
+
   const getCategoryStats = () => {
     const stats: Record<string, { count: number; exercises: string[]; color: string }> = {
       'Chest': { count: 0, exercises: [], color: '#ff4757' },
@@ -169,14 +225,34 @@ export function WorkoutMuscleMap() {
   const categoryStats = getCategoryStats()
 
   const getMuscleFill = (muscleName: string) => {
-    if (selectedMuscle === muscleName) {
-      const targeted = getExercisesForMuscle(muscleName).length > 0
-      return targeted ? '#3498db' : 'rgba(255, 255, 255, 0.35)'
+    if (mapMode === 'recovery') {
+      const { status } = getMuscleRecovery(muscleName)
+      if (selectedMuscle === muscleName) {
+        if (status === 'sore') return '#ff3b30'
+        if (status === 'recovering') return '#ff9500'
+        if (status === 'recovered') return '#2ed573'
+        return 'rgba(255, 255, 255, 0.35)'
+      }
+      if (hoveredMuscle === muscleName) {
+        if (status === 'sore') return 'rgba(255, 59, 48, 0.45)'
+        if (status === 'recovering') return 'rgba(255, 149, 0, 0.45)'
+        if (status === 'recovered') return 'rgba(46, 213, 115, 0.45)'
+        return 'rgba(255, 255, 255, 0.18)'
+      }
+      if (status === 'sore') return 'rgba(255, 59, 48, 0.25)'
+      if (status === 'recovering') return 'rgba(255, 149, 0, 0.25)'
+      if (status === 'recovered') return 'rgba(46, 213, 115, 0.25)'
+      return 'rgba(255, 255, 255, 0.08)'
+    } else {
+      if (selectedMuscle === muscleName) {
+        const targeted = getExercisesForMuscle(muscleName).length > 0
+        return targeted ? '#3498db' : 'rgba(255, 255, 255, 0.35)'
+      }
+      if (hoveredMuscle === muscleName) {
+        return 'rgba(255, 255, 255, 0.18)'
+      }
+      return 'rgba(255, 255, 255, 0.08)'
     }
-    if (hoveredMuscle === muscleName) {
-      return 'rgba(255, 255, 255, 0.18)'
-    }
-    return 'rgba(255, 255, 255, 0.08)'
   }
 
   const exercisesForSelected = selectedMuscle ? getExercisesForMuscle(selectedMuscle) : []
@@ -184,9 +260,58 @@ export function WorkoutMuscleMap() {
 
   return (
     <div className="workout-card shadow-sm animate-slide-up" style={{ padding: '24px' }}>
-      <div style={{ marginBottom: '24px' }}>
-        <h2 className="card-title" style={{ margin: '0 0 4px 0' }}>Interactive Muscle Map</h2>
-        <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Tap muscles on the diagram to inspect targeted exercises</span>
+      
+      {/* Header Mode & View Selectors */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '16px' }}>
+        <div>
+          <h2 className="card-title" style={{ margin: '0 0 4px 0' }}>Interactive Muscle Map</h2>
+          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Tap muscles on the diagram to inspect status</span>
+        </div>
+
+        {/* Mode Selector Toggle */}
+        <div style={{
+          display: 'flex',
+          backgroundColor: 'rgba(255, 255, 255, 0.03)',
+          border: '1px solid var(--border-color)',
+          borderRadius: '8px',
+          padding: '2px',
+          gap: '2px'
+        }}>
+          <button
+            type="button"
+            onClick={() => setMapMode('targets')}
+            style={{
+              background: mapMode === 'targets' ? 'var(--accent-color)' : 'none',
+              color: mapMode === 'targets' ? '#ffffff' : 'var(--text-muted)',
+              border: 'none',
+              padding: '6px 12px',
+              borderRadius: '6px',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+          >
+            Routine Targets
+          </button>
+          <button
+            type="button"
+            onClick={() => setMapMode('recovery')}
+            style={{
+              background: mapMode === 'recovery' ? 'var(--accent-color)' : 'none',
+              color: mapMode === 'recovery' ? '#ffffff' : 'var(--text-muted)',
+              border: 'none',
+              padding: '6px 12px',
+              borderRadius: '6px',
+              fontSize: '0.8rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'all 0.2s'
+            }}
+          >
+            Recovery Heatmap
+          </button>
+        </div>
       </div>
 
       <div className="routine-selector-group" style={{ marginBottom: '24px' }}>
@@ -530,6 +655,32 @@ export function WorkoutMuscleMap() {
             </svg>
           )}
 
+          {/* Recovery Heatmap Legend */}
+          {mapMode === 'recovery' && (
+            <div style={{
+              display: 'flex',
+              gap: '12px',
+              justifyContent: 'center',
+              fontSize: '0.75rem',
+              color: 'var(--text-muted)',
+              marginTop: '8px',
+              flexWrap: 'wrap'
+            }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#ff3b30' }} /> Sore (&lt;24h)
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#ff9500' }} /> Recovering (24-48h)
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#2ed573' }} /> Ready (48h+)
+              </span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.08)' }} /> Untrained
+              </span>
+            </div>
+          )}
+
           {/* Interactive Tooltip Card */}
           {selectedMuscle ? (
             <div className="muscle-tooltip-card animate-slide-up" style={{
@@ -543,20 +694,48 @@ export function WorkoutMuscleMap() {
               boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)'
             }}>
               <h4 style={{ margin: '0 0 6px 0', color: 'var(--heading-color)', display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.95rem' }}>
-                <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: isSelectedTargeted ? '#3498db' : '#888' }} />
+                <span style={{
+                  width: '8px',
+                  height: '8px',
+                  borderRadius: '50%',
+                  backgroundColor: mapMode === 'recovery'
+                    ? (getMuscleRecovery(selectedMuscle).status === 'sore' ? '#ff3b30' : (getMuscleRecovery(selectedMuscle).status === 'recovering' ? '#ff9500' : (getMuscleRecovery(selectedMuscle).status === 'recovered' ? '#2ed573' : '#888')))
+                    : (isSelectedTargeted ? '#3498db' : '#888')
+                }} />
                 {titleCase(selectedMuscle)}
               </h4>
               <p style={{ margin: 0, fontSize: '0.8rem', color: 'var(--text-color)', lineHeight: '1.4' }}>
-                {isSelectedTargeted ? (
-                  <>Targeted by: <strong>{exercisesForSelected.join(', ')}</strong></>
+                {mapMode === 'recovery' ? (
+                  (() => {
+                    const { status, hours } = getMuscleRecovery(selectedMuscle)
+                    const formatHours = (h: number | null) => {
+                      if (h === null) return ''
+                      if (h < 1) return 'less than an hour ago'
+                      return `${Math.round(h)} hrs ago`
+                    }
+                    return (
+                      <>
+                        Status: <strong style={{
+                          color: status === 'sore' ? '#ff3b30' : (status === 'recovering' ? '#ff9500' : (status === 'recovered' ? '#2ed573' : 'var(--text-muted)'))
+                        }}>
+                          {status.toUpperCase()}
+                        </strong>
+                        {hours !== null && ` (Trained ${formatHours(hours)})`}
+                      </>
+                    )
+                  })()
                 ) : (
-                  <span style={{ color: 'var(--text-muted)' }}>Not targeted by any exercises in this routine.</span>
+                  isSelectedTargeted ? (
+                    <>Targeted by: <strong>{exercisesForSelected.join(', ')}</strong></>
+                  ) : (
+                    <span style={{ color: 'var(--text-muted)' }}>Not targeted by any exercises in this routine.</span>
+                  )
                 )}
               </p>
             </div>
           ) : (
             <div style={{ textAlign: 'center', fontSize: '0.75rem', color: 'var(--text-muted)', fontStyle: 'italic' }}>
-              💡 Click on any muscle to view targeted exercises.
+              💡 Click on any muscle to view status details.
             </div>
           )}
         </div>
@@ -647,6 +826,13 @@ export function WorkoutMuscleMap() {
         </div>
 
       </div>
+
+      {/* PR Badges & Milestones Dashboard */}
+      <WorkoutTrophies
+        exercises={exercises}
+        weightLogs={weightLogs}
+        todayFoodItems={todayFoodItems}
+      />
     </div>
   )
 }
