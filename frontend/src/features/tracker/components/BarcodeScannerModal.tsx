@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import { Html5QrcodeScanner } from 'html5-qrcode'
 import { FoodItem } from '../tracker.api'
 
 interface BarcodeScannerModalProps {
@@ -19,13 +20,17 @@ export function BarcodeScannerModal({ onClose, onFound }: BarcodeScannerModalPro
   const [statusMessage, setStatusMessage] = useState<string | null>(null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
+  // Use refs to avoid re-triggering scanner setup on state changes
+  const onFoundRef = useRef(onFound)
+  onFoundRef.current = onFound
+
   const handleLookup = async (codeToSearch: string) => {
     const cleanCode = codeToSearch.trim()
     if (!cleanCode) return
 
     setIsSearching(true)
     setErrorMessage(null)
-    setStatusMessage('Searching Open Food Facts API...')
+    setStatusMessage(`Searching database for barcode: ${cleanCode}...`)
 
     try {
       // 1. Fetch from public token-free Open Food Facts API
@@ -49,7 +54,7 @@ export function BarcodeScannerModal({ onClose, onFound }: BarcodeScannerModalPro
             isCustom: false
           }
           setStatusMessage('Product found!')
-          onFound(foodItem)
+          onFoundRef.current(foodItem)
           return
         }
       }
@@ -66,13 +71,42 @@ export function BarcodeScannerModal({ onClose, onFound }: BarcodeScannerModalPro
         isCustom: false
       }
       setStatusMessage('Product found in local database!')
-      onFound(foodItem)
+      onFoundRef.current(foodItem)
     } else {
       setErrorMessage('Product not found in database. Please enter details manually as a custom food.')
       setStatusMessage(null)
       setIsSearching(false)
     }
   }
+
+  // Set up camera-based html5-qrcode scanner
+  useEffect(() => {
+    const scanner = new Html5QrcodeScanner(
+      'reader',
+      {
+        fps: 10,
+        qrbox: { width: 220, height: 130 },
+        rememberLastUsedCamera: true
+      },
+      /* verbose= */ false
+    )
+
+    scanner.render(
+      (decodedText) => {
+        // On success: trigger lookup and clear scanner
+        handleLookup(decodedText)
+        scanner.clear().catch((err) => console.warn('Failed to clear scanner:', err))
+      },
+      () => {
+        // Ignore error logs on each frame search to keep console clean
+      }
+    )
+
+    return () => {
+      scanner.clear().catch((err) => console.warn('Failed to clear scanner on unmount:', err))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const handleQuickTest = (code: string) => {
     setBarcode(code)
@@ -95,20 +129,49 @@ export function BarcodeScannerModal({ onClose, onFound }: BarcodeScannerModalPro
       padding: '16px'
     }}>
       <style>{`
-        @keyframes scanline {
-          0% { top: 0%; opacity: 0.8; }
-          50% { top: 100%; opacity: 0.8; }
-          100% { top: 0%; opacity: 0.8; }
+        #reader {
+          border: none !important;
+          background: rgba(255, 255, 255, 0.01) !important;
+          border-radius: 12px;
+          overflow: hidden;
+          width: 100% !important;
+          box-sizing: border-box;
         }
-        .scanner-glowing-line {
-          position: absolute;
-          left: 0;
-          right: 0;
-          height: 3px;
-          background-color: #ff3b30;
-          box-shadow: 0 0 10px #ff3b30, 0 0 20px #ff3b30;
-          animation: scanline 2.5s infinite linear;
-          pointer-events: none;
+        #reader video {
+          border-radius: 12px;
+          object-fit: cover;
+          width: 100% !important;
+        }
+        #reader__camera_permission_button,
+        #reader__dashboard_section_csr button,
+        .html5-qrcode-element {
+          background-color: var(--accent-color) !important;
+          border: none !important;
+          color: #ffffff !important;
+          padding: 8px 16px !important;
+          border-radius: 6px !important;
+          font-weight: 600 !important;
+          cursor: pointer !important;
+          font-size: 0.8rem !important;
+          transition: opacity 0.2s !important;
+          margin: 6px 0 !important;
+        }
+        #reader__camera_permission_button:hover,
+        #reader__dashboard_section_csr button:hover,
+        .html5-qrcode-element:hover {
+          opacity: 0.9 !important;
+        }
+        #reader__status_span {
+          color: var(--text-color) !important;
+          font-size: 0.85rem !important;
+        }
+        #reader a {
+          color: var(--accent-color) !important;
+          font-size: 0.8rem !important;
+          text-decoration: none !important;
+        }
+        #reader img {
+          display: none !important;
         }
       `}</style>
 
@@ -138,7 +201,8 @@ export function BarcodeScannerModal({ onClose, onFound }: BarcodeScannerModalPro
             color: 'var(--text-muted)',
             fontSize: '1.2rem',
             cursor: 'pointer',
-            padding: '4px'
+            padding: '4px',
+            zIndex: 10
           }}
           aria-label="Close scanner modal"
         >
@@ -146,43 +210,32 @@ export function BarcodeScannerModal({ onClose, onFound }: BarcodeScannerModalPro
         </button>
 
         <div>
-          <h3 style={{ margin: '0 0 4px 0', color: 'var(--heading-color)', fontSize: '1.1rem' }}>Barcode Scanner Lookup</h3>
-          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Type a code or use test barcodes to fetch nutrition metrics</span>
+          <h3 style={{ margin: '0 0 4px 0', color: 'var(--heading-color)', fontSize: '1.1rem' }}>Camera Barcode Scanner</h3>
+          <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Scan via live camera, take a photo, or enter the code manually</span>
         </div>
 
-        {/* Mock Camera Viewfinder View */}
+        {/* Live Camera Scanner Viewport */}
         <div style={{
-          height: '180px',
-          border: '1.5px dashed var(--border-color)',
+          minHeight: '200px',
+          border: '1px solid var(--border-color)',
           borderRadius: '12px',
-          position: 'relative',
           overflow: 'hidden',
           backgroundColor: 'rgba(255, 255, 255, 0.01)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          flexDirection: 'column',
-          gap: '8px'
+          position: 'relative'
         }}>
-          {/* Glowing Animated Red Line */}
-          <div className="scanner-glowing-line" />
-
-          {/* Barcode Vector Graphic */}
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ opacity: 0.35 }}>
-            <path d="M3 5v14M21 5v14M7 5v14M17 5v14M11 5v14M14 5v14" />
-          </svg>
-          <span style={{ fontSize: '0.72rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '1px', fontWeight: 600 }}>
-            Scanning viewport active
-          </span>
+          <div id="reader" style={{ width: '100%' }} />
         </div>
 
-        {/* Input lookup form */}
+        {/* Manual lookup input */}
         <form onSubmit={(e) => { e.preventDefault(); handleLookup(barcode); }} style={{ display: 'flex', gap: '8px' }}>
           <input
             type="text"
             className="workout-text-input"
             style={{ flex: 1, margin: 0 }}
-            placeholder="Enter numeric barcode..."
+            placeholder="Or type barcode manually..."
             value={barcode}
             onChange={(e) => setBarcode(e.target.value)}
             disabled={isSearching}
