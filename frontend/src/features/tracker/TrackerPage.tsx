@@ -8,6 +8,7 @@ import { TrackerLogTab } from './components/TrackerLogTab'
 import { CustomFoodsTab } from './components/CustomFoodsTab'
 import { GoalsTab } from './components/GoalsTab'
 import { CalorieHistoryChart } from './components/CalorieHistoryChart'
+import { BarcodeScannerModal } from './components/BarcodeScannerModal'
 import './TrackerPage.css'
 
 const getRangeDates = (centerDateStr: string) => {
@@ -77,6 +78,7 @@ export function TrackerPage() {
   // UI state
   const [activeTab, setActiveTab] = useState<'log' | 'custom' | 'goals'>('log')
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [showScannerModal, setShowScannerModal] = useState<boolean>(false)
 
   // Debounced update tracking timeouts
   const pendingUpdatesRef = useRef<Record<string, ReturnType<typeof setTimeout>>>({})
@@ -626,6 +628,7 @@ export function TrackerPage() {
                   favourites={favourites}
                   frequentFoods={frequentFoods}
                   handleToggleFavourite={handleToggleFavourite}
+                  setShowScannerModal={setShowScannerModal}
                 />
               )}
 
@@ -664,6 +667,17 @@ export function TrackerPage() {
           />
         </div>
       </div>
+
+      {/* Barcode Scanner Modal overlay */}
+      {showScannerModal && (
+        <BarcodeScannerModal
+          onClose={() => setShowScannerModal(false)}
+          onFound={(foodItem) => {
+            setSelectedFood(foodItem)
+            setShowScannerModal(false)
+          }}
+        />
+      )}
     </div>
   )
 }

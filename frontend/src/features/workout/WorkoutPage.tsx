@@ -8,6 +8,8 @@ import { WorkoutHistoryTable } from './components/WorkoutHistoryTable'
 import { WorkoutTimer } from './components/WorkoutTimer'
 import { WorkoutRoutineChecklist } from './components/WorkoutRoutineChecklist'
 import { WorkoutMuscleMap } from './components/WorkoutMuscleMap'
+import { weightApi, WeightLog } from '../weight/weight.api'
+import { trackerApi, TrackedIngredient } from '../tracker/tracker.api'
 import './WorkoutPage.css'
 
 import exercisesData from './exercises.json'
@@ -73,6 +75,8 @@ export function WorkoutPage() {
   // View Tab & Bulk Logging
   const [activeTab, setActiveTab] = useState<'session' | 'quick-log' | 'muscle-map' | 'history'>('history')
   const [isBulkLogging, setIsBulkLogging] = useState(false)
+  const [weightLogs, setWeightLogs] = useState<WeightLog[]>([])
+  const [todayFoodItems, setTodayFoodItems] = useState<TrackedIngredient[]>([])
 
   // Filtering & Search
   const [searchQuery, setSearchQuery] = useState('')
@@ -187,6 +191,35 @@ export function WorkoutPage() {
   useEffect(() => {
     fetchExercises()
   }, [fetchExercises])
+
+  // Fetch Weight Logs
+  const fetchWeightLogs = useCallback(async () => {
+    try {
+      const data = await weightApi.getWeights(request)
+      setWeightLogs(data)
+    } catch (err) {
+      console.warn('Failed to fetch weight logs for trophies:', err)
+    }
+  }, [request])
+
+  // Fetch Today's Food Logs
+  const fetchTodayFoodItems = useCallback(async () => {
+    try {
+      const todayStr = new Date().toISOString().split('T')[0]!
+      const data = await trackerApi.getTracked(request, todayStr)
+      setTodayFoodItems(data)
+    } catch (err) {
+      console.warn("Failed to fetch today's food items for trophies:", err)
+    }
+  }, [request])
+
+  // Fetch weight and food logs when the muscle map page is opened
+  useEffect(() => {
+    if (activeTab === 'muscle-map') {
+      fetchWeightLogs()
+      fetchTodayFoodItems()
+    }
+  }, [activeTab, fetchWeightLogs, fetchTodayFoodItems])
 
   // Auto-sync chartExercise state with loggedExerciseNames list (handles first logs, deletions, etc.)
   useEffect(() => {
@@ -765,7 +798,11 @@ export function WorkoutPage() {
       )}
 
       {activeTab === 'muscle-map' && (
-        <WorkoutMuscleMap />
+        <WorkoutMuscleMap
+          exercises={exercises}
+          weightLogs={weightLogs}
+          todayFoodItems={todayFoodItems}
+        />
       )}
 
       {activeTab === 'quick-log' && (
