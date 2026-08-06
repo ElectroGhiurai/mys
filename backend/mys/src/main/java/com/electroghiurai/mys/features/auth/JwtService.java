@@ -27,8 +27,8 @@ import java.util.UUID;
 @Component
 public class JwtService {
 
-    private static final long ACCESS_TOKEN_MS  = 15L * 60 * 1000;         // 15 minutes
-    private static final long REFRESH_TOKEN_MS = 7L  * 24 * 60 * 60 * 1000; // 7 days
+    private static final long ACCESS_TOKEN_MS = 15L * 60 * 1000; // 15 minutes
+    private static final long REFRESH_TOKEN_MS = 7L * 24 * 60 * 60 * 1000; // 7 days
 
     private final SecretKey key;
     private final String secretStr;
@@ -57,7 +57,10 @@ public class JwtService {
         return buildToken(user.getEmail(), REFRESH_TOKEN_MS);
     }
 
-    /** Returns the subject (email) if the token is valid, throws JwtException otherwise. */
+    /**
+     * Returns the subject (email) if the token is valid, throws JwtException
+     * otherwise.
+     */
     public String validateAndExtractEmail(String token) {
         Claims claims = Jwts.parser()
                 .verifyWith(key)

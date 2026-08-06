@@ -7,11 +7,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Business logic for authentication (architectural-pattern: pure business layer).
- * No HTTP concerns here — all I/O goes through UserRepository (I/O isolation rule).
+ * Business logic for authentication (architectural-pattern: pure business
+ * layer).
+ * No HTTP concerns here — all I/O goes through UserRepository (I/O isolation
+ * rule).
  *
  * Security rules applied:
- * - BCrypt via PasswordEncoder (Spring Security default cost ≥ 10, configured to 12)
+ * - BCrypt via PasswordEncoder (Spring Security default cost ≥ 10, configured
+ * to 12)
  * - Duplicate check before insert → 409, not 500
  * - Generic credential error → prevents user enumeration (security-principles)
  */
@@ -23,15 +26,16 @@ public class AuthService {
     private final JwtService jwtService;
 
     public AuthService(UserRepository userRepository,
-                       PasswordEncoder passwordEncoder,
-                       JwtService jwtService) {
-        this.userRepository  = userRepository;
+            PasswordEncoder passwordEncoder,
+            JwtService jwtService) {
+        this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
-        this.jwtService      = jwtService;
+        this.jwtService = jwtService;
     }
 
     /**
      * Registers a new user. Fails fast if email or username is taken.
+     * 
      * @return AuthResponse with access token and safe user summary.
      */
     @Transactional
@@ -55,6 +59,7 @@ public class AuthService {
     /**
      * Authenticates an existing user.
      * Uses generic error message to prevent user enumeration.
+     * 
      * @return TokenPair with access + refresh tokens.
      */
     @Transactional(readOnly = true)
@@ -71,6 +76,7 @@ public class AuthService {
 
     /**
      * Refreshes a session using a refresh token.
+     * 
      * @return TokenPair with a new access token and a new refresh token.
      */
     @Transactional(readOnly = true)
@@ -92,16 +98,17 @@ public class AuthService {
     // ── Pure helper — no I/O, deterministic output ─────────────────────────
 
     private TokenPair issueTokens(User user) {
-        String accessToken  = jwtService.generateAccessToken(user);
+        String accessToken = jwtService.generateAccessToken(user);
         String refreshToken = jwtService.generateRefreshToken(user);
         UserSummary summary = new UserSummary(
                 user.getId().toString(),
                 user.getDisplayUsername(),
-                user.getEmail()
-        );
+                user.getEmail(),
+                user.isFitnessProfileCompleted());
         return new TokenPair(accessToken, refreshToken, summary);
     }
 
     /** Internal record — carries both tokens from service to controller. */
-    public record TokenPair(String accessToken, String refreshToken, UserSummary user) {}
+    public record TokenPair(String accessToken, String refreshToken, UserSummary user) {
+    }
 }
