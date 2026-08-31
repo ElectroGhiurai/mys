@@ -103,7 +103,7 @@ jobs:
     - name: Build Application
       run: npm run build
       env:
-        VITE_API_URL: 'https://mys-backend.onrender.com/api/v1'
+        VITE_API_URL: 'https://mys-b45k.onrender.com/api/v1'
       
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3

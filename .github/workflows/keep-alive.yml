@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: Ping Render Backend
         run: |
-          curl -I -s -o /dev/null -w "%{http_code}" https://mys-backend.onrender.com/actuator/health
+          curl -I -s -o /dev/null -w "%{http_code}" https://mys-b45k.onrender.com/actuator/health
